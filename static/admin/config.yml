@@ -1,0 +1,16 @@
+backend:
+  name: git-gateway
+  branch: master
+
+collections:
+  - name: "chapter"
+    label: "Chapter"
+    folder: "_data/chapter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Publikationsdatum", name: "date", widget: "datetime"}
+      - {label: "Hauptbild", name: "featured-image", widget: "image"}
+
+media_folder: "static/media/uploads"

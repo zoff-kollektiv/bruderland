@@ -18,12 +18,8 @@ collections:
       - label: "Bild"
         name: "featured-image"
         widget: "image"
-      - label: "Block"
-        name: "blocks"
-        widget: "list"
-        fields:
-          - label: "Block"
-            name: "block"
-            widget: "relation"
+      - label: "Inhalt"
+        name: "content"
+        widget: "markdown"
 
 media_folder: "static/media/uploads"

@@ -1,6 +1,6 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: zoff-collective/bruderland
 
 collections:
   - name: "chapter"
@@ -9,8 +9,21 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Publikationsdatum", name: "date", widget: "datetime"}
-      - {label: "Hauptbild", name: "featured-image", widget: "image"}
+      - label: "Titel"
+        name: "title"
+        widget: "string"
+      - label: "Publikationsdatum"
+        name: "publication-date"
+        widget: "datetime"
+      - label: "Bild"
+        name: "featured-image"
+        widget: "image"
+      - label: "Block"
+        name: "blocks"
+        widget: "list"
+        fields:
+          - label: "Block"
+            name: "block"
+            widget: "relation"
 
 media_folder: "static/media/uploads"

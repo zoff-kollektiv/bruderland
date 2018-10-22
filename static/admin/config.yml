@@ -1,16 +1,42 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: zoff-collective/bruderland
 
 collections:
   - name: "chapter"
     label: "Chapter"
-    folder: "_data/chapter"
+    folder: "data/chapter"
     create: true
+    preview: false
     slug: "{{slug}}"
     fields:
-      - {label: "Titel", name: "title", widget: "string"}
-      - {label: "Publikationsdatum", name: "date", widget: "datetime"}
-      - {label: "Hauptbild", name: "featured-image", widget: "image"}
+      - label: "Nummer"
+        name: "number"
+        widget: "number"
+
+      - label: "Thema"
+        name: "topic"
+        widget: "string"
+
+      - label: "Titel"
+        name: "title"
+        widget: "string"
+
+      - label: "Bild"
+        name: "featured-image"
+        widget: "image"
+
+      - label: "Zitat"
+        name: "quote"
+        widget: "text"
+
+      - label: "Inhalt"
+        name: "content"
+        widget: "markdown"
+        buttons:
+          - "bold"
+          - "italic"
+          - "link"
+          - "heading-two"
 
 media_folder: "static/media/uploads"

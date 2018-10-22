@@ -1,6 +1,12 @@
 module.exports = {
   plugins: [
-    'gatsby-plugin-netlify-cms',
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        enableIdentityWidget: false,
+        modulePath: `${__dirname}/src/admin/index.js`,
+      }
+    },
 
     {
       resolve: 'gatsby-source-filesystem',

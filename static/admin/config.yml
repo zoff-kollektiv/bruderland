@@ -5,7 +5,7 @@ backend:
 collections:
   - name: "chapter"
     label: "Chapter"
-    folder: "_data/chapter"
+    folder: "data/chapter"
     create: true
     slug: "{{slug}}"
     fields:

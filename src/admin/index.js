@@ -13,7 +13,7 @@ CMS.registerEditorComponent({
     },
 
     {
-      name: 'body',
+      name: 'text',
       label: 'Text',
       widget: 'markdown',
       buttons: [
@@ -54,6 +54,42 @@ CMS.registerEditorComponent({
   fromBlock: match => JSON.parse(match[1]),
 
   toBlock: data => `slogan data='${JSON.stringify(data)}'`,
+
+  toPreview: data => {
+    return `<div>${JSON.stringify(data)}</div>`;
+  }
+});
+
+CMS.registerEditorComponent({
+  id: 'image-text',
+
+  label: 'Bild/ Text Kombination',
+
+  fields: [
+    {
+      name: 'image',
+      label: 'Bild',
+      widget: 'image'
+    },
+
+    {
+      name: 'text',
+      label: 'Text',
+      widget: 'markdown',
+      buttons: [
+        'bold',
+        'italic',
+        'link',
+        'heading-two'
+      ]
+    }
+  ],
+
+  pattern: /^image-text data='(\S+)'$/,
+
+  fromBlock: match => JSON.parse(match[1]),
+
+  toBlock: data => `image-text data='${JSON.stringify(data)}'`,
 
   toPreview: data => {
     return `<div>${JSON.stringify(data)}</div>`;

@@ -10,15 +10,26 @@ collections:
     preview: false
     slug: "{{slug}}"
     fields:
+      - label: "Nummer"
+        name: "number"
+        widget: "number"
+
+      - label: "Thema"
+        name: "topic"
+        widget: "string"
+
       - label: "Titel"
         name: "title"
         widget: "string"
-      - label: "Publikationsdatum"
-        name: "publication-date"
-        widget: "datetime"
+
       - label: "Bild"
         name: "featured-image"
         widget: "image"
+
+      - label: "Zitat"
+        name: "quote"
+        widget: "text"
+
       - label: "Inhalt"
         name: "content"
         widget: "markdown"

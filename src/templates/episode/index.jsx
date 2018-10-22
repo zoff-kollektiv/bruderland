@@ -18,12 +18,13 @@ export default ({ pathContext }) => {
     <main>
       {content.map(({ acf_fc_layout, ...rest }, index) => {
         const Block = blocks[acf_fc_layout];
+        const key = `${acf_fc_layout}-${index}`;
 
         if (!Block) {
-          return <NotImplemented layout={acf_fc_layout} {...rest} />
+          return <NotImplemented key={key} layout={acf_fc_layout} {...rest} />
         }
 
-        return <Block {...rest} />
+        return <Block key={key} {...rest} />
       })}
     </main>
   </div>;

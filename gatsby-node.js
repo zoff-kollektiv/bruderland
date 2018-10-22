@@ -22,7 +22,9 @@ const createPages = ({ actions }) => {
         createPage({
           path: slug,
           component,
-          context: {},
+          context: {
+            episode
+          },
         })
       })
     });

@@ -35,3 +35,27 @@ CMS.registerEditorComponent({
     return `<div>${JSON.stringify(data)}</div>`;
   }
 });
+
+CMS.registerEditorComponent({
+  id: 'slogan',
+
+  label: 'Losung',
+
+  fields: [
+    {
+      name: 'quote',
+      label: 'Losung',
+      widget: 'text'
+    }
+  ],
+
+  pattern: /^slogan data='(\S+)'$/,
+
+  fromBlock: match => JSON.parse(match[1]),
+
+  toBlock: data => `slogan data='${JSON.stringify(data)}'`,
+
+  toPreview: data => {
+    return `<div>${JSON.stringify(data)}</div>`;
+  }
+});

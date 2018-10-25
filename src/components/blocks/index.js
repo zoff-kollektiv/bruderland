@@ -1,7 +1,9 @@
-import Text from './text';
+import Quote from './quote';
+import Richtext from './richtext';
 
 const blocks = {
-  text: Text,
+  quote: Quote,
+  text: Richtext,
 };
 
 export default blocks;

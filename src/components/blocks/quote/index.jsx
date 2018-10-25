@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Richtext from '../text';
+import Richtext from '../richtext';
 
 export default ({ quote, text }) => <blockquote className="quote">
   <p>{quote}</p>

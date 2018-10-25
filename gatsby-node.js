@@ -14,10 +14,8 @@ const createPages = ({ actions }) => {
   return fetchEpisodes(episodesEndpoint)
     .then(episodes => {
 
-      episodes.forEach(episode => {
-        const slug = `/episode/${episode.slug}/`;
-
-        console.log('create', slug);
+      episodes.forEach((episode, index) => {
+        const slug = index === 0 ? '/' : `/episode/${episode.slug}/`;
 
         createPage({
           path: slug,

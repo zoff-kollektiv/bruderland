@@ -19,7 +19,7 @@ export default ({ title, text, image }) => {
       </div>
     </figure>
   );
-}
+};
 
 export const fragment = graphql`
   fragment imageTextCombination on WordPressAcf_imageTextCombination {

@@ -1,4 +1,4 @@
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
@@ -10,14 +10,15 @@ export default ({ data }) => {
   const { node } = edges[0];
   const { title } = node;
 
-  return <Fragment>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{title}</title>
-    </Helmet>
-
-    <Episode data={node} />;
-  </Fragment>
+  return (
+    <Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{title}</title>
+      </Helmet>
+      <Episode data={node} />;
+    </Fragment>
+  );
 };
 
 export const query = graphql`

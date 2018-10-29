@@ -15,6 +15,8 @@ module.exports = {
       }
     },
 
-    'gatsby-plugin-styled-jsx'
+    'gatsby-plugin-styled-jsx',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp'
   ]
 };

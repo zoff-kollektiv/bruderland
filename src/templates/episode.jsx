@@ -12,8 +12,8 @@ export default ({ data }) => {
 };
 
 export const query = graphql`
-  query FirstEpisode {
-    allWordpressWpEpisodes(filter: { acf: { number: { eq: "1" } } }) {
+  query($number: String) {
+    allWordpressWpEpisodes(filter: { acf: { number: { eq: $number } } }) {
       edges {
         node {
           title

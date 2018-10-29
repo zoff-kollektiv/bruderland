@@ -1,31 +1,43 @@
-const fetch = require('node-fetch');
 const path = require('path');
 
-const episodesEndpoint = require('./config.json').episodes.endpoint;
-const component = path.resolve('src/templates/episode/index.jsx');
-
-const fetchEpisodes = endpoint => fetch(endpoint)
-  .then(res => res.json())
-  .catch(err => console.error(err));
-
-const createPages = ({ actions }) => {
+exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  return fetchEpisodes(episodesEndpoint)
-    .then(episodes => {
+  return graphql(`
+    {
+      allWordpressWpEpisodes {
+        edges {
+          node {
+            slug
+            acf {
+              number
+            }
+          }
+        }
+      }
+    }
+  `).then(({ errors, data }) => {
+    if (errors) {
+      return Promise.reject(errors)
+    }
 
-      episodes.forEach((episode, index) => {
-        const slug = index === 0 ? '/' : `/episode/${episode.slug}/`;
+    const episodes = data.allWordpressWpEpisodes.edges;
 
-        createPage({
-          path: slug,
-          component,
-          context: {
-            episode
-          },
-        })
+    episodes.forEach(({ node }) => {
+      const { slug, acf } = node;
+      const number = parseInt(acf.number, 10);
+      const pagePath = number === 1 ? '/' : slug;
+      const context = {
+        number: number
+      };
+
+      console.log('create page', pagePath, context);
+
+      createPage({
+        path: pagePath,
+        component: path.resolve('src/templates/episode.jsx'),
+        context
       })
-    });
-};
-
-exports.createPages = createPages;
+    })
+  })
+}

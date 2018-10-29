@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "gatsby": "^2.0.0",
+    "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-styled-jsx": "^3.0.1",
     "gatsby-source-wordpress": "^3.0.9",
     "node-fetch": "^2.2.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-helmet": "^5.2.0",
     "styled-jsx": "^3.1.0"
   },
   "devDependencies": {

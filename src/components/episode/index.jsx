@@ -1,18 +1,17 @@
 import React from 'react';
 
 import blocks from '../blocks';
+import Intro from '../blocks/intro';
 import NotImplemented from '../not-implemented';
+import withLayout from '../with-layout';
 
-export default ({ data }) => {
-  const { title, number, quote, acf } = data;
-  const { content_episodes } = acf;
+const Episode = ({ data }) => {
+  const { acf } = data;
+  const { content_episodes, quote } = acf;
 
   return (
     <div>
-      <header>
-        <h1>{number} - {title}</h1>
-        <blockquote>{quote}</blockquote>
-      </header>
+      <Intro quote={quote} />
 
       <main>
         {content_episodes.map((episode, index) => {
@@ -29,4 +28,6 @@ export default ({ data }) => {
       </main>
     </div>
   );
-}
+};
+
+export default withLayout(Episode);

@@ -13,6 +13,8 @@ module.exports = {
         ],
         verboseOutput: true
       }
-    }
+    },
+
+    'gatsby-plugin-styled-jsx'
   ]
 };

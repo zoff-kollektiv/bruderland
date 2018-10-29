@@ -5,7 +5,8 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "dependencies": {
     "gatsby": "^2.0.0",

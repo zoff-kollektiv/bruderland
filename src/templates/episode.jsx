@@ -18,8 +18,7 @@ export const query = graphql`
         node {
           title
           acf {
-            quote
-            number
+            ...intro
             content_episodes {
               ...quote
               ...richtext

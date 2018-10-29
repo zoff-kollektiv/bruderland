@@ -7,10 +7,7 @@ module.exports = {
       options: {
         baseUrl: config.episodes.endpoint,
         protocol: 'https',
-        includedRoutes: [
-          '/*/*/episodes',
-          '/*/*/media',
-        ],
+        includedRoutes: ['/*/*/episodes', '/*/*/media'],
         verboseOutput: true
       }
     },

@@ -6,7 +6,7 @@ import styles from './styles';
 export default ({ quote }) => (
   <header>
     <style jsx>{styles}</style>
-    <div className="logo"></div>
+    <div className="logo" />
     <div className="quote">
       <blockquote>{quote}</blockquote>
     </div>

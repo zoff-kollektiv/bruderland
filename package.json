@@ -9,12 +9,12 @@
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "dependencies": {
-    "gatsby": "^2.0.0",
-    "gatsby-plugin-styled-jsx": "^3.0.1",
-    "gatsby-source-wordpress": "^3.0.9",
+    "gatsby": "^2.0.34",
+    "gatsby-plugin-styled-jsx": "^3.0.2",
+    "gatsby-source-wordpress": "^3.0.10",
     "node-fetch": "^2.2.0",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
     "react-helmet": "^5.2.0",
     "styled-jsx": "^3.1.0"
   },
@@ -27,11 +27,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "gatsby-image": "^2.0.17",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.8",
-    "gatsby-source-filesystem": "^2.0.5",
-    "gatsby-transformer-sharp": "^2.1.5",
+    "gatsby-image": "^2.0.18",
+    "gatsby-plugin-react-helmet": "^3.0.1",
+    "gatsby-plugin-sharp": "^2.0.10",
+    "gatsby-source-filesystem": "^2.0.6",
+    "gatsby-transformer-sharp": "^2.1.7",
     "prettier": "^1.14.3"
   }
 }

@@ -13,7 +13,9 @@ export default ({ quote, text, number, title }) => (
       </div>
     </div>
 
-    <h1 className="title">Episode {number} – {title}</h1>
+    <h1 className="title">
+      Episode {number} – {title}
+    </h1>
 
     <p className="text">{text}</p>
   </header>

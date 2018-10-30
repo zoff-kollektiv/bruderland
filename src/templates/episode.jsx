@@ -43,7 +43,9 @@ export const query = graphql`
       }
     }
 
-    allEpisodes: allWordpressWpEpisodes {
+    allEpisodes: allWordpressWpEpisodes(
+      sort: { fields: [acf___number], order: ASC }
+    ) {
       edges {
         node {
           ...navigation

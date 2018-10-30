@@ -6,13 +6,13 @@ import NotImplemented from '../not-implemented';
 import withLayout from '../with-layout';
 
 const Episode = ({ data }) => {
-  const { acf } = data;
+  const { acf, title } = data;
   // eslint-disable-next-line camelcase
-  const { content_episodes, quote } = acf;
+  const { content_episodes, quote, number, text } = acf;
 
   return (
     <div>
-      <Intro quote={quote} />
+      <Intro title={title} quote={quote} number={number} text={text} />
 
       <main>
         {content_episodes.map((episode, index) => {

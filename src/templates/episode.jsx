@@ -3,10 +3,11 @@ import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
 import Episode from '../components/episode';
+import Navigation from '../components/navigation';
 
 export default ({ data }) => {
-  const { allWordpressWpEpisodes } = data;
-  const { edges } = allWordpressWpEpisodes;
+  const { episode, allEpisodes } = data;
+  const { edges } = episode;
   const { node } = edges[0];
   const { title } = node;
 
@@ -16,6 +17,7 @@ export default ({ data }) => {
         <meta charSet="utf-8" />
         <title>{title}</title>
       </Helmet>
+      <Navigation items={allEpisodes.edges} />
       <Episode data={node} />;
     </Fragment>
   );
@@ -23,7 +25,9 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($number: String) {
-    allWordpressWpEpisodes(filter: { acf: { number: { eq: $number } } }) {
+    episode: allWordpressWpEpisodes(
+      filter: { acf: { number: { eq: $number } } }
+    ) {
       edges {
         node {
           title
@@ -35,6 +39,14 @@ export const query = graphql`
               ...imageTextCombination
             }
           }
+        }
+      }
+    }
+
+    allEpisodes: allWordpressWpEpisodes {
+      edges {
+        node {
+          ...navigation
         }
       }
     }

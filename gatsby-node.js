@@ -26,7 +26,7 @@ exports.createPages = ({ actions, graphql }) => {
     episodes.forEach(({ node }) => {
       const { slug, acf } = node;
       const number = parseInt(acf.number, 10);
-      const pagePath = number === 1 ? '/' : slug;
+      const pagePath = number === 1 ? '/' : `/episodes/${slug}/`;
       const context = {
         number
       };

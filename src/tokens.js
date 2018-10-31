@@ -1,7 +1,8 @@
 const SCREEN_SIZES = [['phone', 500], ['tablet', 768], ['desktop', 1024]];
 
 const colors = {
-  brand: 'rgb(208, 2, 27)'
+  brand: 'rgb(208, 2, 27)',
+  lightGrey: 'rgb(205, 205, 205)'
 };
 
 const fonts = {

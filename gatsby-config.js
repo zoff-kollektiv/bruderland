@@ -12,6 +12,15 @@ module.exports = {
       }
     },
 
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /static/
+        }
+      }
+    },
+
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

@@ -13,6 +13,30 @@ export default css`
 
   .logo {
     background-color: ${colors.brand};
+    color: white;
+  }
+
+  .logo-title {
+    font-family: ${fonts.superla.family};
+    font-size: 8rem;
+    font-weight: ${fonts.superla.weight.extraBold};
+    line-height: 0.9;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .logo-title__country {
+    display: flex;
+  }
+
+  :global(.logo-title__country svg) {
+    height: 11.5rem;
+    margin-right: -1rem;
+    width: 10.5rem;
+  }
+
+  :global(.logo-title__country g#handshake) {
+    fill: currentColor;
   }
 
   .logo,

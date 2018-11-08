@@ -8,11 +8,11 @@ import withLayout from '../with-layout';
 const Episode = ({ data }) => {
   const { acf, title } = data;
   // eslint-disable-next-line camelcase
-  const { content_episodes, quote, number, text } = acf;
+  const { content_episodes, ...intro } = acf;
 
   return (
     <div>
-      <Intro title={title} quote={quote} number={number} text={text} />
+      <Intro title={title} {...intro} />
 
       <main>
         {content_episodes.map((episode, index) => {

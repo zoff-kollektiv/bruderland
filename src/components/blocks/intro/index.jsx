@@ -4,10 +4,18 @@ import React from 'react';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import styles from './styles';
 
-export default ({ quote, text, number, title }) => (
+export default ({ backgroundImage, quote, text, number, title }) => (
   <header>
     <style jsx>{styles}</style>
+
     <div className="quote-container">
+      <img
+        src={backgroundImage.localFile.childImageSharp.fluid.src}
+        srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
+        alt={backgroundImage.alt_text}
+        className="image"
+      />
+
       <div className="logo">
         <div className="logo-title">
           Bruder
@@ -35,5 +43,15 @@ export const fragment = graphql`
     quote
     number
     text
+    backgroundImage {
+      localFile {
+        childImageSharp {
+          fluid(maxWidth: 3000) {
+            src
+            srcSet
+          }
+        }
+      }
+    }
   }
 `;

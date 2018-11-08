@@ -1,4 +1,5 @@
 import css from 'styled-jsx/css';
+import tinycolor from 'tinycolor2';
 
 import { colors, fonts } from '../../../tokens';
 
@@ -9,10 +10,12 @@ export default css`
     flex-wrap: nowrap;
     margin-bottom: 8rem;
     min-height: 100vh;
+    overflow: hidden;
+    position: relative;
   }
 
   .logo {
-    background-color: ${colors.brand};
+    background-color: ${tinycolor(colors.brand).setAlpha(0.85)};
     color: white;
   }
 
@@ -39,6 +42,16 @@ export default css`
     fill: currentColor;
   }
 
+  .image {
+    height: 100%;
+    left: 50%;
+    min-width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
   .logo,
   .quote {
     align-items: center;
@@ -47,6 +60,7 @@ export default css`
     justify-content: center;
     padding: 0 5rem;
     width: 50%;
+    z-index: 2;
   }
 
   blockquote {

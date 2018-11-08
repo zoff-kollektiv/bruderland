@@ -14,8 +14,8 @@ export default ({ title, text, image }) => {
       <img src={src} srcSet={srcSet} alt="" />
 
       <div className="content">
-        <h3>{title}</h3>
-        <p>{text}</p>
+        <h3 className="title">{title}</h3>
+        <p className="text">{text}</p>
       </div>
     </figure>
   );

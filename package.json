@@ -1,6 +1,6 @@
 {
   "name": "bruderland",
-  "description": "Gatsby hello world starter",
+  "description": "A web documentary about the GDR",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

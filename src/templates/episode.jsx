@@ -30,6 +30,7 @@ export const query = graphql`
         content_episodes {
           ...quote
           ...richtext
+          ...images
           ...imageTextCombination
         }
       }

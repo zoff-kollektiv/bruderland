@@ -6,8 +6,6 @@ import styles from './styles';
 export default ({ text }) => (
   <section>
     <style jsx>{styles}</style>
-
-    {/* eslint-disable-next-line react/no-danger */}
     <div className="richtext" dangerouslySetInnerHTML={{ __html: text }} />
   </section>
 );

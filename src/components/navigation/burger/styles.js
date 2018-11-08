@@ -8,11 +8,8 @@ export default css`
     color: ${colors.lightGrey};
     display: flex;
     font-family: ${fonts.superla.family};
-    left: 1.5rem;
     line-height: 1;
-    position: fixed;
     text-decoration: none;
-    top: 1rem;
   }
 
   a:hover,

@@ -5,6 +5,8 @@ import Burger from './burger';
 import Episodes from './episodes';
 import styles from './styles';
 
+import HandshakeIcon from '../../static/logo-handshake.svg';
+
 export default class Navigation extends Component {
   state = {
     isOpen: false
@@ -23,7 +25,7 @@ export default class Navigation extends Component {
     const { isOpen } = this.state;
 
     return (
-      <div>
+      <nav className="navigation-container">
         <style jsx>{styles}</style>
 
         <Burger
@@ -32,6 +34,10 @@ export default class Navigation extends Component {
             this.openNavigation();
           }}
         />
+
+        <div className="logo">
+          <HandshakeIcon />
+        </div>
 
         <ReactModal
           isOpen={isOpen}
@@ -51,7 +57,7 @@ export default class Navigation extends Component {
             <Episodes items={items} />
           </div>
         </ReactModal>
-      </div>
+      </nav>
     );
   }
 }

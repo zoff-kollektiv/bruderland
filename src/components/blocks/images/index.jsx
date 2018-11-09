@@ -22,6 +22,7 @@ export const fragment = graphql`
   fragment images on WordPressAcf_images {
     imagesRepeat {
       imagesImage {
+        id
         alt_text
         caption
         localFile {

@@ -19,7 +19,7 @@ export default ({ images }) => (
 
     <Slider {...settings}>
       {images.map(image => (
-        <div>
+        <div key={image.imagesImage && image.imagesImage.id}>
           <Image {...image} />
         </div>
       ))}

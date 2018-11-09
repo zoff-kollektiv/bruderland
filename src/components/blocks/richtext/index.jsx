@@ -1,12 +1,19 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import Constraint from '../../constraint';
+
 import styles from './styles';
 
 export default ({ text }) => (
   <section>
     <style jsx>{styles}</style>
-    <div className="richtext" dangerouslySetInnerHTML={{ __html: text }} />
+
+    <div className="richtext">
+      <Constraint>
+        <div dangerouslySetInnerHTML={{ __html: text }} />
+      </Constraint>
+    </div>
   </section>
 );
 

@@ -16,7 +16,7 @@ export default ({ data }) => {
         <title>{title}</title>
       </Helmet>
       <Navigation items={allEpisodes.edges} />
-      <Episode data={episode} />;
+      <Episode data={episode} />
     </Fragment>
   );
 };
@@ -32,6 +32,7 @@ export const query = graphql`
           ...richtext
           ...images
           ...imageTextCombination
+          ...videoVimeo
         }
       }
     }

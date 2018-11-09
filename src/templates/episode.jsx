@@ -5,6 +5,11 @@ import { graphql } from 'gatsby';
 import Episode from '../components/episode';
 import Navigation from '../components/navigation';
 
+const getNextEpisode = (episodes, current) => {
+  const number = parseInt(current.acf.number, 10);
+  return episodes[number] || null;
+};
+
 export default ({ data }) => {
   const { episode, allEpisodes } = data;
   const { title } = episode;
@@ -16,7 +21,10 @@ export default ({ data }) => {
         <title>{title}</title>
       </Helmet>
       <Navigation items={allEpisodes.edges} />
-      <Episode data={episode} />
+      <Episode
+        data={episode}
+        next={getNextEpisode(allEpisodes.edges, episode)}
+      />
     </Fragment>
   );
 };
@@ -43,6 +51,10 @@ export const query = graphql`
       edges {
         node {
           ...navigation
+          title
+          acf {
+            ...intro
+          }
         }
       }
     }

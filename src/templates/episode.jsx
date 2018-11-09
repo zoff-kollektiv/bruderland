@@ -32,6 +32,7 @@ export const query = graphql`
           ...richtext
           ...images
           ...imageTextCombination
+          ...videoVimeo
         }
       }
     }

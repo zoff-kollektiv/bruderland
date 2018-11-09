@@ -15,7 +15,6 @@ export default css`
     font-size: 1.25rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.4;
-    max-width: 700px;
   }
 
   :global(.richtext h2) {
@@ -27,7 +26,6 @@ export default css`
     margin-bottom: 2rem;
     margin-left: -3rem;
     margin-top: 4.5rem;
-    max-width: 700px;
     width: 100%;
   }
 `;

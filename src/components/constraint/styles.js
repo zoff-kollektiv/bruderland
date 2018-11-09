@@ -2,6 +2,6 @@ import css from 'styled-jsx/css';
 
 export default css`
   div {
-    max-width: 700px;
+    width: 700px;
   }
 `;

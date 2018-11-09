@@ -2,10 +2,11 @@ import React from 'react';
 
 import blocks from '../blocks';
 import Intro from '../blocks/intro';
+import NextEpisode from '../next-episode';
 import NotImplemented from '../not-implemented';
 import withLayout from '../with-layout';
 
-const Episode = ({ data }) => {
+const Episode = ({ data, next }) => {
   const { acf, title } = data;
   // eslint-disable-next-line camelcase
   const { content_episodes, ...intro } = acf;
@@ -28,6 +29,8 @@ const Episode = ({ data }) => {
           return <Block key={key} {...rest} />;
         })}
       </main>
+
+      <NextEpisode {...next} />
     </div>
   );
 };

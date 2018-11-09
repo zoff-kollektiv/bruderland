@@ -30,7 +30,7 @@ const Episode = ({ data, next }) => {
         })}
       </main>
 
-      <NextEpisode {...next} />
+      {next && <NextEpisode {...next} />}
     </div>
   );
 };

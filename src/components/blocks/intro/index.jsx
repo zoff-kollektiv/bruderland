@@ -1,8 +1,9 @@
 import { graphql } from 'gatsby';
-import React from 'react';
+import Link from 'gatsby-link';
+import React, { Fragment } from 'react';
 
 import HandshakeIcon from '../../../static/logo-handshake.svg';
-import styles from './styles';
+import styles, { nextLink } from './styles';
 
 export default ({
   backgroundImage,
@@ -10,10 +11,14 @@ export default ({
   text,
   number,
   title,
-  renderQuote = true
+  renderQuote = true,
+  linkTitle = false,
+  linkTitleSlug = ''
 }) => (
   <header>
     <style jsx>{styles}</style>
+
+    {nextLink.styles}
 
     {renderQuote && (
       <div className="quote-container">
@@ -40,7 +45,15 @@ export default ({
     )}
 
     <h1 className="title">
-      Episode {number} – {title}
+      {linkTitle ? (
+        <Link className={nextLink.className} to={`/episodes/${linkTitleSlug}/`}>
+          Episode {number} – {title}
+        </Link>
+      ) : (
+        <Fragment>
+          Episode {number} – {title}
+        </Fragment>
+      )}
     </h1>
 
     <p className="text">{text}</p>

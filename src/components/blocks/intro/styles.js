@@ -1,4 +1,6 @@
 import css from 'styled-jsx/css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 import tinycolor from 'tinycolor2';
 
 import { colors, fonts } from '../../../tokens';
@@ -94,5 +96,17 @@ export default css`
     margin-top: 3rem;
     max-width: 520px;
     text-align: center;
+  }
+`;
+
+export const nextLink = css.resolve`
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
   }
 `;

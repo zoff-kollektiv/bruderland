@@ -21,29 +21,6 @@ export default css`
     color: white;
   }
 
-  .logo-title {
-    font-family: ${fonts.superla.family};
-    font-size: 8rem;
-    font-weight: ${fonts.superla.weight.extraBold};
-    line-height: 0.9;
-    position: relative;
-    text-transform: uppercase;
-  }
-
-  .logo-title__country {
-    display: flex;
-  }
-
-  :global(.logo-title__country svg) {
-    height: 11.5rem;
-    margin-right: -1rem;
-    width: 10.5rem;
-  }
-
-  :global(.logo-title__country g#handshake) {
-    fill: currentColor;
-  }
-
   .image {
     height: 100%;
     left: 50%;
@@ -96,6 +73,12 @@ export default css`
     margin-top: 3rem;
     max-width: 520px;
     text-align: center;
+  }
+`;
+
+export const logoIcon = css.resolve`
+  svg {
+    width: 28rem;
   }
 `;
 

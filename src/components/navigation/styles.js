@@ -1,4 +1,6 @@
 import css from 'styled-jsx/css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 
 import { colors } from '../../tokens';
 
@@ -25,16 +27,8 @@ export default css`
 
   .logo {
     align-self: flex-end;
+    color: ${colors.lightGrey};
     margin-left: auto;
-  }
-
-  :global(.navigation-container .logo svg) {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
-
-  :global(.navigation-container .logo g#handshake) {
-    fill: ${colors.lightGrey};
   }
 
   .navigation {
@@ -42,5 +36,12 @@ export default css`
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+`;
+
+export const iconStyles = css.resolve`
+  svg {
+    height: 2.5rem;
+    width: 2.5rem;
   }
 `;

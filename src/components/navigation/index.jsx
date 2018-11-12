@@ -3,9 +3,9 @@ import ReactModal from 'react-modal';
 
 import Burger from './burger';
 import Episodes from './episodes';
-import styles from './styles';
+import styles, { iconStyles } from './styles';
 
-import HandshakeIcon from '../../static/logo-handshake.svg';
+import HandshakeIcon from '../../static/handshake.svg';
 
 export default class Navigation extends Component {
   state = {
@@ -36,7 +36,8 @@ export default class Navigation extends Component {
         />
 
         <div className="logo">
-          <HandshakeIcon />
+          {iconStyles.styles}
+          <HandshakeIcon className={iconStyles.className} />
         </div>
 
         <ReactModal

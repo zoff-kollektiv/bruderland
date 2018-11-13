@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import React, { Fragment } from 'react';
 
 import HandshakeIcon from '../../../static/logo-handshake.svg';
-import styles, { nextLink } from './styles';
+import styles, { nextLink, logoIcon } from './styles';
 
 export default ({
   backgroundImage,
@@ -30,13 +30,8 @@ export default ({
         />
 
         <div className="logo">
-          <div className="logo-title">
-            Bruder
-            <span className="logo-title__country">
-              <HandshakeIcon />
-              land
-            </span>
-          </div>
+          {logoIcon.styles}
+          <HandshakeIcon className={logoIcon.className} />
         </div>
         <div className="quote">
           <blockquote>{quote}</blockquote>

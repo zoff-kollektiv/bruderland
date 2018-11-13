@@ -40,6 +40,7 @@ export const query = graphql`
           ...richtext
           ...images
           ...imageTextCombination
+          ...slogan
           ...videoVimeo
         }
       }

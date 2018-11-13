@@ -5,23 +5,19 @@ import Constraint from '../../constraint';
 
 import styles from './styles';
 
-export default ({ text, source }) => (
+export default ({ text }) => (
   <section>
     <style jsx>{styles}</style>
 
-    <blockquote>
-      <Constraint>
-        {text}
-
-        {source && <cite>{source}</cite>}
-      </Constraint>
-    </blockquote>
+    <Constraint>
+      <h3 className="title">Anmerkungen</h3>
+      <div className="text" dangerouslySetInnerHTML={{ __html: text }} />
+    </Constraint>
   </section>
 );
 
 export const fragment = graphql`
-  fragment slogan on WordPressAcf_slogan {
+  fragment annotations on WordPressAcf_annotations {
     text
-    source
   }
 `;

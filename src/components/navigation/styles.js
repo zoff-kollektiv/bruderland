@@ -41,7 +41,7 @@ export default css`
 
 export const iconStyles = css.resolve`
   svg {
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 2rem;
+    width: 2rem;
   }
 `;

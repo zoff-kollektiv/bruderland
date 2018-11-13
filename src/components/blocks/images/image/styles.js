@@ -43,5 +43,6 @@ export default css`
     left: 2.5rem;
     max-width: 15rem;
     position: absolute;
+    text-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
   }
 `;

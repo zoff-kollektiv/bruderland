@@ -10,7 +10,7 @@ export default ({
   quote,
   text,
   number,
-  title,
+  topic,
   renderQuote = true,
   linkTitle = false,
   linkTitleSlug = ''
@@ -42,11 +42,11 @@ export default ({
     <h1 className="title">
       {linkTitle ? (
         <Link className={nextLink.className} to={`/episodes/${linkTitleSlug}/`}>
-          Episode {number} – {title}
+          Episode {number} – {topic}
         </Link>
       ) : (
         <Fragment>
-          Episode {number} – {title}
+          Episode {number} – {topic}
         </Fragment>
       )}
     </h1>
@@ -60,6 +60,7 @@ export const fragment = graphql`
     quote
     number
     text
+    topic
     backgroundImage {
       localFile {
         childImageSharp {

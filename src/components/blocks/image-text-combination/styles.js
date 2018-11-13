@@ -8,12 +8,14 @@ export default css`
     flex-direction: row;
     flex-wrap: nowrap;
     margin: 0;
+    min-height: 100vh;
     padding: 1.5rem 3.5rem;
   }
 
   img,
   .content {
     flex: 1 0 auto;
+    object-fit: contain;
   }
 
   img {

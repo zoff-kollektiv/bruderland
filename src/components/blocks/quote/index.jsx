@@ -13,11 +13,13 @@ export default ({ quote, text }) => (
         <span className="quotation-mark">»</span>
         {quote}
       </p>
-
-      <cite>Eine der Losungen des Zentralkomitees der SED zum 1. Mai 1989</cite>
     </blockquote>
 
-    {text && <Richtext text={text} />}
+    {text && (
+      <div className="richtext">
+        <Richtext text={text} />
+      </div>
+    )}
   </section>
 );
 

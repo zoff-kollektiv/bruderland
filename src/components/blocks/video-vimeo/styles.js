@@ -29,5 +29,6 @@ export default css`
     font-size: 1.25rem;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1.5rem;
   }
 `;

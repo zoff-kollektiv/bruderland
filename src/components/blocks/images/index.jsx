@@ -21,6 +21,7 @@ export default ({ imagesRepeat }) => (
 export const fragment = graphql`
   fragment images on WordPressAcf_images {
     imagesRepeat {
+      fullscreen
       imagesImage {
         id
         alt_text

@@ -9,9 +9,21 @@ export default css`
     max-height: 60vh;
   }
 
+  figure.is-fullscreen {
+    height: 100vh;
+    max-height: 0;
+    position: relative;
+    width: 100%;
+  }
+
   img {
     max-height: 100%;
     width: auto;
+  }
+
+  .is-fullscreen img {
+    height: auto;
+    width: 100%;
   }
 
   figcaption {
@@ -23,5 +35,13 @@ export default css`
     line-height: 1.33;
     margin-top: 2rem;
     max-width: 30rem;
+  }
+
+  .is-fullscreen figcaption {
+    bottom: 2.5rem;
+    color: white;
+    left: 2.5rem;
+    max-width: 15rem;
+    position: absolute;
   }
 `;

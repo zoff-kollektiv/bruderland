@@ -9,6 +9,7 @@
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "gatsby": "^2.0.47",
     "gatsby-link": "^2.0.6",
     "gatsby-plugin-styled-jsx": "^3.0.2",

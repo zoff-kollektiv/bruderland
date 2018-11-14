@@ -1,8 +1,12 @@
 import React, { Fragment } from 'react';
 import Slider from 'react-slick';
 
+import ArrowLeftIcon from '../../../../static/arrow-left.svg';
+import ArrowRightIcon from '../../../../static/arrow-right.svg';
 import Image from '../image';
-import styles from './styles';
+import VisuallyHidden from '../../../visually-hidden';
+
+import styles, { arrowStyles } from './styles';
 
 const settings = {
   adaptiveHeight: true,
@@ -13,16 +17,40 @@ const settings = {
   slidesToScroll: 1
 };
 
+const slider = React.createRef();
+
 export default ({ images }) => (
   <Fragment>
     <style jsx>{styles}</style>
 
-    <Slider {...settings}>
-      {images.map(image => (
-        <div key={image.imagesImage && image.imagesImage.id}>
-          <Image {...image} />
-        </div>
-      ))}
-    </Slider>
+    {arrowStyles.styles}
+
+    <div className="slider-container">
+      <button
+        type="button"
+        className="slider-control slider-control--prev"
+        onClick={() => slider.current.slickNext()}
+      >
+        <ArrowLeftIcon className={arrowStyles.className} />
+        <VisuallyHidden>Zurück</VisuallyHidden>
+      </button>
+
+      <Slider ref={slider} {...settings}>
+        {images.map(image => (
+          <div key={image.imagesImage && image.imagesImage.id}>
+            <Image {...image} />
+          </div>
+        ))}
+      </Slider>
+
+      <button
+        type="button"
+        className="slider-control slider-control--next"
+        onClick={() => slider.current.slickNext()}
+      >
+        <VisuallyHidden>Weiter</VisuallyHidden>
+        <ArrowRightIcon className={arrowStyles.className} />
+      </button>
+    </div>
   </Fragment>
 );

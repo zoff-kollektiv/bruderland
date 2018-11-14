@@ -27,6 +27,7 @@ export default css`
   blockquote {
     font-family: ${fonts.lapture.family};
     font-size: 3.375rem;
+    font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;
     margin: 0;

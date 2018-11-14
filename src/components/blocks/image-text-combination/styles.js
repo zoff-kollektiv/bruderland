@@ -48,6 +48,8 @@ export default css`
   .title {
     font-family: ${fonts.lapture.family};
     font-size: 1.75rem;
+    font-style: italic;
+    font-weight: ${fonts.lapture.weight.bold};
     margin-bottom: 4.5rem;
   }
 

@@ -1,6 +1,23 @@
 import css from 'styled-jsx/css';
 
 export default css`
+  .slider-container {
+    position: relative;
+  }
+
+  .slider-control {
+    position: absolute;
+    top: 10rem;
+  }
+
+  .slider-control--prev {
+    left: 0;
+  }
+
+  .slider-control--next {
+    right: 0;
+  }
+
   :global(.slick-slider) {
     user-select: none;
     touch-action: pan-y;

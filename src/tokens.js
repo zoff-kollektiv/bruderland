@@ -9,14 +9,14 @@ const colors = {
 
 const fonts = {
   lapture: {
-    family: 'Lapture, serif',
+    family: 'Lapture, Georgia, serif',
     weight: {
       bold: 700
     }
   },
 
   superla: {
-    family: 'Superla, sans-serif',
+    family: 'Superla, -apple-system, sans-serif',
     weight: {
       regular: 400,
       extraBold: 900

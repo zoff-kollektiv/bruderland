@@ -35,7 +35,10 @@ export default ({
           <HandshakeIcon className={logoIcon.className} />
         </div>
         <div className="quote">
-          <blockquote>{quote}</blockquote>
+          <blockquote>
+            <span className="quotation-mark">»</span>
+            {quote}
+          </blockquote>
         </div>
       </div>
     )}

@@ -6,6 +6,10 @@ import tinycolor from 'tinycolor2';
 import { colors, fonts, mq } from '../../../tokens';
 
 export default css`
+  header {
+    margin-bottom: 2rem;
+  }
+
   .quote-container {
     display: flex;
     flex-direction: column;
@@ -26,11 +30,13 @@ export default css`
   .logo {
     background-color: ${colors.brand};
     color: white;
+    height: 40vh;
   }
 
   @media ${mq.tablet} {
     .logo {
       background-color: ${tinycolor(colors.brand).setAlpha(0.85)};
+      height: 100%;
     }
   }
 
@@ -42,6 +48,28 @@ export default css`
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+  }
+
+  .quote {
+    height: 60vh;
+  }
+
+  @media ${mq.tablet} {
+    .quote {
+      height: 100%;
+      margin-top: -5rem;
+    }
+  }
+
+  .quotation-mark {
+    display: block;
+    font-size: 5.625rem;
+  }
+
+  @media ${mq.tablet} {
+    .quotation-mark {
+      font-size: 9.375rem;
+    }
   }
 
   .logo,
@@ -61,26 +89,6 @@ export default css`
       padding-left: 5rem;
       padding-right: 5rem;
       width: 50%;
-    }
-  }
-
-  .quote {
-    height: 60vh;
-  }
-
-  @media ${mq.tablet} {
-    .quote {
-      height: 100%;
-    }
-  }
-
-  .logo {
-    height: 40vh;
-  }
-
-  @media ${mq.tablet} {
-    .logo {
-      height: 100%;
     }
   }
 
@@ -109,7 +117,7 @@ export default css`
   .title {
     color: ${colors.brand};
     font-family: ${fonts.superla.family};
-    font-size: 3.125rem;
+    font-size: 2.6rem;
     font-weight: ${fonts.superla.weight.extraBold};
     margin-bottom: 0;
     margin-top: 0;

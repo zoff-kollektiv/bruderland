@@ -2,14 +2,12 @@
   "name": "bruderland",
   "description": "A web documentary about the GDR",
   "license": "MIT",
-
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
-
   "dependencies": {
     "classnames": "^2.2.6",
     "gatsby": "^2.0.47",
@@ -25,7 +23,6 @@
     "styled-jsx": "^3.1.1",
     "tinycolor2": "^1.4.1"
   },
-
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
@@ -45,14 +42,15 @@
     "lint-staged": "^8.0.4",
     "prettier": "^1.15.2"
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
-
   "lint-staged": {
-    "*.{js,jsx}": ["npm run lint", "git add"]
+    "*.{js,jsx}": [
+      "npm run lint",
+      "git add"
+    ]
   }
 }

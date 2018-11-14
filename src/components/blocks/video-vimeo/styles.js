@@ -4,6 +4,7 @@ import { fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
+    align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,19 +12,8 @@ export default css`
     margin-top: 1.5rem;
   }
 
-  .video-container {
-    height: 0;
-    padding-bottom: 56.25%;
-    padding-top: 25px;
-    position: relative;
-  }
-
-  .video {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
+  .container {
+    width: 800px;
   }
 
   figcaption {

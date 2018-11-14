@@ -1,5 +1,17 @@
 const path = require('path');
 
+exports.onCreateNode = ({ node }) => {
+  /* for some reason the repeater field returns false, if there wasn't any footnote.
+     To avoid a Schema conflict (array/boolean) always use an empty array */
+  if (
+    node.internal.type === 'WordPressAcf_text' &&
+    node.footnotesRepeat === false
+  ) {
+    // eslint-disable-next-line no-param-reassign
+    node.footnotesRepeat = [];
+  }
+};
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 

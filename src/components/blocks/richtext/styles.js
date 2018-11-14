@@ -1,9 +1,9 @@
 import css from 'styled-jsx/css';
 
-import { fonts, mq } from '../../../tokens';
+import { colors, fonts, mq } from '../../../tokens';
 
 export default css`
-  .richtext {
+  section {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -15,6 +15,16 @@ export default css`
     font-size: 1.25rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.4;
+  }
+
+  :global(.richtext a) {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  :global(.richtext a.footnote) {
+    color: ${colors.blue};
+    text-decoration: none;
   }
 
   :global(.richtext h2) {

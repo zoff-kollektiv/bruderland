@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 
-import { fonts, mq } from '../../../../tokens';
+import { colors, fonts, mq } from '../../../../tokens';
 
 export default css`
   figure {
@@ -30,9 +30,10 @@ export default css`
 
   figcaption {
     caption-side: bottom;
+    color: ${colors.grey};
     display: table-caption;
     font-family: ${fonts.superla.family};
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.33;
     margin-top: 0;
@@ -44,6 +45,7 @@ export default css`
 
   @media ${mq.tablet} {
     figcaption {
+      font-size: 1.125rem;
       margin-top: 2rem;
       padding-left: 0.5rem;
       padding-right: 0.5rem;

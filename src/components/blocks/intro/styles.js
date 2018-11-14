@@ -10,7 +10,7 @@ export default css`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
     overflow: hidden;
     position: relative;
   }
@@ -19,6 +19,7 @@ export default css`
     .quote-container {
       flex-direction: row;
       flex-wrap: nowrap;
+      margin-bottom: 8rem;
     }
   }
 
@@ -48,7 +49,6 @@ export default css`
     align-items: center;
     display: flex;
     flex: 1 0 auto;
-    height: 50vh;
     justify-content: center;
     padding: 0 20%;
     width: 100%;
@@ -58,10 +58,29 @@ export default css`
   @media ${mq.tablet} {
     .logo,
     .quote {
-      height: 100%;
       padding-left: 5rem;
       padding-right: 5rem;
       width: 50%;
+    }
+  }
+
+  .quote {
+    height: 60vh;
+  }
+
+  @media ${mq.tablet} {
+    .quote {
+      height: 100%;
+    }
+  }
+
+  .logo {
+    height: 40vh;
+  }
+
+  @media ${mq.tablet} {
+    .logo {
+      height: 100%;
     }
   }
 

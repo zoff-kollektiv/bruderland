@@ -1,12 +1,14 @@
 import css from 'styled-jsx/css';
 
-import { fonts } from '../../../tokens';
+import { fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .video-container {
@@ -26,9 +28,15 @@ export default css`
 
   figcaption {
     font-family: ${fonts.superla.family};
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    figcaption {
+      font-size: 1.25rem;
+    }
   }
 `;

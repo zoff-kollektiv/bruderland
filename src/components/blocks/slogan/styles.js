@@ -12,13 +12,12 @@ export default css`
     justify-content: center;
     margin-bottom: 3rem;
     margin-top: 3rem;
-    min-height: 100vh;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1.5rem;
   }
 
   @media ${mq.tablet} {
     section {
+      min-height: 100vh;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
     }
@@ -26,7 +25,7 @@ export default css`
 
   blockquote {
     font-family: ${fonts.lapture.family};
-    font-size: 3.375rem;
+    font-size: 3rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;

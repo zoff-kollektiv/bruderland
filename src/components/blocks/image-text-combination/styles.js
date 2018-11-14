@@ -7,7 +7,7 @@ export default css`
     display: flex;
     flex-direction: column;
     margin: 0;
-    padding: 1.5rem 3.5rem;
+    padding: 1.5rem 0;
   }
 
   @media ${mq.tablet} {
@@ -15,6 +15,8 @@ export default css`
       flex-direction: row;
       flex-wrap: nowrap;
       min-height: 100vh;
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
     }
   }
 
@@ -47,14 +49,35 @@ export default css`
 
   .title {
     font-family: ${fonts.lapture.family};
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
-    margin-bottom: 4.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    .title {
+      font-size: 1.75rem;
+      margin-bottom: 4.5rem;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
   }
 
   .text {
     font-family: ${fonts.superla.family};
-    font-size: 1.25rem;
+    font-size: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    .text {
+      font-size: 1.25rem;
+      padding-left: 0rem;
+      padding-right: 0rem;
+    }
   }
 `;

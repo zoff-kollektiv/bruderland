@@ -1,4 +1,6 @@
 import css from 'styled-jsx/css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 
 export default css`
   .slider-container {
@@ -6,8 +8,11 @@ export default css`
   }
 
   .slider-control {
+    background: transparent;
+    border: 0;
     position: absolute;
     top: 10rem;
+    z-index: 10;
   }
 
   .slider-control--prev {
@@ -51,5 +56,12 @@ export default css`
     float: left;
     height: 100%;
     min-height: 1px;
+  }
+`;
+
+export const arrowStyles = css.resolve`
+  svg {
+    height: 2rem;
+    width: 2rem;
   }
 `;

@@ -36,6 +36,7 @@ export default css`
     font-size: 1rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.33;
+    margin-left: 1.5rem;
     margin-top: 0;
     max-width: 30rem;
     padding-left: 1.5rem;
@@ -45,8 +46,7 @@ export default css`
 
   @media ${mq.tablet} {
     figcaption {
-      font-size: 1.125rem;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       text-align: left;

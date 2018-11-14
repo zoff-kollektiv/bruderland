@@ -1,15 +1,21 @@
 import css from 'styled-jsx/css';
 
-import { fonts } from '../../../tokens';
+import { fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
     margin: 0;
-    min-height: 100vh;
     padding: 1.5rem 3.5rem;
+  }
+
+  @media ${mq.tablet} {
+    figure {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      min-height: 100vh;
+    }
   }
 
   img,
@@ -19,12 +25,24 @@ export default css`
   }
 
   img {
-    margin-right: 1.5rem;
-    width: 75%;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    img {
+      margin-right: 1.5rem;
+      width: 75%;
+    }
   }
 
   .content {
-    width: 25%;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    .content {
+      width: 25%;
+    }
   }
 
   .title {

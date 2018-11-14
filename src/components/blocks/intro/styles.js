@@ -3,22 +3,34 @@ import css from 'styled-jsx/css';
 import React from 'react';
 import tinycolor from 'tinycolor2';
 
-import { colors, fonts } from '../../../tokens';
+import { colors, fonts, mq } from '../../../tokens';
 
 export default css`
   .quote-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100vh;
     margin-bottom: 8rem;
-    min-height: 100vh;
     overflow: hidden;
     position: relative;
   }
 
+  @media ${mq.tablet} {
+    .quote-container {
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+  }
+
   .logo {
-    background-color: ${tinycolor(colors.brand).setAlpha(0.85)};
+    background-color: ${colors.brand};
     color: white;
+  }
+
+  @media ${mq.tablet} {
+    .logo {
+      background-color: ${tinycolor(colors.brand).setAlpha(0.85)};
+    }
   }
 
   .image {
@@ -36,16 +48,27 @@ export default css`
     align-items: center;
     display: flex;
     flex: 1 0 auto;
+    height: 50vh;
     justify-content: center;
-    padding: 0 5rem;
-    width: 50%;
+    padding: 0 20%;
+    width: 100%;
     z-index: 2;
+  }
+
+  @media ${mq.tablet} {
+    .logo,
+    .quote {
+      height: 100%;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      width: 50%;
+    }
   }
 
   blockquote {
     color: ${colors.brand};
     font-family: ${fonts.lapture.family};
-    font-size: 2.875rem;
+    font-size: 2.18rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;
@@ -53,14 +76,31 @@ export default css`
     text-align: center;
   }
 
+  @media ${mq.tablet} {
+    blockquote {
+      font-size: 2.875rem;
+    }
+  }
+
+  .lower-intro {
+    display: flex;
+    justify-content: center;
+  }
+
   .title {
     color: ${colors.brand};
     font-family: ${fonts.superla.family};
-    font-size: 4.75rem;
+    font-size: 3.125rem;
     font-weight: ${fonts.superla.weight.extraBold};
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
+  }
+
+  @media ${mq.tablet} {
+    .title {
+      font-size: 4.75rem;
+    }
   }
 
   .text {

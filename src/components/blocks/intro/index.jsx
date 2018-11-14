@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import React, { Fragment } from 'react';
 
+import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import styles, { nextLink, logoIcon } from './styles';
 
@@ -39,19 +40,26 @@ export default ({
       </div>
     )}
 
-    <h1 className="title">
-      {linkTitle ? (
-        <Link className={nextLink.className} to={`/episodes/${linkTitleSlug}/`}>
-          Episode {number} – {topic}
-        </Link>
-      ) : (
-        <Fragment>
-          Episode {number} – {topic}
-        </Fragment>
-      )}
-    </h1>
+    <div className="lower-intro">
+      <Constraint>
+        <h1 className="title">
+          {linkTitle ? (
+            <Link
+              className={nextLink.className}
+              to={`/episodes/${linkTitleSlug}/`}
+            >
+              Episode {number} – {topic}
+            </Link>
+          ) : (
+            <Fragment>
+              Episode {number} – {topic}
+            </Fragment>
+          )}
+        </h1>
 
-    <p className="text">{text}</p>
+        <p className="text">{text}</p>
+      </Constraint>
+    </div>
   </header>
 );
 

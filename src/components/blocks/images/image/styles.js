@@ -18,6 +18,7 @@ export default css`
 
   img {
     max-height: 100%;
+    max-width: 100%;
     width: auto;
   }
 

@@ -23,23 +23,29 @@ const replaceFootnotes = (id, text) => {
   return newText;
 };
 
-export default ({ footnotesRepeat, id, text }) => (
-  <section>
-    <style jsx>{styles}</style>
+export default ({ footnotesRepeat, id, text }) => {
+  const hasFootnotes = footnotesRepeat && footnotesRepeat.length > 0;
 
-    <div className="richtext">
+  return (
+    <section>
+      <style jsx>{styles}</style>
+
+      <div className="richtext">
+        <Constraint>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: hasFootnotes ? replaceFootnotes(id, text) : text
+            }}
+          />
+        </Constraint>
+      </div>
+
       <Constraint>
-        <div dangerouslySetInnerHTML={{ __html: replaceFootnotes(id, text) }} />
+        {hasFootnotes && <Footnotes id={id} entries={footnotesRepeat} />}
       </Constraint>
-    </div>
-
-    <Constraint>
-      {footnotesRepeat && footnotesRepeat.length > 0 && (
-        <Footnotes id={id} entries={footnotesRepeat} />
-      )}
-    </Constraint>
-  </section>
-);
+    </section>
+  );
+};
 
 export const fragment = graphql`
   fragment richtext on WordPressAcf_text {

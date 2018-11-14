@@ -17,6 +17,7 @@ export default css`
   }
 
   img {
+    align-self: flex-start;
     max-height: 100%;
     max-width: 100%;
     width: auto;

@@ -67,7 +67,7 @@ export default ({
 );
 
 export const fragment = graphql`
-  fragment intro on acf_6 {
+  fragment intro on acf_5 {
     quote
     number
     text

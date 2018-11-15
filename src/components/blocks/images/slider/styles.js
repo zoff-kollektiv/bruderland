@@ -1,6 +1,31 @@
 import css from 'styled-jsx/css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+
+import { colors } from '../../../../tokens';
 
 export default css`
+  .slider-container {
+    position: relative;
+  }
+
+  .slider-control {
+    background: transparent;
+    border: 0;
+    color: ${colors.lightGrey};
+    position: absolute;
+    top: 10rem;
+    z-index: 10;
+  }
+
+  .slider-control--prev {
+    left: 0.5rem;
+  }
+
+  .slider-control--next {
+    right: 0.5rem;
+  }
+
   :global(.slick-slider) {
     user-select: none;
     touch-action: pan-y;
@@ -34,5 +59,12 @@ export default css`
     float: left;
     height: 100%;
     min-height: 1px;
+  }
+`;
+
+export const arrowStyles = css.resolve`
+  svg {
+    height: 2rem;
+    width: 2rem;
   }
 `;

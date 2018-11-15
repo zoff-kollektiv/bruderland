@@ -1,4 +1,3 @@
-import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import React, { Fragment } from 'react';
 
@@ -65,22 +64,3 @@ export default ({
     </div>
   </header>
 );
-
-export const fragment = graphql`
-  fragment intro on acf_6 {
-    quote
-    number
-    text
-    topic
-    backgroundImage {
-      localFile {
-        childImageSharp {
-          fluid(maxWidth: 3000) {
-            src
-            srcSet
-          }
-        }
-      }
-    }
-  }
-`;

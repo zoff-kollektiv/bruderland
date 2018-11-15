@@ -15,8 +15,8 @@ export default css`
     figure {
       flex-direction: row;
       flex-wrap: nowrap;
-      margin-top: 3rem;
-      min-height: 100vh;
+      margin-bottom: 4rem;
+      margin-top: 2rem;
       padding-left: 3.5rem;
       padding-right: 3.5rem;
     }

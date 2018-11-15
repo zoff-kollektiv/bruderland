@@ -7,10 +7,34 @@ import styles, { iconStyles } from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
+const hideLogoOnIntro = () => {
+  if (!('IntersectionObserver' in window)) {
+    return;
+  }
+
+  const navigation = document.querySelector('.js-navigation');
+  const intro = document.querySelector('.js-intro');
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(({ isIntersecting }) => {
+      navigation.classList.toggle(
+        'navigation-container--intro-not-visible',
+        !isIntersecting
+      );
+    });
+  });
+
+  io.observe(intro);
+};
+
 export default class Navigation extends Component {
   state = {
     isOpen: false
   };
+
+  componentDidMount() {
+    hideLogoOnIntro();
+  }
 
   openNavigation() {
     this.setState({ isOpen: true });
@@ -25,7 +49,7 @@ export default class Navigation extends Component {
     const { isOpen } = this.state;
 
     return (
-      <nav className="navigation-container">
+      <nav className="navigation-container js-navigation">
         <style jsx>{styles}</style>
 
         <Burger
@@ -35,7 +59,7 @@ export default class Navigation extends Component {
           }}
         />
 
-        <div className="logo">
+        <div className="logo js-logo">
           {iconStyles.styles}
           <HandshakeIcon className={iconStyles.className} />
         </div>

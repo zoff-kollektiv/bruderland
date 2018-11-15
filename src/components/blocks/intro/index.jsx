@@ -16,7 +16,7 @@ export default ({
   linkTitle = false,
   linkTitleSlug = ''
 }) => (
-  <header>
+  <header className="js-intro">
     <style jsx>{styles}</style>
 
     {nextLink.styles}

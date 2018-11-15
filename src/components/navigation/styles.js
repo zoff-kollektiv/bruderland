@@ -29,6 +29,12 @@ export default css`
     align-self: flex-end;
     color: ${colors.lightGrey};
     margin-left: auto;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  .navigation-container--intro-not-visible .logo {
+    opacity: 1;
   }
 
   .navigation {

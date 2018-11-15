@@ -27,21 +27,43 @@ export default css`
     text-decoration: none;
   }
 
-  :global(.richtext h2) {
+  :global(.richtext h2),
+  :global(.richtext h3) {
     font-family: ${fonts.lapture.family};
-    font-size: 2rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    :global(.richtext h2),
+    :global(.richtext h3) {
+      margin-left: -4rem;
+    }
+  }
+
+  :global(.richtext h2) {
+    font-size: 2rem;
     margin-bottom: 2rem;
     margin-top: 4.5rem;
-    width: 100%;
   }
 
   @media ${mq.tablet} {
     :global(.richtext h2) {
       font-size: 2.875rem;
-      margin-left: -3rem;
+    }
+  }
+
+  :global(.richtext h3) {
+    font-size: 1.6rem;
+    margin-bottom: 0rem;
+    margin-top: 3.5rem;
+  }
+
+  @media ${mq.tablet} {
+    :global(.richtext h3) {
+      font-size: 2rem;
     }
   }
 `;

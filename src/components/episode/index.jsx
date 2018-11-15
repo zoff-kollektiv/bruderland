@@ -1,5 +1,6 @@
 import React from 'react';
 
+import BlockError from '../block-error';
 import blocks from '../blocks';
 import Intro from '../blocks/intro';
 import NextEpisode from '../next-episode';
@@ -28,7 +29,11 @@ const Episode = ({ data: { acf }, next }) => {
             return <NotImplemented key={key} layout={__typename} {...rest} />;
           }
 
-          return <Block key={key} {...rest} />;
+          return (
+            <BlockError>
+              <Block key={key} {...rest} />
+            </BlockError>
+          );
         })}
       </main>
 

@@ -7,6 +7,7 @@ export default css`
     display: table;
     margin: 0 auto;
     max-height: 60vh;
+    max-width: 750px;
   }
 
   figure.is-fullscreen {

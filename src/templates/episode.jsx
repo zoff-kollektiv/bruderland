@@ -34,7 +34,20 @@ export const query = graphql`
     episode: wordpressWpEpisodes(acf: { number: { eq: $number } }) {
       title
       acf {
-        ...intro
+        quote
+        number
+        text
+        topic
+        backgroundImage {
+          localFile {
+            childImageSharp {
+              fluid(maxHeight: 1200, maxWidth: 2000) {
+                src
+                srcSet
+              }
+            }
+          }
+        }
         content_episodes {
           ...annotations
           ...quote
@@ -55,7 +68,10 @@ export const query = graphql`
           ...navigation
           title
           acf {
-            ...intro
+            quote
+            number
+            text
+            topic
           }
         }
       }

@@ -4,6 +4,7 @@ import { fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -14,6 +15,7 @@ export default css`
     figure {
       flex-direction: row;
       flex-wrap: nowrap;
+      margin-top: 3rem;
       min-height: 100vh;
       padding-left: 3.5rem;
       padding-right: 3.5rem;
@@ -53,6 +55,7 @@ export default css`
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     margin-bottom: 1.5rem;
+    margin-top: 0;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }

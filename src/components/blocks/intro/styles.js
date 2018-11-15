@@ -41,8 +41,8 @@ export default css`
   }
 
   .image {
-    height: 100%;
     left: 50%;
+    min-height: 100%;
     min-width: 100%;
     position: absolute;
     top: 50%;

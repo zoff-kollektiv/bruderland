@@ -11,7 +11,11 @@ export default ({ fullscreen = false, imagesImage }) => {
     localFile && (
       <figure className={classnames({ 'is-fullscreen': fullscreen })}>
         <style jsx>{styles}</style>
-        <img src={localFile.childImageSharp.fluid.src} alt={alt} />
+        <img
+          src={localFile.childImageSharp.fluid.src}
+          srcSet={localFile.childImageSharp.fluid.srcSet}
+          alt={alt}
+        />
         {caption && (
           <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
         )}

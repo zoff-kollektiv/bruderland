@@ -14,10 +14,7 @@ export default ({ items }) => (
           to={parseInt(number, 10) === 1 ? '/' : `/episodes/${slug}/`}
           className="item"
         >
-          <div className="episode">
-            Episode {number}
-            <span className="visually-hidden">:</span>
-          </div>
+          <div className="episode">Episode {number}</div>
 
           <em className="topic">{topic}</em>
 

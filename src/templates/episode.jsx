@@ -31,7 +31,10 @@ export default ({ data }) => {
 
 export const query = graphql`
   query($number: String) {
-    episode: wordpressWpEpisodes(acf: { number: { eq: $number } }) {
+    episode: wordpressWpEpisodes(
+      status: { eq: "publish" }
+      acf: { number: { eq: $number } }
+    ) {
       title
       acf {
         quote
@@ -61,6 +64,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
+      filter: { status: { eq: "publish " } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       edges {

@@ -53,9 +53,14 @@ export default class Navigation extends Component {
         <style jsx>{styles}</style>
 
         <Burger
+          isOpen={isOpen}
           onClick={event => {
             event.preventDefault();
-            this.openNavigation();
+            if (isOpen) {
+              this.closeNavigation();
+            } else {
+              this.openNavigation();
+            }
           }}
         />
 
@@ -70,15 +75,6 @@ export default class Navigation extends Component {
           overlayClassName="modal-overlay"
         >
           <div className="navigation">
-            <button
-              type="button"
-              onClick={() => {
-                this.closeNavigation();
-              }}
-            >
-              Close Menu
-            </button>
-
             <Episodes items={items} />
           </div>
         </ReactModal>

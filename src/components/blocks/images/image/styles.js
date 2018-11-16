@@ -11,8 +11,8 @@ export default css`
   }
 
   figure.is-fullscreen {
-    height: 100vh;
-    max-height: 0;
+    max-height: 100vh;
+    max-width: none;
     position: relative;
     width: 100%;
   }

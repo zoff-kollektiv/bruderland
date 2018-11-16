@@ -15,6 +15,10 @@ const hideLogoOnIntro = () => {
   const navigation = document.querySelector('.js-navigation');
   const intro = document.querySelector('.js-intro');
 
+  if (!intro) {
+    return;
+  }
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(({ isIntersecting }) => {
       navigation.classList.toggle(
@@ -31,6 +35,12 @@ export default class Navigation extends Component {
   state = {
     isOpen: false
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state.isOpen = props.isOpen;
+  }
 
   componentDidMount() {
     hideLogoOnIntro();

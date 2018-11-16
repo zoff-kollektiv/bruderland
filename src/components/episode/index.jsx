@@ -5,11 +5,10 @@ import blocks from '../blocks';
 import Intro from '../blocks/intro';
 import NextEpisode from '../next-episode';
 import NotImplemented from '../not-implemented';
-import withLayout from '../with-layout';
 
 import styles from './styles';
 
-const Episode = ({ data: { acf }, next }) => {
+export default ({ data: { acf }, next }) => {
   // eslint-disable-next-line camelcase
   const { content_episodes: contentBlocks, ...intro } = acf;
 
@@ -42,5 +41,3 @@ const Episode = ({ data: { acf }, next }) => {
     </Fragment>
   );
 };
-
-export default withLayout(Episode);

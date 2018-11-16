@@ -1,8 +1,8 @@
-import { Helmet } from 'react-helmet';
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
 
 import Episode from '../components/episode';
+import Metadata from '../components/metadata';
 import Navigation from '../components/navigation';
 
 const getNextEpisode = (episodes, current) => {
@@ -11,16 +11,15 @@ const getNextEpisode = (episodes, current) => {
 };
 
 export default ({ data }) => {
-  const { episode, allEpisodes } = data;
+  const { episode, allEpisodes, site } = data;
   const { title } = episode;
 
   return (
     <Fragment>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{title}</title>
-      </Helmet>
+      <Metadata title={title} site={site} />
+
       <Navigation items={allEpisodes.edges} />
+
       <Episode
         data={episode}
         next={getNextEpisode(allEpisodes.edges, episode)}
@@ -79,6 +78,12 @@ export const query = graphql`
           }
         }
       }
+    }
+
+    site: wordpressSiteMetadata {
+      name
+      description
+      url
     }
   }
 `;

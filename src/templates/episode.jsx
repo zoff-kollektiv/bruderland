@@ -64,7 +64,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { status: { eq: "publish " } }
+      filter: { status: { eq: "publish" } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       edges {

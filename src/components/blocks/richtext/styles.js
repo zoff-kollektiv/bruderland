@@ -29,9 +29,6 @@ export default css`
 
   :global(.richtext h2),
   :global(.richtext h3) {
-    font-family: ${fonts.lapture.family};
-    font-style: italic;
-    font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;
     width: 100%;
   }
@@ -39,12 +36,15 @@ export default css`
   @media ${mq.tablet} {
     :global(.richtext h2),
     :global(.richtext h3) {
-      margin-left: -4rem;
+      margin-left: -3.5rem;
     }
   }
 
   :global(.richtext h2) {
+    font-family: ${fonts.lapture.family};
     font-size: 2rem;
+    font-style: italic;
+    font-weight: ${fonts.lapture.weight.bold};
     margin-bottom: 2rem;
     margin-top: 4.5rem;
   }
@@ -56,14 +56,16 @@ export default css`
   }
 
   :global(.richtext h3) {
-    font-size: 1.6rem;
+    font-family: ${fonts.superla.family};
+    font-size: 1.4rem;
+    font-weight: ${fonts.superla.weight.extraBold};
     margin-bottom: 0rem;
     margin-top: 3.5rem;
   }
 
   @media ${mq.tablet} {
     :global(.richtext h3) {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
 `;

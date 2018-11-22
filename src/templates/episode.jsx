@@ -11,7 +11,7 @@ const getNextEpisode = (episodes, current) => {
   return episodes[number] || null;
 };
 
-export default ({ data }) => {
+const Page = ({ data }) => {
   const { episode, allEpisodes, site } = data;
   const { title } = episode;
 

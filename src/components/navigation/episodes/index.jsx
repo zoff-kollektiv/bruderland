@@ -11,12 +11,14 @@ export default ({ items }) => (
     {items.map(({ node: { slug, acf: { number, topic, text } } }) => (
       <li>
         <Link
-          to={parseInt(number, 10) === 1 ? '/' : `/episodes/${slug}/`}
+          to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
           className="item"
         >
-          <div className="episode">Episode {number}</div>
+          {number && parseInt(number, 10) !== 0 && (
+            <div className="episode">Episode {number}</div>
+          )}
 
-          <em className="topic">{topic}</em>
+          {topic && <em className="topic">{topic}</em>}
 
           <p className="intro">{text}</p>
         </Link>

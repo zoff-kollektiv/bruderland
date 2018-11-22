@@ -15,6 +15,10 @@ const hideLogoOnIntro = () => {
   const navigation = document.querySelector('.js-navigation');
   const intro = document.querySelector('.js-intro');
 
+  if (!intro) {
+    return;
+  }
+
   const io = new IntersectionObserver(entries => {
     entries.forEach(({ isIntersecting }) => {
       navigation.classList.toggle(
@@ -31,6 +35,12 @@ export default class Navigation extends Component {
   state = {
     isOpen: false
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state.isOpen = props.isOpen;
+  }
 
   componentDidMount() {
     hideLogoOnIntro();
@@ -53,9 +63,14 @@ export default class Navigation extends Component {
         <style jsx>{styles}</style>
 
         <Burger
+          isOpen={isOpen}
           onClick={event => {
             event.preventDefault();
-            this.openNavigation();
+            if (isOpen) {
+              this.closeNavigation();
+            } else {
+              this.openNavigation();
+            }
           }}
         />
 
@@ -70,15 +85,6 @@ export default class Navigation extends Component {
           overlayClassName="modal-overlay"
         >
           <div className="navigation">
-            <button
-              type="button"
-              onClick={() => {
-                this.closeNavigation();
-              }}
-            >
-              Close Menu
-            </button>
-
             <Episodes items={items} />
           </div>
         </ReactModal>

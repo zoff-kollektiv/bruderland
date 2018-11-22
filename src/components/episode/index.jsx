@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import BlockError from '../block-error';
 import blocks from '../blocks';
 import Intro from '../blocks/intro';
 import NextEpisode from '../next-episode';
 import NotImplemented from '../not-implemented';
-import withLayout from '../with-layout';
 
 import styles from './styles';
 
-const Episode = ({ data: { acf }, next }) => {
+export default ({ data: { acf }, next }) => {
   // eslint-disable-next-line camelcase
   const { content_episodes: contentBlocks, ...intro } = acf;
 
   return (
-    <main>
+    <Fragment>
       <style jsx>{styles}</style>
 
       <Intro {...intro} />
+
       <main>
         {contentBlocks.map((block, index) => {
           const { __typename, ...rest } = block;
@@ -38,8 +38,6 @@ const Episode = ({ data: { acf }, next }) => {
       </main>
 
       {next && <NextEpisode {...next} />}
-    </main>
+    </Fragment>
   );
 };
-
-export default withLayout(Episode);

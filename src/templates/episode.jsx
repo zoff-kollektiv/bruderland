@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Episode from '../components/episode';
 import Metadata from '../components/metadata';
 import Navigation from '../components/navigation';
+import withLayout from '../components/with-layout';
 
 const getNextEpisode = (episodes, current) => {
   const number = parseInt(current.acf.number, 10);
@@ -27,6 +28,8 @@ export default ({ data }) => {
     </Fragment>
   );
 };
+
+export default withLayout(Page);
 
 export const query = graphql`
   query($number: String) {

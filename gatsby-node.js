@@ -21,8 +21,12 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             slug
+            title
             acf {
+              quote
               number
+              text
+              topic
             }
           }
         }
@@ -38,7 +42,7 @@ exports.createPages = ({ actions, graphql }) => {
     episodes.forEach(({ node }) => {
       const { slug, acf } = node;
       const number = parseInt(acf.number, 10);
-      const pagePath = number === 1 ? '/' : `/episodes/${slug}/`;
+      const pagePath = number === 0 ? '/' : `/episodes/${slug}/`;
       const context = {
         number
       };
@@ -51,6 +55,17 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve('src/templates/episode.jsx'),
         context
       });
+    });
+
+    // eslint-disable-next-line no-console
+    console.log('create page', '/navigation/');
+
+    createPage({
+      path: '/navigation/',
+      component: path.resolve('src/templates/navigation.jsx'),
+      context: {
+        episodes
+      }
     });
 
     return undefined;

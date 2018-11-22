@@ -32,9 +32,9 @@ export default css`
 
   .episode {
     font-family: ${fonts.superla.family};
-    font-size: 1.5rem;
+    font-size: 1.56rem;
     font-weight: ${fonts.superla.weight.regular};
-    padding-right: 2.5rem;
+    padding-right: 3rem;
     text-align: right;
     width: 50%;
   }
@@ -49,7 +49,7 @@ export default css`
 
   .intro {
     font-family: ${fonts.superla.family};
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: ${fonts.superla.weight.regular};
     margin-bottom: 0;
     margin-left: 50%;

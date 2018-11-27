@@ -13,7 +13,7 @@ export default css`
     div {
       padding-left: 0.5rem;
       padding-right: 0.5rem;
-      width: 700px;
+      width: 570px;
     }
   }
 `;

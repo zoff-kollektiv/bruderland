@@ -8,19 +8,19 @@ export default ({ items }) => (
   <ul className="navigation">
     <style jsx>{styles}</style>
 
-    {items.map(({ node: { slug, acf: { number, topic, text } } }) => (
+    {items.map(({ node: { slug, title, acf: { number, topic, text } } }) => (
       <li>
         <Link
           to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
           className="item"
         >
-          {number && parseInt(number, 10) !== 0 && (
-            <div className="episode">Episode {number}</div>
-          )}
+          <div className="episode">
+            {topic && number ? <>Episode {number}</> : <>{title}</>}
+          </div>
 
-          {topic && <em className="topic">{topic}</em>}
+          <em className="topic">{topic || title}</em>
 
-          <p className="intro">{text}</p>
+          {parseInt(number, 10) !== 0 && <p className="intro">{text}</p>}
         </Link>
       </li>
     ))}

@@ -8,7 +8,7 @@ import withLayout from '../components/with-layout';
 
 const getNextEpisode = (episodes, current) => {
   const number = parseInt(current.acf.number, 10);
-  return episodes[number] || null;
+  return episodes[number + 1] || null;
 };
 
 const getEpisodeTitle = ({ title, acf }) => {
@@ -40,6 +40,7 @@ const Page = ({ data }) => {
         <title>{episodeTitle}</title>
       </Helmet>
       <Navigation items={publishedEpisodes} />
+
       <Episode
         title={episodeTitle}
         data={episode}

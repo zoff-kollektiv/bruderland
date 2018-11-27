@@ -10,7 +10,6 @@ export default css`
 
   @media ${mq.tablet} {
     section {
-      min-height: 100vh;
       padding-bottom: 5rem;
       padding-top: 7rem;
     }

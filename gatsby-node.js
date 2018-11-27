@@ -29,6 +29,7 @@ exports.createPages = ({ actions, graphql }) => {
         edges {
           node {
             slug
+            status
             title
             acf {
               quote
@@ -47,23 +48,32 @@ exports.createPages = ({ actions, graphql }) => {
 
     const episodes = data.allWordpressWpEpisodes.edges;
 
-    episodes.forEach(({ node }) => {
-      const { slug, acf } = node;
-      const number = parseInt(acf.number, 10);
-      const pagePath = number === 0 ? '/' : `/episodes/${slug}/`;
-      const context = {
-        number
-      };
+    episodes
+      .filter(({ node: { status } }) => status === 'publish')
+      .forEach(({ node }) => {
+        const { slug, acf } = node;
+        const number = parseInt(acf.number, 10);
+        let pagePath = `/episodes/${slug}/`;
 
-      // eslint-disable-next-line no-console
-      console.log('create page', pagePath, context);
+        if (number < 0) {
+          pagePath = `/__internal${pagePath}`;
+        } else if (number === 0) {
+          pagePath = '/';
+        }
 
-      createPage({
-        path: pagePath,
-        component: path.resolve('src/templates/episode.jsx'),
-        context
+        const context = {
+          number
+        };
+
+        // eslint-disable-next-line no-console
+        console.log('create page', pagePath, context);
+
+        createPage({
+          path: pagePath,
+          component: path.resolve('src/templates/episode.jsx'),
+          context
+        });
       });
-    });
 
     // eslint-disable-next-line no-console
     console.log('create page', '/navigation/');

@@ -9,11 +9,10 @@ export default ({
   backgroundImage,
   quote,
   text,
-  number,
-  topic,
   renderQuote = true,
   linkTitle = false,
-  linkTitleSlug = ''
+  linkTitleSlug = '',
+  title
 }) => (
   <header className="js-intro">
     <style jsx>{styles}</style>
@@ -50,12 +49,10 @@ export default ({
               className={nextLink.className}
               to={`/episodes/${linkTitleSlug}/`}
             >
-              Episode {number} – {topic}
+              {title}
             </Link>
           ) : (
-            <Fragment>
-              Episode {number} – {topic}
-            </Fragment>
+            <Fragment>{title}</Fragment>
           )}
         </h1>
 

@@ -8,7 +8,7 @@ import NotImplemented from '../not-implemented';
 
 import styles from './styles';
 
-export default ({ data: { acf }, next }) => {
+export default ({ title, data: { acf }, next }) => {
   // eslint-disable-next-line camelcase
   const { content_episodes: contentBlocks, ...intro } = acf;
 
@@ -16,7 +16,7 @@ export default ({ data: { acf }, next }) => {
     <Fragment>
       <style jsx>{styles}</style>
 
-      <Intro {...intro} />
+      <Intro title={title} {...intro} />
 
       <main>
         {contentBlocks.map((block, index) => {

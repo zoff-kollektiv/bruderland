@@ -11,20 +11,39 @@ const getNextEpisode = (episodes, current) => {
   return episodes[number] || null;
 };
 
+const getEpisodeTitle = ({ title, acf }) => {
+  const { number, topic } = acf;
+
+  if (number && topic) {
+    return `Episode ${number} – ${topic}`;
+  }
+
+  return title;
+};
+
 const Page = ({ data }) => {
   const { episode, allEpisodes } = data;
-  const { title } = episode;
+  const episodeTitle = getEpisodeTitle(episode);
+  const publishedEpisodes = allEpisodes.edges.filter(
+    ({
+      node: {
+        status,
+        acf: { number }
+      }
+    }) => status === 'publish' && parseInt(number, 10) >= 0
+  );
 
   return (
     <Fragment>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{title}</title>
+        <title>{episodeTitle}</title>
       </Helmet>
-      <Navigation items={allEpisodes.edges} />
+      <Navigation items={publishedEpisodes} />
       <Episode
+        title={episodeTitle}
         data={episode}
-        next={getNextEpisode(allEpisodes.edges, episode)}
+        next={getNextEpisode(publishedEpisodes, episode)}
       />
     </Fragment>
   );
@@ -34,10 +53,7 @@ export default withLayout(Page);
 
 export const query = graphql`
   query($number: String) {
-    episode: wordpressWpEpisodes(
-      status: { eq: "publish" }
-      acf: { number: { eq: $number } }
-    ) {
+    episode: wordpressWpEpisodes(acf: { number: { eq: $number } }) {
       title
       acf {
         quote
@@ -67,12 +83,12 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { status: { eq: "publish" } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       edges {
         node {
           ...navigation
+          status
           title
           acf {
             quote

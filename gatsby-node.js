@@ -10,6 +10,14 @@ exports.onCreateNode = ({ node }) => {
     // eslint-disable-next-line no-param-reassign
     node.footnotesRepeat = [];
   }
+
+  if (
+    node.internal.type === 'WordPressAcf_illustration' &&
+    node.audio === false
+  ) {
+    // eslint-disable-next-line no-param-reassign
+    node.audio = {};
+  }
 };
 
 exports.createPages = ({ actions, graphql }) => {

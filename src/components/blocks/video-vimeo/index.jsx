@@ -15,14 +15,16 @@ export default ({ vimeo, wordpress_id: id, caption }) => {
 
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <video controls>
-        {vimeoVideo.files.map(({ link, type, width }) => (
-          <source
-            key={link}
-            src={link}
-            type={type}
-            media={`all and (max-width: ${width}px)`}
-          />
-        ))}
+        {/* This happens whenever a video ID of a different user was supplied */}
+        {vimeoVideo.files &&
+          vimeoVideo.files.map(({ link, type, width }) => (
+            <source
+              key={link}
+              src={link}
+              type={type}
+              media={`all and (max-width: ${width}px)`}
+            />
+          ))}
       </video>
 
       <div className="progress">

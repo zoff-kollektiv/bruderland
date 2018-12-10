@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Constraint from '../../constraint';
+import Progress from '../../progress';
 
 import styles from './styles';
 
@@ -12,18 +13,20 @@ export default ({ vimeo, wordpress_id: id, caption }) => {
     <figure>
       <style jsx>{styles}</style>
 
-      <div className="container">
-        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-        <video controls>
-          {vimeoVideo.files.map(({ link, type, width }) => (
-            <source
-              key={link}
-              src={link}
-              type={type}
-              media={`all and (max-width: ${width}px)`}
-            />
-          ))}
-        </video>
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video controls>
+        {vimeoVideo.files.map(({ link, type, width }) => (
+          <source
+            key={link}
+            src={link}
+            type={type}
+            media={`all and (max-width: ${width}px)`}
+          />
+        ))}
+      </video>
+
+      <div className="progress">
+        <Progress strokeWidth="5" percentage="15" sqSize="100" />
       </div>
 
       {caption && (

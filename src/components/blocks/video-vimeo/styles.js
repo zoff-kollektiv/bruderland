@@ -24,6 +24,12 @@ export default css`
     margin-top: 1.5rem;
   }
 
+  .progress {
+    height: 5rem;
+    position: relative;
+    width: 5rem;
+  }
+
   @media ${mq.tablet} {
     figcaption {
       font-size: 1.25rem;

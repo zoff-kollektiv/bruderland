@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Constraint from '../../constraint';
+import Progress from '../../progress';
 import Video from './video';
 
 import styles from './styles';
@@ -19,6 +20,10 @@ export default ({ wordpress_id: id, aspectRatio, caption, title }) => (
         <Constraint>{caption}</Constraint>
       </figcaption>
     )}
+
+    <div className="progress">
+      <Progress strokeWidth="5" percentage="15" sqSize="100" />
+    </div>
   </figure>
 );
 

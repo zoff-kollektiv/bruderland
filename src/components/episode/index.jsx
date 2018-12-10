@@ -8,7 +8,7 @@ import NotImplemented from '../not-implemented';
 
 import styles from './styles';
 
-export default ({ title, data: { acf }, next }) => {
+export default ({ vimeo, title, data: { acf }, next }) => {
   // eslint-disable-next-line camelcase
   const { content_episodes: contentBlocks, ...intro } = acf;
 
@@ -31,7 +31,11 @@ export default ({ title, data: { acf }, next }) => {
 
           return (
             <BlockError>
-              <Block key={key} {...rest} />
+              {__typename === 'WordPressAcf_vimeoVideo' ? (
+                <Block key={key} vimeo={vimeo} {...rest} />
+              ) : (
+                <Block key={key} {...rest} />
+              )}
             </BlockError>
           );
         })}

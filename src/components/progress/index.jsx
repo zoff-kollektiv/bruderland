@@ -20,7 +20,7 @@ export default class Progress extends Component {
           cx={sqSize / 2}
           cy={sqSize / 2}
           r={radius - 2}
-          strokeWidth="1"
+          strokeWidth="2"
         />
 
         <circle

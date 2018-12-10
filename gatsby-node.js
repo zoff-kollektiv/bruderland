@@ -1,4 +1,5 @@
 const path = require('path');
+const { fetchVimeoVideo } = require('./src/lib/vimeo');
 
 exports.onCreateNode = ({ node }) => {
   /* for some reason the repeater field returns false, if there wasn't any footnote.
@@ -23,69 +24,114 @@ exports.onCreateNode = ({ node }) => {
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  return graphql(`
-    {
-      allWordpressWpEpisodes {
-        edges {
-          node {
-            slug
-            status
-            title
-            acf {
-              quote
-              number
-              text
-              topic
+  return (
+    graphql(`
+      {
+        episodes: allWordpressWpEpisodes {
+          edges {
+            node {
+              slug
+              status
+              title
+              acf {
+                quote
+                number
+                text
+                topic
+                content_episodes {
+                  ... on WordPressAcf_vimeoVideo {
+                    __typename
+                    wordpress_id
+                  }
+                }
+              }
             }
           }
         }
       }
-    }
-  `).then(({ errors, data }) => {
-    if (errors) {
-      return Promise.reject(errors);
-    }
-
-    const episodes = data.allWordpressWpEpisodes.edges;
-
-    episodes
-      .filter(({ node: { status } }) => status === 'publish')
-      .forEach(({ node }) => {
-        const { slug, acf } = node;
-        const number = parseInt(acf.number, 10);
-        let pagePath = `/episodes/${slug}/`;
-
-        if (number < 0) {
-          pagePath = `/__internal${pagePath}`;
-        } else if (number === 0) {
-          pagePath = '/';
+    `)
+      // filter out published nodes
+      .then(({ errors, data }) => {
+        if (errors) {
+          return Promise.reject(errors);
         }
 
-        const context = {
-          number
-        };
+        const { edges: episodes } = data.episodes;
 
-        // eslint-disable-next-line no-console
-        console.log('create page', pagePath, context);
+        return episodes.filter(({ node: { status } }) => status === 'publish');
+      })
+      // fetch vimeo data
+      .then(episodes => {
+        const videos = [];
 
-        createPage({
-          path: pagePath,
-          component: path.resolve('src/templates/episode.jsx'),
-          context
+        episodes.forEach(({ node: { acf } }) => {
+          const { content_episodes: contentEpisodes } = acf;
+
+          contentEpisodes
+            .filter(
+              ({ __typename: typeName }) =>
+                typeName === 'WordPressAcf_vimeoVideo'
+            )
+            .map(({ wordpress_id: videoID }) =>
+              videos.push(fetchVimeoVideo(videoID))
+            );
         });
-      });
 
-    // eslint-disable-next-line no-console
-    console.log('create page', '/navigation/');
+        return Promise.all(videos).then(videoData => ({
+          episodes,
+          videos: videoData
+        }));
+      })
+      // create pages
+      .then(({ episodes, videos }) => {
+        episodes.forEach(({ node }) => {
+          const { slug, acf } = node;
+          const { content_episodes: contentEpisodes } = acf;
+          const number = parseInt(acf.number, 10);
+          let pagePath = `/episodes/${slug}/`;
+          const episodeVideos = contentEpisodes
+            .map(block => {
+              const { __typename: typeName, wordpress_id: videoId } = block;
 
-    createPage({
-      path: '/navigation/',
-      component: path.resolve('src/templates/navigation.jsx'),
-      context: {
-        episodes
-      }
-    });
+              if (typeName === 'WordPressAcf_vimeoVideo') {
+                return videos.find(({ id }) => id === videoId);
+              }
 
-    return undefined;
-  });
+              return null;
+            })
+            .filter(Boolean);
+
+          if (number < 0) {
+            pagePath = `/__internal${pagePath}`;
+          } else if (number === 0) {
+            pagePath = '/';
+          }
+
+          const context = {
+            number,
+            videos: episodeVideos
+          };
+
+          // eslint-disable-next-line no-console
+          console.log('create page', pagePath);
+
+          createPage({
+            path: pagePath,
+            component: path.resolve('src/templates/episode.jsx'),
+            context
+          });
+
+          // eslint-disable-next-line no-console
+          console.log('create page', '/navigation/');
+
+          createPage({
+            path: '/navigation/',
+            component: path.resolve('src/templates/navigation.jsx'),
+            context: {
+              episodes
+            }
+          });
+        });
+      })
+  );
 };

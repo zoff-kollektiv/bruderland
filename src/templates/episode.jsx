@@ -21,7 +21,7 @@ const getEpisodeTitle = ({ title, acf }) => {
   return title;
 };
 
-const Page = ({ data }) => {
+const Page = ({ pageContext: { videos }, data }) => {
   const { episode, allEpisodes } = data;
   const episodeTitle = getEpisodeTitle(episode);
   const publishedEpisodes = allEpisodes.edges.filter(
@@ -45,6 +45,7 @@ const Page = ({ data }) => {
         title={episodeTitle}
         data={episode}
         next={getNextEpisode(publishedEpisodes, episode)}
+        vimeo={videos}
       />
     </Fragment>
   );

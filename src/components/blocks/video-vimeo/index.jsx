@@ -2,25 +2,38 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Constraint from '../../constraint';
-import Video from './video';
 
 import styles from './styles';
 
-export default ({ wordpress_id: id, aspectRatio, caption, title }) => (
-  <figure>
-    <style jsx>{styles}</style>
+export default ({ vimeo, wordpress_id: id, caption }) => {
+  const vimeoVideo = vimeo.find(({ id: vimeoId }) => vimeoId === id);
 
-    <div className="container">
-      <Video id={id} aspectRatio={aspectRatio} title={title} />
-    </div>
+  return (
+    <figure>
+      <style jsx>{styles}</style>
 
-    {caption && (
-      <figcaption>
-        <Constraint>{caption}</Constraint>
-      </figcaption>
-    )}
-  </figure>
-);
+      <div className="container">
+        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+        <video controls>
+          {vimeoVideo.files.map(({ link, type, width }) => (
+            <source
+              key={link}
+              src={link}
+              type={type}
+              media={`all and (max-width: ${width}px)`}
+            />
+          ))}
+        </video>
+      </div>
+
+      {caption && (
+        <figcaption>
+          <Constraint>{caption}</Constraint>
+        </figcaption>
+      )}
+    </figure>
+  );
+};
 
 export const fragment = graphql`
   fragment videoVimeo on WordPressAcf_vimeoVideo {

@@ -46,49 +46,47 @@ export default class Video extends Component {
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
 
-        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-        <video ref={this.video} onTimeUpdate={() => this.updateProgress()}>
-          {/* This happens whenever a video ID of a different user was supplied */}
-          {vimeoVideo.files &&
-            vimeoVideo.files.map(({ link, type, width }) => (
-              <source
-                key={link}
-                src={link}
-                type={type}
-                media={`all and (max-width: ${width}px)`}
+        <Constraint>
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          <video ref={this.video} onTimeUpdate={() => this.updateProgress()}>
+            {/* This happens whenever a video ID of a different user was supplied */}
+            {vimeoVideo.files &&
+              vimeoVideo.files.map(({ link, type, width }) => (
+                <source
+                  key={link}
+                  src={link}
+                  type={type}
+                  media={`all and (max-width: ${width}px)`}
+                />
+              ))}
+          </video>
+
+          <footer>
+            {caption && <figcaption>{caption}</figcaption>}
+
+            <button
+              type="button"
+              className="control-button"
+              onClick={event => {
+                event.preventDefault();
+                this.togglePlayAndPause();
+              }}
+            >
+              <Progress
+                ref={this.playButton}
+                strokeWidth="7"
+                percentage={progressPercentage}
+                sqSize="100"
               />
-            ))}
-        </video>
 
-        <div className="progress">
-          <button
-            type="button"
-            className="control-button"
-            onClick={event => {
-              event.preventDefault();
-              this.togglePlayAndPause();
-            }}
-          >
-            <Progress
-              ref={this.playButton}
-              strokeWidth="5"
-              percentage={progressPercentage}
-              sqSize="100"
-            />
-
-            {isPlaying ? (
-              <PauseIcon className={playPauseIconStyles.className} />
-            ) : (
-              <PlayIcon className={playPauseIconStyles.className} />
-            )}
-          </button>
-        </div>
-
-        {caption && (
-          <figcaption>
-            <Constraint>{caption}</Constraint>
-          </figcaption>
-        )}
+              {isPlaying ? (
+                <PauseIcon className={playPauseIconStyles.className} />
+              ) : (
+                <PlayIcon className={playPauseIconStyles.className} />
+              )}
+            </button>
+          </footer>
+        </Constraint>
       </figure>
     );
   }

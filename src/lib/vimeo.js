@@ -1,6 +1,8 @@
 const { Vimeo } = require('vimeo');
 const { parsed: env } = require('dotenv').config();
 
+console.log(env);
+
 const { VIMEO_CLIENT_ID, VIMEO_CLIENT_SECRET, VIMEO_ACCESS_TOKEN } = env;
 
 const fetchVimeoVideo = videoId =>

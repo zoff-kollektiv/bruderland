@@ -42,9 +42,7 @@ export default ({ vimeo, wordpress_id: id, caption }) => {
 
 export const fragment = graphql`
   fragment videoVimeo on WordPressAcf_vimeoVideo {
-    aspectRatio
     wordpress_id
     caption
-    title
   }
 `;

@@ -1,4 +1,6 @@
 import css from 'styled-jsx/css';
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 
 import { fonts, mq } from '../../../tokens';
 
@@ -24,6 +26,13 @@ export default css`
     margin-top: 1.5rem;
   }
 
+  .control-button {
+    background: transparent;
+    border: none;
+    line-height: 1;
+    position: relative;
+  }
+
   .progress {
     height: 5rem;
     position: relative;
@@ -34,5 +43,17 @@ export default css`
     figcaption {
       font-size: 1.25rem;
     }
+  }
+`;
+
+export const playPauseIconStyles = css.resolve`
+  svg {
+    height: 1.5rem;
+    left: 50%;
+    margin-left: 0.05rem;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1.5rem;
   }
 `;

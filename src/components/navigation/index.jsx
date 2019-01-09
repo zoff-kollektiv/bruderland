@@ -7,12 +7,12 @@ import styles, { iconStyles } from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
-const hideLogoOnIntro = () => {
+const hideLogoOnIntro = navigation => {
   if (!('IntersectionObserver' in window)) {
     return;
   }
 
-  const navigation = document.querySelector('.js-navigation');
+  // TODO: how to pass down refs?
   const intro = document.querySelector('.js-intro');
 
   if (!intro) {
@@ -32,6 +32,10 @@ const hideLogoOnIntro = () => {
 };
 
 export default class Navigation extends Component {
+  intro = React.createRef();
+
+  navigation = React.createRef();
+
   state = {
     isOpen: false
   };
@@ -43,7 +47,7 @@ export default class Navigation extends Component {
   }
 
   componentDidMount() {
-    hideLogoOnIntro();
+    hideLogoOnIntro(this.navigation.current);
   }
 
   openNavigation() {
@@ -59,7 +63,7 @@ export default class Navigation extends Component {
     const { isOpen } = this.state;
 
     return (
-      <nav className="navigation-container js-navigation">
+      <nav className="navigation-container js-navigation" ref={this.navigation}>
         <style jsx>{styles}</style>
 
         <Burger
@@ -74,7 +78,7 @@ export default class Navigation extends Component {
           }}
         />
 
-        <div className="logo js-logo">
+        <div className="logo">
           {iconStyles.styles}
           <span className="logo-label">{topic}</span>
           <HandshakeIcon className={iconStyles.className} />

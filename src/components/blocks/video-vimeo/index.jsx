@@ -8,6 +8,8 @@ import Progress from '../../progress';
 
 import styles, { playPauseIconStyles } from './styles';
 
+let observer;
+
 export default class Video extends Component {
   state = {
     isPlaying: false,
@@ -18,15 +20,60 @@ export default class Video extends Component {
 
   playButton = React.createRef();
 
+  componentDidMount = () => {
+    const { autoplay } = this.props;
+    const { current: video } = this.video;
+
+    if (autoplay) {
+      this.observeIfInScreen(video);
+    }
+  };
+
+  pause = el => {
+    this.setState({ isPlaying: false });
+    el.pause();
+  };
+
+  play = el => {
+    this.setState({ isPlaying: true });
+    el.play();
+  };
+
+  stop = el => {
+    this.setState({ isPlaying: false });
+
+    el.pause();
+    // eslint-disable-next-line no-param-reassign
+    el.currentTime = 0;
+  };
+
+  observeIfInScreen = el => {
+    if ('IntersectionObserver' in window) {
+      const onChange = entries => {
+        entries.forEach(entry => {
+          const { target, intersectionRatio } = entry;
+
+          if (intersectionRatio > 0) {
+            this.play(target);
+          } else {
+            this.stop(target);
+          }
+        });
+      };
+
+      observer = new IntersectionObserver(onChange);
+
+      observer.observe(el);
+    }
+  };
+
   togglePlayAndPause = () => {
     const { current: video } = this.video;
 
     if (video.paused || video.ended) {
-      this.setState({ isPlaying: true });
-      video.play();
+      this.play(video);
     } else {
-      this.setState({ isPlaying: false });
-      video.pause();
+      this.pause(video);
     }
   };
 
@@ -94,6 +141,7 @@ export default class Video extends Component {
 
 export const fragment = graphql`
   fragment videoVimeo on WordPressAcf_vimeoVideo {
+    autoplay
     wordpress_id
     caption
   }

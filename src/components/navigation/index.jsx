@@ -55,7 +55,7 @@ export default class Navigation extends Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items, topic } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -76,6 +76,7 @@ export default class Navigation extends Component {
 
         <div className="logo js-logo">
           {iconStyles.styles}
+          <span className="logo-label">{topic}</span>
           <HandshakeIcon className={iconStyles.className} />
         </div>
 

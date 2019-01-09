@@ -23,6 +23,9 @@ const getEpisodeTitle = ({ title, acf }) => {
 
 const Page = ({ pageContext: { videos }, data }) => {
   const { episode, allEpisodes } = data;
+  const {
+    acf: { topic }
+  } = episode;
   const episodeTitle = getEpisodeTitle(episode);
   const publishedEpisodes = allEpisodes.edges.filter(
     ({
@@ -36,10 +39,9 @@ const Page = ({ pageContext: { videos }, data }) => {
   return (
     <Fragment>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>{episodeTitle}</title>
       </Helmet>
-      <Navigation items={publishedEpisodes} />
+      <Navigation items={publishedEpisodes} topic={topic} />
 
       <Episode
         title={episodeTitle}

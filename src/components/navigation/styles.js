@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { colors } from '../../tokens';
+import { fonts, colors } from '../../tokens';
 
 export default css`
   :global(.modal) {
@@ -33,6 +33,14 @@ export default css`
     transition: opacity 200ms ease;
   }
 
+  .logo-label {
+    display: inline-block;
+    font-family: ${fonts.superla.family};
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+  }
+
   .navigation-container--intro-not-visible .logo {
     opacity: 1;
   }
@@ -48,6 +56,7 @@ export default css`
 export const iconStyles = css.resolve`
   svg {
     height: 2rem;
+    vertical-align: middle;
     width: 2rem;
   }
 `;

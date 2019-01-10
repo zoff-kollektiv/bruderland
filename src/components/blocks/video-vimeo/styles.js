@@ -29,6 +29,7 @@ export default css`
   figcaption {
     font-family: ${fonts.superla.family};
     font-size: 1rem;
+    margin-right: 2rem;
   }
 
   @media ${mq.tablet} {
@@ -41,6 +42,8 @@ export default css`
     display: flex;
     flex-direction: row;
     margin-top: 2rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     width: 100%;
   }
 
@@ -51,16 +54,19 @@ export default css`
     border-radius: 50%;
     display: flex;
     flex: 0 0 auto;
-    height: 6rem;
+    height: 4.5rem;
     line-height: 1;
     margin-left: auto;
     padding: 0;
     position: relative;
-    width: 6rem;
+    width: 4.5rem;
   }
 
-  .is-fullsize .control-button {
-    margin-right: 2.5rem;
+  @media ${mq.tablet} {
+    .control-button {
+      height: 6rem;
+      width: 6rem;
+    }
   }
 
   .control-button:hover,
@@ -76,12 +82,19 @@ export default css`
 
 export const playPauseIconStyles = css.resolve`
   svg {
-    height: 1.5rem;
+    height: 1.25rem;
     left: 50%;
     margin-left: 0.05rem;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 1.5rem;
+    width: 1.25rem;
+  }
+
+  @media ${mq.tablet} {
+    svg {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
   }
 `;

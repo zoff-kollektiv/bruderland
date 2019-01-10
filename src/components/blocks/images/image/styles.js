@@ -19,13 +19,14 @@ export default css`
 
   img {
     align-self: flex-start;
-    max-height: 100%;
+    max-height: 60vh;
     max-width: 100%;
     width: auto;
   }
 
   .is-fullscreen img {
     height: auto;
+    max-height: none;
     width: 100%;
   }
 

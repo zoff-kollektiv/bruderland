@@ -52,6 +52,7 @@ export default css`
 
   .quote {
     height: 60vh;
+    position: relative;
   }
 
   @media ${mq.tablet} {
@@ -77,6 +78,7 @@ export default css`
     align-items: center;
     display: flex;
     flex: 1 0 auto;
+    flex-direction: column;
     justify-content: center;
     padding: 0 20%;
     width: 100%;
@@ -145,7 +147,19 @@ export default css`
 
 export const logoIcon = css.resolve`
   svg {
-    width: 28rem;
+    width: 12rem;
+  }
+
+  @media ${mq.tablet} {
+    svg {
+      width: 18rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    svg {
+      width: 28rem;
+    }
   }
 `;
 
@@ -158,5 +172,24 @@ export const nextLink = css.resolve`
   a:hover,
   a:focus {
     text-decoration: underline;
+  }
+`;
+
+export const arrowIcon = css.resolve`
+  svg {
+    color: ${colors.brand};
+    bottom: 1rem;
+    height: 2.5rem;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 2.5rem;
+  }
+
+  @media ${mq.tablet} {
+    svg {
+      height: 4rem;
+      width: 4rem;
+    }
   }
 `;

@@ -1,9 +1,10 @@
 import Link from 'gatsby-link';
 import React, { Fragment } from 'react';
 
+import ArrowDownIcon from '../../../static/long-arrow-down.svg';
 import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
-import styles, { nextLink, logoIcon } from './styles';
+import styles, { nextLink, logoIcon, arrowIcon } from './styles';
 
 export default ({
   backgroundImage,
@@ -32,11 +33,16 @@ export default ({
           {logoIcon.styles}
           <HandshakeIcon className={logoIcon.className} />
         </div>
+
         <div className="quote">
           <blockquote>
             <span className="quotation-mark">»</span>
             {quote}
           </blockquote>
+
+          {arrowIcon.styles}
+
+          <ArrowDownIcon className={arrowIcon.className} />
         </div>
       </div>
     )}

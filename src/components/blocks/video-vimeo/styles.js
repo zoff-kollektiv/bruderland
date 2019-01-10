@@ -10,8 +10,16 @@ export default css`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    figure:not(.is-fullsize) {
+      margin-left: auto;
+      margin-right: auto;
+      width: 750px;
+    }
   }
 
   .container {
@@ -49,6 +57,10 @@ export default css`
     padding: 0;
     position: relative;
     width: 6rem;
+  }
+
+  .is-fullsize .control-button {
+    margin-right: 2.5rem;
   }
 
   .control-button:hover,

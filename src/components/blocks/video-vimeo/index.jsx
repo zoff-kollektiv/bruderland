@@ -35,8 +35,14 @@ export default class Video extends Component {
   };
 
   play = el => {
-    this.setState({ isPlaying: true });
     el.play();
+
+    // check if really is really playing (in case autoplay was blocked)
+    setTimeout(() => {
+      if (el.currentTime > 0 && el.paused === false && el.ended === false) {
+        this.setState({ isPlaying: true });
+      }
+    }, 500);
   };
 
   stop = el => {

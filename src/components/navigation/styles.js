@@ -5,6 +5,17 @@ import React from 'react';
 import { fonts, colors } from '../../tokens';
 
 export default css`
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+  }
+
   :global(.modal) {
     background-color: rgb(77, 77, 77);
     color: white;

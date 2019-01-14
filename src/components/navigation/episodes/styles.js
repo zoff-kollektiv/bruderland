@@ -3,17 +3,6 @@ import css from 'styled-jsx/css';
 import { fonts } from '../../../tokens';
 
 export default css`
-  .navigation {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-left: 0;
-  }
-
   li + li {
     margin-top: 1.5rem;
   }
@@ -45,6 +34,7 @@ export default css`
     font-size: 1.75rem;
     font-style: normal;
     font-weight: ${fonts.superla.weight.extraBold};
+    letter-spacing: 0.05rem;
   }
 
   .intro {

@@ -5,11 +5,11 @@ import React from 'react';
 import styles from './styles';
 
 export default ({ items }) => (
-  <ul className="navigation">
-    <style jsx>{styles}</style>
-
+  <>
     {items.map(({ node: { slug, title, acf: { number, topic, text } } }) => (
       <li>
+        <style jsx>{styles}</style>
+
         <Link
           to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
           className="item"
@@ -24,7 +24,7 @@ export default ({ items }) => (
         </Link>
       </li>
     ))}
-  </ul>
+  </>
 );
 
 export const fragment = graphql`

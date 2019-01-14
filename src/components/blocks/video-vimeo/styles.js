@@ -40,23 +40,47 @@ export default css`
 
   footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 2rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100%;
   }
 
+  @media ${mq.tablet} {
+    footer {
+      flex-direction: row;
+    }
+  }
+
+  .control-button-container {
+    align-items: center;
+    color: ${colors.blue};
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    order: -1;
+  }
+
+  @media ${mq.tablet} {
+    .control-button-container {
+      margin-bottom: 0;
+      order: 2;
+    }
+  }
+
   .control-button {
-    align-self: flex-end;
     background: transparent;
     border: none;
     border-radius: 50%;
+    color: currentColor;
     display: flex;
     flex: 0 0 auto;
     height: 4.5rem;
     line-height: 1;
-    margin-left: auto;
     padding: 0;
     position: relative;
     width: 4.5rem;
@@ -73,6 +97,17 @@ export default css`
   .control-button:focus {
     color: ${colors.brand};
     cursor: pointer;
+  }
+
+  .current-time {
+    font-family: ${fonts.superla.family};
+    font-size: 1.125rem;
+    font-weight: ${fonts.superla.weight.regular};
+    margin-bottom: 0;
+    margin-left: 0.5rem;
+    margin-top: 0;
+    min-width: 4.5rem;
+    white-space: nowrap;
   }
 
   video {

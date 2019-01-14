@@ -7,10 +7,10 @@ export default css`
   }
 
   .background {
-    stroke: #ddd;
+    stroke: currentColor;
   }
 
   .progress {
-    stroke: black;
+    stroke: currentColor;
   }
 `;

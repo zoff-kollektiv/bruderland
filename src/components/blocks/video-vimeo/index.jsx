@@ -10,10 +10,43 @@ import styles, { playPauseIconStyles } from './styles';
 
 let observer;
 
+const formatDuration = time => {
+  let durationFormatted = `${Math.round((time / 60) * 100) / 100} min`;
+
+  durationFormatted = durationFormatted.replace('.', ':');
+
+  return durationFormatted;
+};
+
+const formatCurrentTime = time => {
+  if (time < 60) {
+    // show seconds
+    const seconds = parseInt(time, 10);
+
+    return `0:${seconds < 10 ? `0${seconds}` : seconds} min`;
+  }
+
+  if (time > 60) {
+    const minutes = parseInt(time / 60, 10);
+    let seconds = parseInt(`${time}`.substring(1), 10);
+
+    if (minutes > 99) {
+      seconds = parseInt(`${time}`.substring(2), 10);
+    }
+
+    return `${minutes < 10 ? `0${minutes}` : minutes}:${
+      seconds < 10 ? `0${seconds}` : seconds
+    } min`;
+  }
+
+  return time;
+};
+
 export default class Video extends Component {
   state = {
     isPlaying: false,
-    progressPercentage: 0
+    progressPercentage: 0,
+    currentTime: ''
   };
 
   video = React.createRef();
@@ -85,13 +118,26 @@ export default class Video extends Component {
 
   updateProgress = () => {
     const { current: video } = this.video;
-    const percentage = Math.floor((100 / video.duration) * video.currentTime);
-    this.setState({ progressPercentage: percentage });
+    const { currentTime, duration } = video;
+    const percentage = Math.floor((100 / duration) * currentTime);
+    const currentTimeFormatted = formatCurrentTime(currentTime);
+
+    this.setState({
+      progressPercentage: percentage,
+      currentTime: currentTimeFormatted
+    });
+  };
+
+  setVideoLength = () => {
+    const { current: video } = this.video;
+    const { duration } = video;
+
+    this.setState({ currentTime: formatDuration(duration) });
   };
 
   render() {
     const { vimeo, wordpress_id: id, caption, fullsize } = this.props;
-    const { isPlaying, progressPercentage } = this.state;
+    const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo = vimeo.find(({ id: vimeoId }) => vimeoId === id);
 
     return (
@@ -100,7 +146,12 @@ export default class Video extends Component {
         {playPauseIconStyles.styles}
 
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-        <video ref={this.video} onTimeUpdate={() => this.updateProgress()}>
+        <video
+          ref={this.video}
+          onEnded={() => this.stop(this.video.current)}
+          onLoadedMetadata={() => this.setVideoLength()}
+          onTimeUpdate={() => this.updateProgress()}
+        >
           {/* This happens whenever a video ID of a different user was supplied */}
           {vimeoVideo.files &&
             vimeoVideo.files.map(({ link, type, width }) => (
@@ -116,27 +167,31 @@ export default class Video extends Component {
         <footer>
           {caption && <figcaption>{caption}</figcaption>}
 
-          <button
-            type="button"
-            className="control-button"
-            onClick={event => {
-              event.preventDefault();
-              this.togglePlayAndPause();
-            }}
-          >
-            <Progress
-              ref={this.playButton}
-              strokeWidth="7"
-              percentage={progressPercentage}
-              sqSize="100"
-            />
+          <div className="control-button-container">
+            <button
+              type="button"
+              className="control-button"
+              onClick={event => {
+                event.preventDefault();
+                this.togglePlayAndPause();
+              }}
+            >
+              <Progress
+                ref={this.playButton}
+                strokeWidth="7"
+                percentage={progressPercentage}
+                sqSize="100"
+              />
 
-            {isPlaying ? (
-              <PauseIcon className={playPauseIconStyles.className} />
-            ) : (
-              <PlayIcon className={playPauseIconStyles.className} />
-            )}
-          </button>
+              {isPlaying ? (
+                <PauseIcon className={playPauseIconStyles.className} />
+              ) : (
+                <PlayIcon className={playPauseIconStyles.className} />
+              )}
+            </button>
+
+            <p className="current-time">{currentTime}</p>
+          </div>
         </footer>
       </figure>
     );

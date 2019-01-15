@@ -11,7 +11,8 @@ export default class Illustration extends Component {
   audio = React.createRef();
 
   state = {
-    isPlaying: false
+    isPlaying: false,
+    progressPercentage: 0
   };
 
   togglePlayAndPause = () => {
@@ -25,7 +26,15 @@ export default class Illustration extends Component {
     }
   };
 
-  updateProgress = () => {};
+  updateProgress = () => {
+    const { current: audio } = this.audio;
+    const { currentTime, duration } = audio;
+    const percentage = Math.floor((100 / duration) * currentTime);
+
+    this.setState({
+      progressPercentage: percentage
+    });
+  };
 
   play = el => {
     el.play();
@@ -42,9 +51,7 @@ export default class Illustration extends Component {
   render() {
     const {
       audio: {
-        url: {
-          localFile: { relativePath: audioSrc }
-        }
+        url: { source_url: audioSrc }
       },
       image: {
         alt_text: imageAlt,
@@ -54,7 +61,7 @@ export default class Illustration extends Component {
       }
     } = this.props;
 
-    const { isPlaying } = this.state;
+    const { isPlaying, progressPercentage } = this.state;
 
     return (
       <section>
@@ -78,7 +85,11 @@ export default class Illustration extends Component {
                 this.togglePlayAndPause();
               }}
             >
-              <Progress strokeWidth="7" percentage="10" sqSize="100" />
+              <Progress
+                strokeWidth="7"
+                percentage={progressPercentage}
+                sqSize="100"
+              />
 
               {isPlaying ? (
                 <PauseIcon className={playPauseIconStyles.className} />
@@ -97,9 +108,7 @@ export const fragment = graphql`
   fragment illustration on WordPressAcf_illustration {
     audio {
       url {
-        localFile {
-          relativePath
-        }
+        source_url
       }
     }
     image {

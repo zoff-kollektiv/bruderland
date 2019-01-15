@@ -81,6 +81,7 @@ export default css`
     flex: 0 0 auto;
     height: 4.5rem;
     line-height: 1;
+    outline: none;
     padding: 0;
     position: relative;
     width: 4.5rem;

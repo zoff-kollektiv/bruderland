@@ -78,6 +78,7 @@ export const query = graphql`
           ...annotations
           ...quote
           ...richtext
+          ...illustration
           ...images
           ...imageTextCombination
           ...slogan

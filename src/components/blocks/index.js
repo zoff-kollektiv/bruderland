@@ -1,5 +1,6 @@
 import Quote from './quote';
 import Richtext from './richtext';
+import Illustration from './illustration';
 import Images from './images';
 import ImageTextCombination from './image-text-combination';
 import Vimeo from './video-vimeo';
@@ -10,6 +11,7 @@ const blocks = {
   WordPressAcf_annotations: annotations,
   WordPressAcf_quote: Quote,
   WordPressAcf_text: Richtext,
+  WordPressAcf_illustration: Illustration,
   WordPressAcf_imageTextCombination: ImageTextCombination,
   WordPressAcf_images: Images,
   WordPressAcf_slogan: slogan,

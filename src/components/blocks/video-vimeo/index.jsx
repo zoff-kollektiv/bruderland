@@ -136,7 +136,13 @@ export default class Video extends Component {
   };
 
   render() {
-    const { vimeo, wordpress_id: id, caption, fullsize } = this.props;
+    const {
+      vimeo,
+      wordpress_id: id,
+      caption,
+      fullsize,
+      loop = false
+    } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo = vimeo.find(({ id: vimeoId }) => vimeoId === id);
 
@@ -151,6 +157,7 @@ export default class Video extends Component {
           onEnded={() => this.stop(this.video.current)}
           onLoadedMetadata={() => this.setVideoLength()}
           onTimeUpdate={() => this.updateProgress()}
+          loop={loop}
         >
           {/* This happens whenever a video ID of a different user was supplied */}
           {vimeoVideo.files &&
@@ -204,5 +211,6 @@ export const fragment = graphql`
     wordpress_id
     caption
     fullsize
+    loop
   }
 `;

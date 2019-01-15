@@ -1,9 +1,10 @@
 import { graphql } from 'gatsby';
 import React, { Component } from 'react';
 
-import PauseIcon from '../../../static/pause.svg';
+import { formatDuration, formatCurrentTime } from '../../../lib/time';
 import PlayIcon from '../../../static/play.svg';
 import Progress from '../../progress';
+import VolumeDownIcon from '../../../static/volume-down.svg';
 
 import styles, { playPauseIconStyles } from './styles';
 
@@ -11,6 +12,7 @@ export default class Illustration extends Component {
   audio = React.createRef();
 
   state = {
+    currentTime: '',
     isPlaying: false,
     progressPercentage: 0
   };
@@ -30,10 +32,19 @@ export default class Illustration extends Component {
     const { current: audio } = this.audio;
     const { currentTime, duration } = audio;
     const percentage = Math.floor((100 / duration) * currentTime);
+    const currentTimeFormatted = formatCurrentTime(currentTime);
 
     this.setState({
-      progressPercentage: percentage
+      progressPercentage: percentage,
+      currentTime: currentTimeFormatted
     });
+  };
+
+  setAudioLength = () => {
+    const { current: audio } = this.audio;
+    const { duration } = audio;
+
+    this.setState({ currentTime: formatDuration(duration) });
   };
 
   play = el => {
@@ -61,7 +72,7 @@ export default class Illustration extends Component {
       }
     } = this.props;
 
-    const { isPlaying, progressPercentage } = this.state;
+    const { isPlaying, progressPercentage, currentTime } = this.state;
 
     return (
       <section>
@@ -73,7 +84,11 @@ export default class Illustration extends Component {
         {audioSrc && (
           <div className="control-button-container">
             {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <audio ref={this.audio} onTimeUpdate={() => this.updateProgress()}>
+            <audio
+              ref={this.audio}
+              onTimeUpdate={() => this.updateProgress()}
+              onLoadedMetadata={() => this.setAudioLength()}
+            >
               <source src={audioSrc} type="audio/mp3" />
             </audio>
 
@@ -92,11 +107,13 @@ export default class Illustration extends Component {
               />
 
               {isPlaying ? (
-                <PauseIcon className={playPauseIconStyles.className} />
+                <VolumeDownIcon className={playPauseIconStyles.className} />
               ) : (
                 <PlayIcon className={playPauseIconStyles.className} />
               )}
             </button>
+
+            <p className="current-time">{currentTime}</p>
           </div>
         )}
       </section>

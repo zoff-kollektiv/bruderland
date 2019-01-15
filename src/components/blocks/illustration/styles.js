@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { colors, mq } from '../../../tokens';
+import { colors, mq, fonts } from '../../../tokens';
 
 export default css`
   section {
@@ -47,9 +47,36 @@ export default css`
   }
 
   .control-button-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     right: 2rem;
     top: 2rem;
+  }
+
+  @media ${mq.tablet} {
+    .control-button-container {
+      right: 8rem;
+      top: 6rem;
+    }
+  }
+
+  .current-time {
+    color: ${colors.brand};
+    font-family: ${fonts.superla.family};
+    font-size: 1rem;
+    font-weight: ${fonts.superla.weight.regular};
+    margin-bottom: 0;
+    margin-top: 0.25rem;
+    white-space: nowrap;
+  }
+
+  @media ${mq.tablet} {
+    .current-time {
+      font-size: 1.125rem;
+      margin-top: 1rem;
+    }
   }
 `;
 

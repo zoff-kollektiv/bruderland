@@ -5,7 +5,7 @@ import React from 'react';
 import { colors, mq, fonts } from '../../../tokens';
 
 export default css`
-  section {
+  figure {
     position: relative;
   }
 
@@ -77,6 +77,17 @@ export default css`
       font-size: 1.125rem;
       margin-top: 1rem;
     }
+  }
+
+  figcaption {
+    bottom: 2.5rem;
+    color: white;
+    font-family: ${fonts.superla.family};
+    left: 2.5rem;
+    max-width: 15rem;
+    position: absolute;
+    text-align: left;
+    text-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
   }
 `;
 

@@ -65,6 +65,7 @@ export default class Illustration extends Component {
         url: { source_url: audioSrc }
       },
       image: {
+        caption,
         alt_text: imageAlt,
         localFile: {
           childImageSharp: { fluid: image }
@@ -75,7 +76,7 @@ export default class Illustration extends Component {
     const { isPlaying, progressPercentage, currentTime } = this.state;
 
     return (
-      <section>
+      <figure>
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
 
@@ -116,7 +117,11 @@ export default class Illustration extends Component {
             <p className="current-time">{currentTime}</p>
           </div>
         )}
-      </section>
+
+        {caption && (
+          <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
+        )}
+      </figure>
     );
   }
 }
@@ -129,6 +134,7 @@ export const fragment = graphql`
       }
     }
     image {
+      caption
       alt_text
       localFile {
         childImageSharp {

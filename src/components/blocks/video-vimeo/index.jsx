@@ -56,6 +56,10 @@ export default class Video extends Component {
   };
 
   observeIfInScreen = el => {
+    if (!el) {
+      return;
+    }
+
     if ('IntersectionObserver' in window) {
       const onChange = entries => {
         entries.forEach(entry => {
@@ -114,6 +118,10 @@ export default class Video extends Component {
     } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo = vimeo.find(({ id: vimeoId }) => vimeoId === id);
+
+    if (!vimeoVideo || !vimeoVideo.files) {
+      return null;
+    }
 
     return (
       <figure className={classnames({ 'is-fullsize': fullsize })}>

@@ -22,12 +22,14 @@ export default ({
 
     {renderQuote && (
       <div className="quote-container">
-        <img
-          src={backgroundImage.localFile.childImageSharp.fluid.src}
-          srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
-          alt={backgroundImage.alt_text}
-          className="image"
-        />
+        {backgroundImage.localFile && (
+          <img
+            src={backgroundImage.localFile.childImageSharp.fluid.src}
+            srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
+            alt={backgroundImage.alt_text}
+            className="image"
+          />
+        )}
 
         <div className="logo">
           {logoIcon.styles}

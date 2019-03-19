@@ -4,7 +4,8 @@ import React from 'react';
 import styles from './styles';
 
 export default ({ title, text, image }) => {
-  const fluidImage = image.localFile.childImageSharp.fluid;
+  const fluidImage =
+    image && image.localFile && image.localFile.childImageSharp.fluid;
   const { src, srcSet } = fluidImage;
 
   return (

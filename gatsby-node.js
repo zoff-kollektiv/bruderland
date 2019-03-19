@@ -108,7 +108,7 @@ exports.createPages = ({ actions, graphql }) => {
           }
 
           const context = {
-            number,
+            number: `${number}`,
             videos: episodeVideos
           };
 

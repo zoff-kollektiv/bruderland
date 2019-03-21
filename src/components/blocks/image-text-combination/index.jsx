@@ -24,6 +24,7 @@ export default ({ title, text, image }) => {
 
 export const fragment = graphql`
   fragment imageTextCombination on WordPressAcf_imageTextCombination {
+    __typename
     title
     text
     image {

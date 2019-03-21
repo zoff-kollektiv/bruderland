@@ -3,29 +3,36 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Navigation from '../components/navigation';
+import Protagonist from '../components/protagonist';
 import withLayout from '../components/with-layout';
 
-const Page = ({
-  data: {
-    protagonist: { title }
-  }
-}) => (
-  <>
-    <Helmet>
-      <title>{title}</title>
-    </Helmet>
+const Page = ({ data: { protagonist } }) => {
+  const { title } = protagonist;
 
-    <Navigation items={[]} topic={title} />
-  </>
-);
+  return (
+    <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+
+      <Navigation items={[]} topic={title} />
+
+      <Protagonist data={protagonist} />
+    </>
+  );
+};
 
 export default withLayout(Page);
 
 export const query = graphql`
   query($slug: String) {
     protagonist: wordpressWpProtagonists(slug: { eq: $slug }) {
-      slug
       title
+      acf {
+        content_protagonists {
+          ...imageTextCombination
+        }
+      }
     }
   }
 `;

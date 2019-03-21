@@ -48,20 +48,42 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+
+        protagonists: allWordpressWpProtagonists {
+          edges {
+            node {
+              slug
+              status
+            }
+          }
+        }
       }
     `)
       // filter out published nodes
-      .then(({ errors, data }) => {
-        if (errors) {
-          return Promise.reject(errors);
+      .then(
+        ({
+          errors,
+          data: {
+            episodes: { edges: episodes },
+            protagonists: { edges: protagonists }
+          }
+        }) => {
+          if (errors) {
+            return Promise.reject(errors);
+          }
+
+          return {
+            episodes: episodes.filter(
+              ({ node: { status } }) => status === 'publish'
+            ),
+            protagonists: protagonists.filter(
+              ({ node: { status } }) => status === 'publish'
+            )
+          };
         }
-
-        const { edges: episodes } = data.episodes;
-
-        return episodes.filter(({ node: { status } }) => status === 'publish');
-      })
+      )
       // fetch vimeo data
-      .then(episodes => {
+      .then(({ episodes, protagonists }) => {
         const videos = [];
 
         episodes.forEach(({ node: { acf } }) => {
@@ -78,12 +100,29 @@ exports.createPages = ({ actions, graphql }) => {
         });
 
         return Promise.all(videos).then(videoData => ({
+          protagonists,
           episodes,
           videos: videoData
         }));
       })
       // create pages
-      .then(({ episodes, videos }) => {
+      .then(({ episodes, protagonists, videos }) => {
+        protagonists.forEach(({ node }) => {
+          const { slug } = node;
+          const pagePath = `/protagonists/${slug}/`;
+
+          // eslint-disable-next-line no-console
+          console.log('create page', pagePath);
+
+          createPage({
+            path: pagePath,
+            component: path.resolve('src/templates/protagonist.jsx'),
+            context: {
+              slug
+            }
+          });
+        });
+
         episodes.forEach(({ node }) => {
           const { slug, acf } = node;
           const { content_episodes: contentEpisodes } = acf;

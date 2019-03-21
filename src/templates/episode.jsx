@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 
 import Episode from '../components/episode';
@@ -37,10 +37,11 @@ const Page = ({ pageContext: { videos }, data }) => {
   );
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         <title>{episodeTitle}</title>
       </Helmet>
+
       <Navigation items={publishedEpisodes} topic={topic} />
 
       <Episode
@@ -49,7 +50,7 @@ const Page = ({ pageContext: { videos }, data }) => {
         next={getNextEpisode(publishedEpisodes, episode)}
         vimeo={videos}
       />
-    </Fragment>
+    </>
   );
 };
 

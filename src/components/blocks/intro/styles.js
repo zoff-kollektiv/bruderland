@@ -121,6 +121,7 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 2.6rem;
     font-weight: ${fonts.superla.weight.extraBold};
+    line-height: 1.2;
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
@@ -139,7 +140,7 @@ export default css`
     margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3rem;
+    margin-top: 1rem;
     max-width: 520px;
     text-align: center;
   }

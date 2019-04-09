@@ -50,7 +50,7 @@ export default ({
     )}
 
     <div className="lower-intro">
-      <Constraint>
+      <Constraint size="wide">
         <h1 className="title">
           {linkTitle ? (
             <Link

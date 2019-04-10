@@ -27,6 +27,17 @@ export default css`
     }
   }
 
+  .quote-container::before {
+    background-color: rgba(0, 0, 0, 0.6);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
   .logo {
     background-color: ${colors.brand};
     color: white;
@@ -38,6 +49,7 @@ export default css`
   @media ${mq.tablet} {
     .logo {
       background-color: ${tinycolor(colors.brand).setAlpha(0.85)};
+      mix-blend-mode: hard-light;
       height: 100%;
     }
   }
@@ -84,7 +96,7 @@ export default css`
     justify-content: center;
     padding: 0 20%;
     width: 100%;
-    z-index: 2;
+    z-index: 10;
   }
 
   @media ${mq.tablet} {
@@ -97,7 +109,7 @@ export default css`
   }
 
   blockquote {
-    color: ${colors.brand};
+    color: white;
     font-family: ${fonts.lapture.family};
     font-size: 2.18rem;
     font-style: italic;
@@ -180,19 +192,20 @@ export const nextLink = css.resolve`
 
 export const arrowIcon = css.resolve`
   svg {
-    color: ${colors.brand};
+    color: white;
     bottom: 1rem;
-    height: 2.5rem;
+    height: 2rem;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
-    width: 2.5rem;
+    width: 2rem;
   }
 
   @media ${mq.tablet} {
     svg {
-      height: 4rem;
-      width: 4rem;
+      bottom: 0;
+      height: 3rem;
+      width: 3rem;
     }
   }
 `;

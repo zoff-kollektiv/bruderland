@@ -1,7 +1,7 @@
 import Link from 'gatsby-link';
 import React, { Fragment } from 'react';
 
-import ArrowDownIcon from '../../../static/long-arrow-down.svg';
+import ChevronDown from '../../../static/chevron-down.svg';
 import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import styles, { nextLink, logoIcon, arrowIcon } from './styles';
@@ -41,7 +41,7 @@ export default ({
 
           {arrowIcon.styles}
 
-          <ArrowDownIcon className={arrowIcon.className} />
+          <ChevronDown className={arrowIcon.className} />
         </div>
       </div>
     )}

@@ -64,28 +64,6 @@ export default class Navigation extends Component {
     const { items, topic } = this.props;
     const { isOpen } = this.state;
 
-    const episodes = items.filter(
-      ({
-        node: {
-          acf: { number }
-        }
-      }) => number !== '0'
-    );
-
-    const prolog = items
-      .filter(
-        ({
-          node: {
-            acf: { number }
-          }
-        }) => number === '0'
-      )
-      .map(item => {
-        // eslint-disable-next-line no-param-reassign
-        item.node.link = '/';
-        return item;
-      });
-
     return (
       <nav className="navigation-container js-navigation" ref={this.navigation}>
         <style jsx>{styles}</style>
@@ -114,8 +92,7 @@ export default class Navigation extends Component {
           overlayClassName="modal-overlay"
         >
           <ul className="navigation">
-            <Pages items={prolog} />
-            <Episodes items={episodes} />
+            <Episodes items={items} />
             <Pages
               items={[
                 {

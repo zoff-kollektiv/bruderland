@@ -48,10 +48,7 @@ export default ({ images }) => {
           <button
             type="button"
             className="slider-control slider-control--next"
-            onClick={() => {
-              console.log(slider);
-              slider.current.slickNext();
-            }}
+            onClick={() => slider.current.slickNext()}
           >
             <VisuallyHidden>Weiter</VisuallyHidden>
             <ArrowRightIcon className={arrowStyles.className} />

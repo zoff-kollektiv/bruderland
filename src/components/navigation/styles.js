@@ -2,29 +2,24 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { fonts, colors } from '../../tokens';
+import { fonts, colors, mq } from '../../tokens';
 
 export default css`
-  .navigation {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    justify-content: center;
-    list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-left: 0;
-  }
-
   :global(.modal) {
     background-color: rgb(77, 77, 77);
     color: white;
-    height: 100%;
     left: 0;
-    position: fixed;
+    overflow: hidden;
+    position: absolute;
     top: 0;
     width: 100%;
     z-index: 30;
+  }
+
+  @media ${mq.tablet} {
+    :global(.modal) {
+      height: 100%;
+    }
   }
 
   .navigation-container {
@@ -57,10 +52,24 @@ export default css`
   }
 
   .navigation {
+    align-items: flex-start;
     color: white;
     display: flex;
+    flex: 1 0 auto;
     flex-direction: column;
-    justify-content: center;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    padding: 5rem 0 1.5rem 0;
+  }
+
+  @media ${mq.tablet} {
+    .navigation {
+      flex-wrap: wrap;
+      height: 100%;
+      justify-content: flex-start;
+    }
   }
 `;
 

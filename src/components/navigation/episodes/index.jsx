@@ -2,25 +2,25 @@ import { graphql } from 'gatsby';
 import Link from 'gatsby-link';
 import React from 'react';
 
-import styles from './styles';
+import styles, { linkStyles } from './styles';
 
 export default ({ items }) => (
   <>
     {items.map(({ node: { slug, title, acf: { number, topic, text } } }) => (
       <li>
         <style jsx>{styles}</style>
+        {linkStyles.styles}
 
         <Link
           to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
-          className="item"
+          className={linkStyles.className}
         >
-          <div className="episode">
-            {topic && number ? <>Episode {number}</> : <>{title}</>}
+          <div className="episode">{number}</div>
+
+          <div className="episode-title-container">
+            <em className="topic">{topic || title}</em>
+            <p className="intro">{text}</p>
           </div>
-
-          <em className="topic">{topic || title}</em>
-
-          {parseInt(number, 10) !== 0 && <p className="intro">{text}</p>}
         </Link>
       </li>
     ))}

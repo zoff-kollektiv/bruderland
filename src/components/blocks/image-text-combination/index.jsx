@@ -7,14 +7,14 @@ export default ({ title, text, image }) => {
   const fluidImage =
     image && image.localFile && image.localFile.childImageSharp.fluid;
   const { src, srcSet } = fluidImage;
-  const { caption } = image;
+  const { caption, alt_text: alt } = image;
 
   return (
     <figure>
       <style jsx>{styles}</style>
 
       <div className="image-container">
-        <img src={src} srcSet={srcSet} alt="" loading="lazy" />
+        <img src={src} srcSet={srcSet} alt={alt} loading="lazy" />
 
         {caption && (
           <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
@@ -36,6 +36,7 @@ export const fragment = graphql`
     text
     image {
       caption
+      alt_text
       localFile {
         childImageSharp {
           fluid(maxWidth: 500) {

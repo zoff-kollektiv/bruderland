@@ -28,7 +28,7 @@ export default css`
   }
 
   .quote-container::before {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     content: '';
     height: 100%;
     left: 0;

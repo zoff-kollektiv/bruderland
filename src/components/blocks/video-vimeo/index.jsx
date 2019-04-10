@@ -93,7 +93,7 @@ export default class Video extends Component {
     const { current: video } = this.video;
     const { currentTime, duration } = video;
     const percentage = Math.floor((100 / duration) * currentTime);
-    const currentTimeFormatted = formatCurrentTime(currentTime);
+    const currentTimeFormatted = formatCurrentTime(duration - currentTime);
 
     this.setState({
       progressPercentage: percentage,
@@ -123,6 +123,9 @@ export default class Video extends Component {
       return null;
     }
 
+    const { pictures, files: sources } = vimeoVideo;
+    const poster = pictures.sizes.find(image => image.width >= 1280);
+
     return (
       <figure className={classnames({ 'is-fullsize': fullsize })}>
         <style jsx>{styles}</style>
@@ -134,11 +137,14 @@ export default class Video extends Component {
           onEnded={() => this.stop(this.video.current)}
           onLoadedMetadata={() => this.setVideoLength()}
           onTimeUpdate={() => this.updateProgress()}
+          onClick={() => this.togglePlayAndPause()}
           loop={loop}
+          preload="metadata"
+          poster={poster && poster.link}
         >
           {/* This happens whenever a video ID of a different user was supplied */}
-          {vimeoVideo.files &&
-            vimeoVideo.files.map(({ link, type, width }) => (
+          {sources &&
+            sources.map(({ link, type, width }) => (
               <source
                 key={link}
                 src={link}

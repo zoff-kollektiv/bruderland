@@ -15,6 +15,7 @@ export default ({ fullscreen = false, imagesImage }) => {
           src={localFile.childImageSharp.fluid.src}
           srcSet={localFile.childImageSharp.fluid.srcSet}
           alt={alt}
+          loading="lazy"
         />
         {caption && (
           <figcaption dangerouslySetInnerHTML={{ __html: caption }} />

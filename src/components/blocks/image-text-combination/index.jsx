@@ -14,7 +14,7 @@ export default ({ title, text, image }) => {
       <style jsx>{styles}</style>
 
       <div className="image-container">
-        <img src={src} srcSet={srcSet} alt="" />
+        <img src={src} srcSet={srcSet} alt="" loading="lazy" />
 
         {caption && (
           <figcaption dangerouslySetInnerHTML={{ __html: caption }} />

@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 
-import { fonts, mq } from '../../../tokens';
+import { colors, fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
@@ -22,21 +22,38 @@ export default css`
     }
   }
 
-  img,
+  .image-container,
   .content {
     flex: 1 0 auto;
     object-fit: contain;
   }
 
-  img {
+  .image-container {
     width: 100%;
   }
 
   @media ${mq.tablet} {
-    img {
+    .image-container {
       margin-right: 1.5rem;
       width: 75%;
     }
+  }
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+  figcaption {
+    color: ${colors.grey};
+    font-family: ${fonts.superla.family};
+    font-size: 0.9rem;
+    font-weight: ${fonts.superla.weight.regular};
+    line-height: 1.33;
+    margin-left: 1.5rem;
+    margin-top: 0;
+    max-width: 30rem;
+    text-align: left;
   }
 
   .content {

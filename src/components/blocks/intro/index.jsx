@@ -37,10 +37,7 @@ export default ({
         </div>
 
         <div className="quote">
-          <blockquote>
-            <span className="quotation-mark">»</span>
-            {quote}
-          </blockquote>
+          <blockquote>{quote}</blockquote>
 
           {arrowIcon.styles}
 

@@ -30,7 +30,9 @@ export default css`
   .logo {
     background-color: ${colors.brand};
     color: white;
-    height: 40vh;
+    flex: 1;
+    min-height: 40vh;
+    order: -1;
   }
 
   @media ${mq.tablet} {
@@ -41,35 +43,35 @@ export default css`
   }
 
   .image {
-    left: 50%;
-    min-height: 100%;
-    min-width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    flex: 1;
+    min-height: 50%;
+    object-fit: cover;
+  }
+
+  @media ${mq.tablet} {
+    .image {
+      left: 50%;
+      min-height: 100%;
+      min-width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
   }
 
   .quote {
-    height: 60vh;
-    position: relative;
+    height: 50vh;
+    position: absolute;
+    top: 50%;
   }
 
   @media ${mq.tablet} {
     .quote {
       height: 100%;
       margin-top: -5rem;
-    }
-  }
-
-  .quotation-mark {
-    display: block;
-    font-size: 5.625rem;
-  }
-
-  @media ${mq.tablet} {
-    .quotation-mark {
-      font-size: 9.375rem;
+      position: relative;
+      top: auto;
     }
   }
 

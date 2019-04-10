@@ -14,11 +14,7 @@ const getNextEpisode = (episodes, current) => {
 const getEpisodeTitle = ({ title, acf }) => {
   const { number, topic } = acf;
 
-  if (number && topic) {
-    return `Episode ${number} – ${topic}`;
-  }
-
-  return title;
+  return `Episode ${number} – ${topic || title}`;
 };
 
 const Page = ({ pageContext: { videos }, data }) => {

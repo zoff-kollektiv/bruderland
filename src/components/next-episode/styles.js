@@ -4,8 +4,8 @@ import React from 'react';
 
 import { colors } from '../../tokens';
 
-export default css`
-  .next-icon {
+export const arrowLink = css.resolve`
+  a {
     color: ${colors.brand};
     display: flex;
     justify-content: center;

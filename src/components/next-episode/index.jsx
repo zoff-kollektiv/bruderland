@@ -1,15 +1,16 @@
+import Link from 'gatsby-link';
 import React from 'react';
 
 import Intro from '../blocks/intro';
 import Share from './share';
 
-import styles, { arrowDownIcon } from './styles';
+import { arrowLink, arrowDownIcon } from './styles';
 
 import ArrowDownIcon from '../../static/long-arrow-down.svg';
 
 export default ({ node: { acf, title, slug } }) => (
   <footer>
-    <style jsx>{styles}</style>
+    {arrowLink.styles}
     {arrowDownIcon.styles}
 
     <Share />
@@ -22,8 +23,12 @@ export default ({ node: { acf, title, slug } }) => (
       {...acf}
     />
 
-    <div className="next-icon">
+    <Link
+      to={`/episodes/${slug}/`}
+      className={arrowLink.className}
+      rel="nofollow"
+    >
       <ArrowDownIcon className={arrowDownIcon.className} />
-    </div>
+    </Link>
   </footer>
 );

@@ -14,7 +14,6 @@ export default css`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin-bottom: 2rem;
     overflow: hidden;
     position: relative;
   }
@@ -23,7 +22,6 @@ export default css`
     .quote-container {
       flex-direction: row;
       flex-wrap: nowrap;
-      margin-bottom: 8rem;
     }
   }
 
@@ -137,13 +135,14 @@ export default css`
     font-weight: ${fonts.superla.weight.extraBold};
     line-height: 1.2;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 2rem;
     text-align: center;
   }
 
   @media ${mq.tablet} {
     .title {
       font-size: 4.75rem;
+      margin-top: 4rem;
     }
   }
 
@@ -157,6 +156,22 @@ export default css`
     margin-top: 1rem;
     max-width: 520px;
     text-align: center;
+  }
+
+  .caption {
+    color: ${colors.grey};
+    font-family: ${fonts.superla.family};
+    font-size: 0.7rem;
+    font-weight: ${fonts.superla.weight.regular};
+    line-height: 1.33;
+    margin-left: auto;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+    text-align: right;
+  }
+
+  :global(.caption > p) {
+    margin-top: 0;
   }
 `;
 

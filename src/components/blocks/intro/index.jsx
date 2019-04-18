@@ -31,32 +31,41 @@ export default ({
       {nextLink.styles}
 
       {renderQuote && (
-        <div className="quote-container" ref={introRef}>
-          {backgroundImage.localFile && (
-            <img
-              src={backgroundImage.localFile.childImageSharp.fluid.src}
-              srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
-              alt={backgroundImage.alt_text}
-              className="image"
+        <>
+          <div className="quote-container" ref={introRef}>
+            {backgroundImage.localFile && (
+              <img
+                src={backgroundImage.localFile.childImageSharp.fluid.src}
+                srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
+                alt={backgroundImage.alt_text}
+                className="image"
+              />
+            )}
+
+            <div className="logo">
+              {logoIcon.styles}
+              <HandshakeIcon className={logoIcon.className} />
+            </div>
+
+            <div className="quote">
+              <blockquote>{quote}</blockquote>
+
+              {arrowIcon.styles}
+
+              <ChevronDown
+                className={arrowIcon.className}
+                onClick={() => skipIntro(introRef.current)}
+              />
+            </div>
+          </div>
+
+          {backgroundImage && backgroundImage.caption && (
+            <div
+              dangerouslySetInnerHTML={{ __html: backgroundImage.caption }}
+              className="caption"
             />
           )}
-
-          <div className="logo">
-            {logoIcon.styles}
-            <HandshakeIcon className={logoIcon.className} />
-          </div>
-
-          <div className="quote">
-            <blockquote>{quote}</blockquote>
-
-            {arrowIcon.styles}
-
-            <ChevronDown
-              className={arrowIcon.className}
-              onClick={() => skipIntro(introRef.current)}
-            />
-          </div>
-        </div>
+        </>
       )}
 
       <div className="lower-intro">

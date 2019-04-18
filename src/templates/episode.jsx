@@ -58,6 +58,7 @@ export const query = graphql`
         topic
         intro
         backgroundImage {
+          caption
           localFile {
             childImageSharp {
               fluid(maxHeight: 1200, maxWidth: 2000) {

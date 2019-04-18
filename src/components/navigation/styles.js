@@ -19,6 +19,33 @@ export default css`
   @media ${mq.tablet} {
     :global(.modal) {
       height: 100%;
+      position: fixed;
+    }
+  }
+
+  :global(.ReactModal__Body--open),
+  :global(.ReactModal__Html--open) {
+    overflow: hidden;
+  }
+
+  .navigation {
+    align-items: flex-start;
+    color: white;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    padding: 5rem 1rem;
+  }
+
+  @media ${mq.tablet} {
+    .navigation {
+      flex-wrap: wrap;
+      height: 100%;
+      justify-content: flex-start;
     }
   }
 
@@ -49,27 +76,6 @@ export default css`
 
   .navigation-container--intro-not-visible .logo {
     opacity: 1;
-  }
-
-  .navigation {
-    align-items: flex-start;
-    color: white;
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: column;
-    list-style: none;
-    margin-bottom: 0;
-    margin-top: 0;
-    min-height: 100vh;
-    padding: 5rem 0 1.5rem 0;
-  }
-
-  @media ${mq.tablet} {
-    .navigation {
-      flex-wrap: wrap;
-      height: 100%;
-      justify-content: flex-start;
-    }
   }
 `;
 

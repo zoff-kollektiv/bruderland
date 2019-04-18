@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { fonts, colors, mq } from '../../../tokens';
+import { fonts, colors } from '../../../tokens';
 
 export default css`
   .title {
@@ -20,15 +20,8 @@ export const linkStyles = css.resolve`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    margin-left: 3.5rem;
-    padding: 0.5rem;
+    padding: 0.75rem 1rem;
     text-decoration: none;
-  }
-
-  @media ${mq.tablet} {
-    a {
-      margin-left: 3.5rem;
-    }
   }
 
   a:hover,

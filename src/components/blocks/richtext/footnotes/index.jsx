@@ -7,7 +7,11 @@ export default ({ id, entries }) => (
     <style jsx>{styles}</style>
 
     {entries.map(({ number, text }) => (
-      <li id={`footnote-${id}-${number}`} className="footnote">
+      <li
+        key={`footnote-${text}`}
+        id={`footnote-${id}-${number}`}
+        className="footnote"
+      >
         ({number}) <span dangerouslySetInnerHTML={{ __html: text }} />
       </li>
     ))}

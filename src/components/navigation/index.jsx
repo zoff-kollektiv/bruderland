@@ -9,6 +9,8 @@ import styles, { iconStyles } from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
+ReactModal.setAppElement('#___gatsby');
+
 const hideLogoOnIntro = navigation => {
   if (!('IntersectionObserver' in window)) {
     return;

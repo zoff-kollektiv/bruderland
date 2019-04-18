@@ -7,7 +7,7 @@ import styles, { linkStyles } from './styles';
 export default ({ items }) => (
   <>
     {items.map(({ node: { slug, title, acf: { number, topic, text } } }) => (
-      <li>
+      <li key={`episode-${slug}`}>
         <style jsx>{styles}</style>
         {linkStyles.styles}
 

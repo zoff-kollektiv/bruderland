@@ -6,7 +6,7 @@ import styles, { linkStyles } from './styles';
 export default ({ items }) => (
   <>
     {items.map(({ node: { title, link } }) => (
-      <li>
+      <li key={`page-${link}`}>
         <style jsx>{styles}</style>
         {linkStyles.styles}
 

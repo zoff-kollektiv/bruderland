@@ -17,7 +17,7 @@ export default ({ vimeo, blocks }) => (
       }
 
       return (
-        <BlockError>
+        <BlockError key={`block-error-${key}`}>
           {__typename === 'WordPressAcf_vimeoVideo' ? (
             <Block key={key} vimeo={vimeo} {...rest} />
           ) : (

@@ -13,7 +13,7 @@ export default ({ node: { acf, title, slug } }) => (
     {arrowLink.styles}
     {arrowDownIcon.styles}
 
-    <Share />
+    <Share title={title} />
 
     <Intro
       renderQuote={false}

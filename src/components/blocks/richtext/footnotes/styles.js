@@ -30,6 +30,10 @@ export default css`
     margin-top: 0;
   }
 
+  :global(.footnote a) {
+    color: currentColor;
+  }
+
   :target {
     background-color: rgb(255, 243, 210);
   }

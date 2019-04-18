@@ -56,6 +56,7 @@ export const query = graphql`
         number
         text
         topic
+        intro
         backgroundImage {
           localFile {
             childImageSharp {

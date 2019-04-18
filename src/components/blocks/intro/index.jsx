@@ -10,6 +10,7 @@ export default ({
   backgroundImage,
   quote,
   text,
+  intro,
   renderQuote = true,
   linkTitle = false,
   linkTitleSlug = '',
@@ -61,7 +62,7 @@ export default ({
           )}
         </h1>
 
-        <p className="text">{text}</p>
+        <p className="text">{intro || text}</p>
       </Constraint>
     </div>
   </header>

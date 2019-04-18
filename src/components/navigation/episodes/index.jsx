@@ -15,8 +15,6 @@ export default ({ items }) => (
           to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
           className={linkStyles.className}
         >
-          <div className="episode">{number}</div>
-
           <div className="episode-title-container">
             <em className="topic">{topic || title}</em>
             <p className="intro">{text}</p>

@@ -16,16 +16,6 @@ export default css`
     }
   }
 
-  .episode {
-    font-family: ${fonts.superla.family};
-    font-size: 2.68rem;
-    font-style: normal;
-    font-weight: ${fonts.superla.weight.extraBold};
-    line-height: 1;
-    padding-right: 1.5rem;
-    text-align: right;
-  }
-
   .topic {
     border-bottom: 2px solid transparent;
     font-family: ${fonts.superla.family};

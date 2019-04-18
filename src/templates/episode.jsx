@@ -11,18 +11,13 @@ const getNextEpisode = (episodes, current) => {
   return episodes[number + 1] || null;
 };
 
-const getEpisodeTitle = ({ title, acf }) => {
-  const { number, topic } = acf;
-
-  return `Episode ${number} – ${topic || title}`;
-};
-
 const Page = ({ pageContext: { videos }, data }) => {
   const { episode, allEpisodes } = data;
   const {
+    title,
     acf: { topic }
   } = episode;
-  const episodeTitle = getEpisodeTitle(episode);
+  const episodeTitle = topic || title;
   const publishedEpisodes = allEpisodes.edges.filter(
     ({
       node: {

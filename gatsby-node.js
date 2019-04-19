@@ -57,6 +57,16 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+
+        background: allWordpressPage {
+          edges {
+            node {
+              slug
+              status
+              wordpress_id
+            }
+          }
+        }
       }
     `)
       // filter out published nodes
@@ -65,25 +75,25 @@ exports.createPages = ({ actions, graphql }) => {
           errors,
           data: {
             episodes: { edges: episodes },
-            protagonists: { edges: protagonists }
+            protagonists: { edges: protagonists },
+            background: { edges: background }
           }
         }) => {
           if (errors) {
             return Promise.reject(errors);
           }
 
+          const isPublished = ({ node: { status } }) => status === 'publish';
+
           return {
-            episodes: episodes.filter(
-              ({ node: { status } }) => status === 'publish'
-            ),
-            protagonists: protagonists.filter(
-              ({ node: { status } }) => status === 'publish'
-            )
+            episodes: episodes.filter(isPublished),
+            protagonists: protagonists.filter(isPublished),
+            background: background.filter(isPublished)
           };
         }
       )
       // fetch vimeo data
-      .then(({ episodes, protagonists }) => {
+      .then(({ episodes, protagonists, background }) => {
         const videos = [];
 
         episodes.forEach(({ node: { acf } }) => {
@@ -102,11 +112,12 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.all(videos).then(videoData => ({
           protagonists,
           episodes,
-          videos: videoData
+          videos: videoData,
+          background
         }));
       })
       // create pages
-      .then(({ episodes, protagonists, videos }) => {
+      .then(({ episodes, protagonists, background, videos }) => {
         protagonists.forEach(({ node }) => {
           const { slug } = node;
           const pagePath = `/protagonists/${slug}/`;
@@ -168,6 +179,21 @@ exports.createPages = ({ actions, graphql }) => {
             component: path.resolve('src/templates/navigation.jsx'),
             context: {
               episodes
+            }
+          });
+        });
+
+        background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
+          const pagePath = `/background/${slug}/`;
+
+          // eslint-disable-next-line no-console
+          console.log('create background', pagePath);
+
+          createPage({
+            path: pagePath,
+            component: path.resolve('src/templates/background.jsx'),
+            context: {
+              wordpressId
             }
           });
         });

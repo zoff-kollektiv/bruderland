@@ -41,7 +41,7 @@ export default css`
   footer {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100%;
@@ -50,6 +50,7 @@ export default css`
   @media ${mq.tablet} {
     footer {
       flex-direction: row;
+      margin-top: 2rem;
     }
   }
 
@@ -79,15 +80,22 @@ export default css`
     color: currentColor;
     display: flex;
     flex: 0 0 auto;
-    height: 4.5rem;
+    height: 3.5rem;
     line-height: 1;
     outline: none;
     padding: 0;
     position: relative;
-    width: 4.5rem;
+    width: 3.5rem;
   }
 
   @media ${mq.tablet} {
+    .control-button {
+      height: 5rem;
+      width: 5rem;
+    }
+  }
+
+  @media ${mq.desktop} {
     .control-button {
       height: 6rem;
       width: 6rem;
@@ -102,13 +110,19 @@ export default css`
 
   .current-time {
     font-family: ${fonts.superla.family};
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: ${fonts.superla.weight.regular};
     margin-bottom: 0;
     margin-left: 0.5rem;
     margin-top: 0;
     min-width: 4.5rem;
     white-space: nowrap;
+  }
+
+  @media ${mq.tablet} {
+    .current-time {
+      font-size: 1.125rem;
+    }
   }
 
   video {
@@ -118,13 +132,13 @@ export default css`
 
 export const playPauseIconStyles = css.resolve`
   svg {
-    height: 1.25rem;
+    height: 1rem;
     left: 50%;
     margin-left: 0.05rem;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 1.25rem;
+    width: 1rem;
   }
 
   @media ${mq.tablet} {

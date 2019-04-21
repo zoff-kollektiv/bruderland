@@ -41,6 +41,8 @@ export default css`
 
   img {
     height: auto;
+    max-height: 90vh;
+    object-fit: contain;
     width: 100%;
   }
 

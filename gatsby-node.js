@@ -170,17 +170,6 @@ exports.createPages = ({ actions, graphql }) => {
             component: path.resolve('src/templates/episode.jsx'),
             context
           });
-
-          // eslint-disable-next-line no-console
-          console.log('create page', '/navigation/');
-
-          createPage({
-            path: '/navigation/',
-            component: path.resolve('src/templates/navigation.jsx'),
-            context: {
-              episodes
-            }
-          });
         });
 
         background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
@@ -196,6 +185,17 @@ exports.createPages = ({ actions, graphql }) => {
               wordpressId
             }
           });
+        });
+
+        // eslint-disable-next-line no-console
+        console.log('create page', '/navigation/');
+
+        createPage({
+          path: '/navigation/',
+          component: path.resolve('src/templates/navigation.jsx'),
+          context: {
+            episodes
+          }
         });
       })
   );

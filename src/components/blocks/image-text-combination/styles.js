@@ -34,6 +34,13 @@ export default css`
 
   @media ${mq.tablet} {
     .image-container {
+      margin-right: 1rem;
+      width: 60%;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .image-container {
       margin-right: 1.5rem;
       width: 75%;
     }
@@ -82,9 +89,15 @@ export default css`
   @media ${mq.tablet} {
     .title {
       font-size: 1.75rem;
-      margin-bottom: 4.5rem;
+      margin-bottom: 1.5rem;
       padding-left: 0rem;
       padding-right: 0rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .title {
+      margin-bottom: 4.5rem;
     }
   }
 

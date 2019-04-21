@@ -141,7 +141,7 @@ export default class Video extends Component {
           loop={loop}
           preload="metadata"
           poster={poster && poster.link}
-          playsinline
+          playsInline
         >
           {/* This happens whenever a video ID of a different user was supplied */}
           {sources &&

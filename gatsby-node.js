@@ -25,7 +25,6 @@ exports.createPages = ({ actions, graphql }) => {
           edges {
             node {
               slug
-              status
               title
               acf {
                 quote
@@ -49,7 +48,7 @@ exports.createPages = ({ actions, graphql }) => {
           edges {
             node {
               slug
-              status
+              wordpress_id
             }
           }
         }
@@ -60,7 +59,6 @@ exports.createPages = ({ actions, graphql }) => {
           edges {
             node {
               slug
-              status
               wordpress_id
             }
           }
@@ -115,7 +113,7 @@ exports.createPages = ({ actions, graphql }) => {
       // create pages
       .then(({ episodes, protagonists, background, videos }) => {
         protagonists.forEach(({ node }) => {
-          const { slug } = node;
+          const { slug, wordpress_id: wordpressId } = node;
           const pagePath = `/protagonists/${slug}/`;
 
           // eslint-disable-next-line no-console
@@ -125,7 +123,7 @@ exports.createPages = ({ actions, graphql }) => {
             path: pagePath,
             component: path.resolve('src/templates/protagonist.jsx'),
             context: {
-              slug
+              wordpressId
             }
           });
         });

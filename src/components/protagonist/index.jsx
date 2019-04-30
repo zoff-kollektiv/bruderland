@@ -1,14 +1,16 @@
 import React from 'react';
 
 import Blockrenderer from '../block-renderer';
+import Title from '../title';
 
-export default ({ data: { acf } }) => {
+export default ({ data: { title, acf } }) => {
   // eslint-disable-next-line camelcase
   const { content_protagonists: contentBlocks } = acf;
 
   return (
     <>
       <main>
+        <Title title={title} />
         <Blockrenderer blocks={contentBlocks} />
       </main>
     </>

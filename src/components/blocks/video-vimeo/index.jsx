@@ -152,7 +152,6 @@ export default class Video extends Component {
 
 export const fragment = graphql`
   fragment videoVimeo on WordPressAcf_vimeoVideo {
-    autoplay
     wordpress_id
     caption
     fullsize

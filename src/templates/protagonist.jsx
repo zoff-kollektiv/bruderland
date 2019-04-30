@@ -30,12 +30,16 @@ const Page = ({
 export default withLayout(Page);
 
 export const query = graphql`
-  query($slug: String) {
-    protagonist: wordpressWpProtagonists(slug: { eq: $slug }) {
+  query($wordpressId: Int) {
+    protagonist: wordpressWpProtagonists(wordpress_id: { eq: $wordpressId }) {
       title
       acf {
         content_protagonists {
+          ...annotations
+          ...quote
           ...imageTextCombination
+          ...richtext
+          ...slogan
         }
       }
     }

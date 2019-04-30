@@ -12,7 +12,7 @@ module.exports = {
           '**/protagonists',
           '**/countries',
           '**/media',
-          '**/pages'
+          '**/background'
         ],
         verboseOutput: true
       }

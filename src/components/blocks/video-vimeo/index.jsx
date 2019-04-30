@@ -79,7 +79,7 @@ export default class Video extends Component {
       loop = false
     } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
-    const vimeoVideo = vimeo.find(({ id: vimeoId }) => vimeoId === id);
+    const vimeoVideo = vimeo && vimeo.find(({ id: vimeoId }) => vimeoId === id);
 
     if (!vimeoVideo || !vimeoVideo.files) {
       return null;

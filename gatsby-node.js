@@ -11,14 +11,6 @@ exports.onCreateNode = ({ node }) => {
     // eslint-disable-next-line no-param-reassign
     node.footnotesRepeat = [];
   }
-
-  if (
-    node.internal.type === 'WordPressAcf_illustration' &&
-    node.audio === false
-  ) {
-    // eslint-disable-next-line no-param-reassign
-    node.audio = {};
-  }
 };
 
 exports.createPages = ({ actions, graphql }) => {
@@ -27,7 +19,9 @@ exports.createPages = ({ actions, graphql }) => {
   return (
     graphql(`
       {
-        episodes: allWordpressWpEpisodes {
+        episodes: allWordpressWpEpisodes(
+          filter: { status: { eq: "publish" } }
+        ) {
           edges {
             node {
               slug
@@ -49,7 +43,9 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
 
-        protagonists: allWordpressWpProtagonists {
+        protagonists: allWordpressWpProtagonists(
+          filter: { status: { eq: "publish" } }
+        ) {
           edges {
             node {
               slug
@@ -58,7 +54,9 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
 
-        background: allWordpressPage {
+        background: allWordpressWpBackground(
+          filter: { status: { eq: "publish" } }
+        ) {
           edges {
             node {
               slug
@@ -83,12 +81,10 @@ exports.createPages = ({ actions, graphql }) => {
             return Promise.reject(errors);
           }
 
-          const isPublished = ({ node: { status } }) => status === 'publish';
-
           return {
-            episodes: episodes.filter(isPublished),
-            protagonists: protagonists.filter(isPublished),
-            background: background.filter(isPublished)
+            episodes,
+            protagonists,
+            background
           };
         }
       )
@@ -173,7 +169,7 @@ exports.createPages = ({ actions, graphql }) => {
         });
 
         background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
-          const pagePath = `/${slug}/`;
+          const pagePath = `/background/${slug}/`;
 
           // eslint-disable-next-line no-console
           console.log('create background', pagePath);

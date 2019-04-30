@@ -8,11 +8,11 @@ import withLayout from '../components/with-layout';
 
 const Page = ({
   data: {
-    page,
+    background,
     allEpisodes: { edges: allEpisodes }
   }
 }) => {
-  const { title } = page;
+  const { title } = background;
 
   return (
     <>
@@ -22,7 +22,7 @@ const Page = ({
 
       <Navigation items={allEpisodes} topic={title} />
 
-      <Background data={page} />
+      <Background data={background} />
     </>
   );
 };
@@ -31,14 +31,13 @@ export default withLayout(Page);
 
 export const query = graphql`
   query($wordpressId: Int) {
-    page: wordpressPage(wordpress_id: { eq: $wordpressId }) {
+    background: wordpressWpBackground(wordpress_id: { eq: $wordpressId }) {
       title
       acf {
-        content_page {
+        content_background {
           ...annotations
           ...quote
           ...richtext
-          ...illustration
           ...images
           ...imageTextCombination
           ...slogan

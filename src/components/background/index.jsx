@@ -4,7 +4,7 @@ import Blockrenderer from '../block-renderer';
 
 export default ({ data: { acf } }) => {
   // eslint-disable-next-line camelcase
-  const { content_page: contentBlocks } = acf;
+  const { content_background: contentBlocks } = acf;
 
   return (
     <>

@@ -13,8 +13,7 @@ module.exports = {
           '**/countries',
           '**/media',
           '**/background'
-        ],
-        verboseOutput: true
+        ]
       }
     },
 

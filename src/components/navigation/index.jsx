@@ -100,6 +100,13 @@ export default class Navigation extends Component {
               items={[
                 {
                   node: {
+                    title: 'Hintergründe',
+                    link: '/background/'
+                  }
+                },
+
+                {
+                  node: {
                     title: 'Protagonist*innen',
                     link: '/protagonists/'
                   }

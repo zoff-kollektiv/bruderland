@@ -8,12 +8,12 @@ module.exports = {
         baseUrl: config.episodes.endpoint,
         protocol: 'https',
         includedRoutes: [
-          '/*/*/episodes',
-          '/*/*/protagonists',
-          '/*/*/countries',
-          '/*/*/media'
-        ],
-        verboseOutput: true
+          '**/episodes',
+          '**/protagonists',
+          '**/countries',
+          '**/media',
+          '**/background'
+        ]
       }
     },
 

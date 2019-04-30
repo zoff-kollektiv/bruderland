@@ -1,5 +1,5 @@
 import Link from 'gatsby-link';
-import React, { Fragment, useRef } from 'react';
+import React, { useRef } from 'react';
 
 import ChevronDown from '../../../static/chevron-down.svg';
 import Constraint from '../../constraint';
@@ -75,11 +75,10 @@ export default ({
               <Link
                 className={nextLink.className}
                 to={`/episodes/${linkTitleSlug}/`}
-              >
-                {title}
-              </Link>
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
             ) : (
-              <Fragment>{title}</Fragment>
+              <>{title}</>
             )}
           </h1>
 

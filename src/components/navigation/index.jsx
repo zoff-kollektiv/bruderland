@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
@@ -118,3 +119,20 @@ export default class Navigation extends Component {
     );
   }
 }
+
+export const fragment = graphql`
+  fragment navigationEpisodes on wordpress__wp_episodesConnection {
+    edges {
+      node {
+        ...navigation
+        title
+        acf {
+          quote
+          number
+          text
+          topic
+        }
+      }
+    }
+  }
+`;

@@ -3,16 +3,16 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Navigation from '../components/navigation';
-import Protagonist from '../components/protagonist';
+import Background from '../components/background';
 import withLayout from '../components/with-layout';
 
 const Page = ({
   data: {
-    protagonist,
+    background,
     allEpisodes: { edges: allEpisodes }
   }
 }) => {
-  const { title } = protagonist;
+  const { title } = background;
 
   return (
     <>
@@ -22,7 +22,7 @@ const Page = ({
 
       <Navigation items={allEpisodes} topic={title} />
 
-      <Protagonist data={protagonist} />
+      <Background data={background} />
     </>
   );
 };
@@ -31,15 +31,17 @@ export default withLayout(Page);
 
 export const query = graphql`
   query($wordpressId: Int) {
-    protagonist: wordpressWpProtagonists(wordpress_id: { eq: $wordpressId }) {
+    background: wordpressWpBackground(wordpress_id: { eq: $wordpressId }) {
       title
       acf {
-        content_protagonists {
+        content_background {
           ...annotations
           ...quote
-          ...imageTextCombination
           ...richtext
+          ...images
+          ...imageTextCombination
           ...slogan
+          ...videoVimeo
         }
       }
     }

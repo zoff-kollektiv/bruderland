@@ -4,6 +4,10 @@ import React from 'react';
 import styles from './styles';
 
 export default ({ fullscreen = false, imagesImage }) => {
+  if (!imagesImage) {
+    return null;
+  }
+
   const { alt_text: alt, caption, localFile } = imagesImage;
 
   return (

@@ -6,6 +6,11 @@ import styles from './styles';
 export default ({ title, text, image }) => {
   const fluidImage =
     image && image.localFile && image.localFile.childImageSharp.fluid;
+
+  if (!fluidImage) {
+    return null;
+  }
+
   const { src, srcSet } = fluidImage;
   const { caption, alt_text: alt } = image;
 

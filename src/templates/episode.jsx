@@ -11,21 +11,18 @@ const getNextEpisode = (episodes, current) => {
   return episodes[number + 1] || null;
 };
 
-const Page = ({ pageContext: { videos }, data }) => {
-  const { episode, allEpisodes } = data;
+const Page = ({
+  pageContext: { videos },
+  data: {
+    episode,
+    allEpisodes: { edges: allEpisodes }
+  }
+}) => {
   const {
     title,
     acf: { topic }
   } = episode;
   const episodeTitle = topic || title;
-  const publishedEpisodes = allEpisodes.edges.filter(
-    ({
-      node: {
-        status,
-        acf: { number }
-      }
-    }) => status === 'publish' && parseInt(number, 10) >= 0
-  );
 
   return (
     <>
@@ -33,12 +30,12 @@ const Page = ({ pageContext: { videos }, data }) => {
         <title>{episodeTitle}</title>
       </Helmet>
 
-      <Navigation items={publishedEpisodes} topic={topic} />
+      <Navigation items={allEpisodes} topic={topic} />
 
       <Episode
         title={episodeTitle}
         data={episode}
-        next={getNextEpisode(publishedEpisodes, episode)}
+        next={getNextEpisode(allEpisodes, episode)}
         vimeo={videos}
       />
     </>
@@ -72,7 +69,6 @@ export const query = graphql`
           ...annotations
           ...quote
           ...richtext
-          ...illustration
           ...images
           ...imageTextCombination
           ...slogan
@@ -82,21 +78,10 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
+      filter: { status: { eq: "publish" }, acf: { number: { ne: "-1" } } }
       sort: { fields: [acf___number], order: ASC }
     ) {
-      edges {
-        node {
-          ...navigation
-          status
-          title
-          acf {
-            quote
-            number
-            text
-            topic
-          }
-        }
-      }
+      ...navigationEpisodes
     }
   }
 `;

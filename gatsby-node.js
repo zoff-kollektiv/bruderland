@@ -11,14 +11,6 @@ exports.onCreateNode = ({ node }) => {
     // eslint-disable-next-line no-param-reassign
     node.footnotesRepeat = [];
   }
-
-  if (
-    node.internal.type === 'WordPressAcf_illustration' &&
-    node.audio === false
-  ) {
-    // eslint-disable-next-line no-param-reassign
-    node.audio = {};
-  }
 };
 
 exports.createPages = ({ actions, graphql }) => {
@@ -27,7 +19,9 @@ exports.createPages = ({ actions, graphql }) => {
   return (
     graphql(`
       {
-        episodes: allWordpressWpEpisodes {
+        episodes: allWordpressWpEpisodes(
+          filter: { status: { eq: "publish" } }
+        ) {
           edges {
             node {
               slug
@@ -49,11 +43,25 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
 
-        protagonists: allWordpressWpProtagonists {
+        protagonists: allWordpressWpProtagonists(
+          filter: { status: { eq: "publish" } }
+        ) {
           edges {
             node {
               slug
               status
+            }
+          }
+        }
+
+        background: allWordpressWpBackground(
+          filter: { status: { eq: "publish" } }
+        ) {
+          edges {
+            node {
+              slug
+              status
+              wordpress_id
             }
           }
         }
@@ -65,7 +73,8 @@ exports.createPages = ({ actions, graphql }) => {
           errors,
           data: {
             episodes: { edges: episodes },
-            protagonists: { edges: protagonists }
+            protagonists: { edges: protagonists },
+            background: { edges: background }
           }
         }) => {
           if (errors) {
@@ -73,17 +82,14 @@ exports.createPages = ({ actions, graphql }) => {
           }
 
           return {
-            episodes: episodes.filter(
-              ({ node: { status } }) => status === 'publish'
-            ),
-            protagonists: protagonists.filter(
-              ({ node: { status } }) => status === 'publish'
-            )
+            episodes,
+            protagonists,
+            background
           };
         }
       )
       // fetch vimeo data
-      .then(({ episodes, protagonists }) => {
+      .then(({ episodes, protagonists, background }) => {
         const videos = [];
 
         episodes.forEach(({ node: { acf } }) => {
@@ -102,11 +108,12 @@ exports.createPages = ({ actions, graphql }) => {
         return Promise.all(videos).then(videoData => ({
           protagonists,
           episodes,
-          videos: videoData
+          videos: videoData,
+          background
         }));
       })
       // create pages
-      .then(({ episodes, protagonists, videos }) => {
+      .then(({ episodes, protagonists, background, videos }) => {
         protagonists.forEach(({ node }) => {
           const { slug } = node;
           const pagePath = `/protagonists/${slug}/`;
@@ -159,17 +166,32 @@ exports.createPages = ({ actions, graphql }) => {
             component: path.resolve('src/templates/episode.jsx'),
             context
           });
+        });
+
+        background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
+          const pagePath = `/background/${slug}/`;
 
           // eslint-disable-next-line no-console
-          console.log('create page', '/navigation/');
+          console.log('create background', pagePath);
 
           createPage({
-            path: '/navigation/',
-            component: path.resolve('src/templates/navigation.jsx'),
+            path: pagePath,
+            component: path.resolve('src/templates/background.jsx'),
             context: {
-              episodes
+              wordpressId
             }
           });
+        });
+
+        // eslint-disable-next-line no-console
+        console.log('create page', '/navigation/');
+
+        createPage({
+          path: '/navigation/',
+          component: path.resolve('src/templates/navigation.jsx'),
+          context: {
+            episodes
+          }
         });
       })
   );

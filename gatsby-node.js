@@ -173,7 +173,7 @@ exports.createPages = ({ actions, graphql }) => {
         });
 
         background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
-          const pagePath = `/background/${slug}/`;
+          const pagePath = `/${slug}/`;
 
           // eslint-disable-next-line no-console
           console.log('create background', pagePath);

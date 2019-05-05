@@ -110,13 +110,6 @@ export default class Navigation extends Component {
                     title: 'Protagonist*innen',
                     link: '/protagonists/'
                   }
-                },
-
-                {
-                  node: {
-                    title: 'Länder',
-                    link: '/countries/'
-                  }
                 }
               ]}
             />

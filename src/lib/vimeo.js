@@ -4,35 +4,52 @@ const { parsed: env } = require('dotenv').config();
 const { VIMEO_CLIENT_ID, VIMEO_CLIENT_SECRET, VIMEO_ACCESS_TOKEN } =
   env || process.env;
 
-const fetchVimeoVideo = videoId =>
-  new Promise((resolve, reject) => {
-    if (!VIMEO_CLIENT_ID || !VIMEO_CLIENT_SECRET || !VIMEO_ACCESS_TOKEN) {
-      reject(
-        new Error(
-          'You must provide the "VIMEO_CLIENT_ID", "VIMEO_CLIENT_SECRET" and "VIMEO_ACCESS_TOKEN" environment variables.'
-        )
-      );
-    }
+const fetchVimeoVideo = videoId => {
+  const client = new Vimeo(
+    VIMEO_CLIENT_ID,
+    VIMEO_CLIENT_SECRET,
+    VIMEO_ACCESS_TOKEN
+  );
 
-    // eslint-disable-next-line no-console
-    console.log('Fetch vimeo video', `/videos/${videoId}/`);
+  const fetchVideo = () =>
+    new Promise((resolve, reject) => {
+      client.request(
+        {
+          path: `/videos/${videoId}/`
+        },
+        (error, res) => {
+          if (error) {
+            reject(error);
+          }
 
-    new Vimeo(VIMEO_CLIENT_ID, VIMEO_CLIENT_SECRET, VIMEO_ACCESS_TOKEN).request(
-      {
-        path: `/videos/${videoId}/`
-      },
-      (error, res) => {
-        if (error) {
-          reject(error);
+          resolve(res);
         }
+      );
+    });
 
-        res.id = videoId;
+  const fetchTextTracks = () =>
+    new Promise((resolve, reject) => {
+      client.request(
+        {
+          path: `/videos/${videoId}/texttracks`
+        },
+        (error, res) => {
+          if (error) {
+            reject(error);
+          }
 
-        resolve(res);
-      }
-    );
-    // eslint-disable-next-line no-console
-  }).catch(console.log);
+          resolve(res);
+        }
+      );
+    });
+
+  return (
+    Promise.all([fetchVideo(), fetchTextTracks()])
+      .then(([video, tracks]) => ({ id: videoId, video, tracks }))
+      // eslint-disable-next-line no-console
+      .catch(console.log)
+  );
+};
 
 module.exports = {
   fetchVimeoVideo

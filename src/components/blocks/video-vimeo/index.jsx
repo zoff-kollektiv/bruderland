@@ -119,11 +119,12 @@ export default class Video extends Component {
     const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo = vimeo && vimeo.find(({ id: vimeoId }) => vimeoId === id);
 
-    if (!vimeoVideo || !vimeoVideo.files) {
+    if (!vimeoVideo || !vimeoVideo.video.files) {
       return null;
     }
 
-    const { pictures, files: sources } = vimeoVideo;
+    const { pictures, files: sources } = vimeoVideo.video;
+    const { tracks } = vimeoVideo;
     const poster = pictures.sizes.find(image => image.width >= 1280);
 
     return (
@@ -142,6 +143,7 @@ export default class Video extends Component {
           preload="metadata"
           poster={poster && poster.link}
           playsInline
+          crossOrigin="anonymous"
         >
           {/* This happens whenever a video ID of a different user was supplied */}
           {sources &&
@@ -151,6 +153,19 @@ export default class Video extends Component {
                 src={link}
                 type={type}
                 media={`all and (max-width: ${width}px)`}
+              />
+            ))}
+
+          {tracks &&
+            tracks.data.length > 0 &&
+            tracks.data.map(({ name, link, language }, index) => (
+              <track
+                key={link}
+                label={name}
+                kind="subtitles"
+                srcLang={language}
+                src={link}
+                default={index === 0}
               />
             ))}
         </video>

@@ -130,20 +130,8 @@ exports.createPages = ({ actions, graphql }) => {
 
         episodes.forEach(({ node }) => {
           const { slug, acf } = node;
-          const { content_episodes: contentEpisodes } = acf;
           const number = parseInt(acf.number, 10);
           let pagePath = `/episodes/${slug}/`;
-          const episodeVideos = contentEpisodes
-            .map(block => {
-              const { __typename: typeName, wordpress_id: videoId } = block;
-
-              if (typeName === 'WordPressAcf_vimeoVideo') {
-                return videos.find(({ id }) => id === videoId);
-              }
-
-              return null;
-            })
-            .filter(Boolean);
 
           if (number < 0) {
             pagePath = `/__internal${pagePath}`;
@@ -153,7 +141,7 @@ exports.createPages = ({ actions, graphql }) => {
 
           const context = {
             number: `${number}`,
-            videos: episodeVideos
+            videos
           };
 
           // eslint-disable-next-line no-console

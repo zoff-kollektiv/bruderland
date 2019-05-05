@@ -91,6 +91,12 @@ export default class Video extends Component {
   };
 
   updateProgress = () => {
+    const { loop } = this.props;
+
+    if (loop === true) {
+      return undefined;
+    }
+
     const { current: video } = this.video;
     const { currentTime, duration } = video;
     const percentage = Math.floor((100 / duration) * currentTime);
@@ -100,13 +106,23 @@ export default class Video extends Component {
       progressPercentage: percentage,
       currentTime: currentTimeFormatted
     });
+
+    return undefined;
   };
 
   setVideoLength = () => {
+    const { loop } = this.props;
+
+    if (loop === true) {
+      return undefined;
+    }
+
     const { current: video } = this.video;
     const { duration } = video;
 
     this.setState({ currentTime: formatDuration(duration) });
+
+    return undefined;
   };
 
   render() {
@@ -197,7 +213,7 @@ export default class Video extends Component {
               )}
             </button>
 
-            <p className="current-time">{currentTime}</p>
+            {loop === false && <p className="current-time">{currentTime}</p>}
           </div>
         </footer>
       </figure>

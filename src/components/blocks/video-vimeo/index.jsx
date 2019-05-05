@@ -227,5 +227,6 @@ export const fragment = graphql`
     caption
     fullsize
     loop
+    autoplay
   }
 `;

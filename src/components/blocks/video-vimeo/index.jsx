@@ -9,6 +9,8 @@ import Progress from '../../progress';
 
 import styles, { playPauseIconStyles } from './styles';
 
+let observer;
+
 export default class Video extends Component {
   state = {
     isPlaying: false,
@@ -20,6 +22,15 @@ export default class Video extends Component {
 
   playButton = React.createRef();
 
+  componentDidMount = () => {
+    const { autoplay } = this.props;
+    const { current: video } = this.video;
+
+    if (autoplay) {
+      this.observeIfInScreen(video);
+    }
+  };
+
   pause = el => {
     this.setState({ isPlaying: false });
     el.pause();
@@ -28,9 +39,12 @@ export default class Video extends Component {
   play = el => {
     el.play();
 
-    if (el.paused === false && el.ended === false) {
-      this.setState({ isPlaying: true });
-    }
+    // check if really is really playing (in case autoplay was blocked)
+    setTimeout(() => {
+      if (el.currentTime > 0 && el.paused === false && el.ended === false) {
+        this.setState({ isPlaying: true });
+      }
+    }, 500);
   };
 
   stop = el => {
@@ -39,6 +53,30 @@ export default class Video extends Component {
     el.pause();
     // eslint-disable-next-line no-param-reassign
     el.currentTime = 0;
+  };
+
+  observeIfInScreen = el => {
+    if (!el) {
+      return;
+    }
+
+    if ('IntersectionObserver' in window) {
+      const onChange = entries => {
+        entries.forEach(entry => {
+          const { target, intersectionRatio } = entry;
+
+          if (intersectionRatio > 0) {
+            this.play(target);
+          } else {
+            this.stop(target);
+          }
+        });
+      };
+
+      observer = new IntersectionObserver(onChange);
+
+      observer.observe(el);
+    }
   };
 
   togglePlayAndPause = () => {

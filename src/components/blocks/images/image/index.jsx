@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React from 'react';
 
+import Caption from '../../../caption';
 import styles from './styles';
 
 export default ({ fullscreen = false, imagesImage }) => {
@@ -21,9 +22,7 @@ export default ({ fullscreen = false, imagesImage }) => {
           alt={alt}
           loading="lazy"
         />
-        {caption && (
-          <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
-        )}
+        {caption && <Caption caption={caption} />}
       </figure>
     )
   );

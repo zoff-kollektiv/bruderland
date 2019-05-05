@@ -1,6 +1,6 @@
 import css from 'styled-jsx/css';
 
-import { colors, fonts, mq } from '../../../tokens';
+import { fonts, mq } from '../../../tokens';
 
 export default css`
   figure {
@@ -51,18 +51,6 @@ export default css`
     max-height: 90vh;
     object-fit: contain;
     width: 100%;
-  }
-
-  figcaption {
-    color: ${colors.grey};
-    font-family: ${fonts.superla.family};
-    font-size: 0.9rem;
-    font-weight: ${fonts.superla.weight.regular};
-    line-height: 1.33;
-    margin-left: 1.5rem;
-    margin-top: 0;
-    max-width: 30rem;
-    text-align: left;
   }
 
   .content {

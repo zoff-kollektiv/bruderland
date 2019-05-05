@@ -26,18 +26,6 @@ export default css`
     width: 800px;
   }
 
-  figcaption {
-    font-family: ${fonts.superla.family};
-    font-size: 1rem;
-    margin-right: 2rem;
-  }
-
-  @media ${mq.tablet} {
-    figcaption {
-      font-size: 1.15rem;
-    }
-  }
-
   footer {
     display: flex;
     flex-direction: column;

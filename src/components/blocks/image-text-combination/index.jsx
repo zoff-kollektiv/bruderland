@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import Caption from '../../caption';
 import styles from './styles';
 
 export default ({ title, text, image }) => {
@@ -21,9 +22,7 @@ export default ({ title, text, image }) => {
       <div className="image-container">
         <img src={src} srcSet={srcSet} alt={alt} loading="lazy" />
 
-        {caption && (
-          <figcaption dangerouslySetInnerHTML={{ __html: caption }} />
-        )}
+        {caption && <Caption caption={caption} />}
       </div>
 
       <div className="content">

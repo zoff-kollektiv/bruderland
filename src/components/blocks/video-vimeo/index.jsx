@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { graphql } from 'gatsby';
 import React, { Component } from 'react';
 
+import Caption from '../../caption';
 import { formatDuration, formatCurrentTime } from '../../../lib/time';
 import PauseIcon from '../../../static/pause.svg';
 import PlayIcon from '../../../static/play.svg';
@@ -171,7 +172,7 @@ export default class Video extends Component {
         </video>
 
         <footer>
-          {caption && <figcaption>{caption}</figcaption>}
+          {caption && <Caption caption={caption} />}
 
           <div className="control-button-container">
             <button

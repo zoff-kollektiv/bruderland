@@ -10,6 +10,8 @@ export default ({ imagesRepeat }) => (
   <section>
     <style jsx>{styles}</style>
 
+    {console.log(imagesRepeat)}
+
     {imagesRepeat.length === 1 ? (
       <Image {...imagesRepeat[0]} />
     ) : (

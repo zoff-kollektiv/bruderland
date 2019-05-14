@@ -8,22 +8,20 @@ export default css`
     color: ${colors.grey};
     display: table-caption;
     font-family: ${fonts.superla.family};
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.33;
     margin-left: 1.5rem;
     margin-top: 0;
     max-width: 30rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    text-align: center;
+    text-align: left;
   }
 
   @media ${mq.tablet} {
     figcaption {
+      font-size: 1rem;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
-      text-align: left;
     }
   }
 `;

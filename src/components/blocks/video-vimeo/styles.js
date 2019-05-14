@@ -30,8 +30,6 @@ export default css`
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     width: 100%;
   }
 
@@ -122,6 +120,18 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 1rem;
     font-weight: ${fonts.superla.weight.regular};
+  }
+
+  .is-fullsize video::-webkit-media-text-track-display,
+  .is-fullsize video::cue {
+    font-size: 1.25rem;
+  }
+
+  @media ${mq.tablet} {
+    .is-fullsize video::-webkit-media-text-track-display,
+    .is-fullsize video::cue {
+      font-size: 1.75rem;
+    }
   }
 `;
 

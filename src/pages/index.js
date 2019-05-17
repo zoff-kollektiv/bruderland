@@ -1,7 +1,7 @@
 import React from "react"
 
 export default () =>
-  <section style={{ alignItems: 'center', backgroundColor: 'red', display: 'flex', flexDirection: 'column', height: '100vh', justifyContent: 'center' }}>
+  <section style={{ alignItems: 'center', backgroundColor: 'rgb(208, 2, 27)', display: 'flex', flexDirection: 'column', height: '100vh', justifyContent: 'center' }}>
     <style type="text/css">{`
       body {
         color: white;

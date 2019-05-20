@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import ChevronDown from '../../../static/chevron-down.svg';
 import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
+import Richtext from '../richtext';
 import styles, { nextLink, logoIcon, arrowIcon } from './styles';
 
 const skipIntro = el => {
@@ -82,7 +83,7 @@ export default ({
             )}
           </h1>
 
-          <p className="text">{intro || text}</p>
+          <Richtext text={intro || text} />
         </Constraint>
       </div>
     </header>

@@ -7,13 +7,10 @@ export default css`
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-  }
-
-  :global(.richtext p) {
     font-family: ${fonts.superla.family};
     font-size: 1.25rem;
     font-weight: ${fonts.superla.weight.regular};
+    justify-content: center;
     line-height: 1.4;
   }
 

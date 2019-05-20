@@ -133,8 +133,8 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 2.6rem;
     font-weight: ${fonts.superla.weight.extraBold};
-    line-height: 1.2;
-    margin-bottom: 0;
+    line-height: 1;
+    margin-bottom: 1.5rem;
     margin-top: 2rem;
     text-align: center;
   }
@@ -144,18 +144,6 @@ export default css`
       font-size: 4.75rem;
       margin-top: 4rem;
     }
-  }
-
-  .text {
-    font-family: ${fonts.superla.family};
-    font-size: 1.25rem;
-    font-weight: ${fonts.superla.weight.regular};
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 1rem;
-    max-width: 520px;
-    text-align: center;
   }
 
   .caption {

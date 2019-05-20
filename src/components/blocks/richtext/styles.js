@@ -19,6 +19,11 @@ export default css`
     text-decoration: underline;
   }
 
+  :global(.richtext a:hover),
+  :global(.richtext a:focus) {
+    color: ${colors.brand};
+  }
+
   :global(.richtext a.footnote) {
     color: ${colors.blue};
     text-decoration: none;

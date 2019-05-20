@@ -1,5 +1,31 @@
+const crypto = require('crypto');
+const fsExtra = require('fs-extra');
 const path = require('path');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+
 const { fetchVimeoVideo } = require('./src/lib/vimeo');
+
+exports.sourceNodes = ({ actions }) => {
+  const { createTypes } = actions;
+
+  createTypes(`
+    type VimeoVideo implements Node @infer {
+      sources: [VimeoVideoSource]
+      tracks: [VimeoVideoTrack]
+    }
+
+    type VimeoVideoSource @infer {
+      link: String!
+      type: String!
+      width: Int
+    }
+
+    type VimeoVideoTrack @infer {
+      publicPath: String
+      file: File!
+    }
+  `);
+};
 
 exports.onCreateNode = ({ node }) => {
   /* for some reason the repeater field returns false, if there wasn't any footnote.
@@ -13,8 +39,15 @@ exports.onCreateNode = ({ node }) => {
   }
 };
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+exports.createPages = ({
+  actions,
+  graphql,
+  getNode,
+  store,
+  cache,
+  createNodeId
+}) => {
+  const { createPage, createNode } = actions;
 
   return (
     graphql(`
@@ -103,12 +136,142 @@ exports.createPages = ({ actions, graphql }) => {
             );
         });
 
-        return Promise.all(videos).then(videoData => ({
-          protagonists,
-          episodes,
-          videos: videoData,
-          background
-        }));
+        return Promise.all(videos)
+          .then(videoData => {
+            const createTrackNodes = (node, video) => {
+              const nodes = [];
+
+              if (
+                video &&
+                video.tracks &&
+                video.tracks.data &&
+                video.tracks.data.length > 0
+              ) {
+                video.tracks.data.forEach((track, index) => {
+                  const id = `${node.id}-track-${index}`;
+                  const trackNode = createNode({
+                    id,
+                    parent: null,
+                    children: [],
+                    internal: {
+                      type: `VimeoVideoTrack`,
+                      contentDigest: crypto
+                        .createHash(`md5`)
+                        .update(JSON.stringify(video))
+                        .digest(`hex`)
+                    }
+                  });
+
+                  const trackFileNode = createRemoteFileNode({
+                    url: track.link,
+                    store,
+                    cache,
+                    createNode,
+                    createNodeId,
+                    parentNodeId: node.id,
+                    auth: {}
+                  });
+
+                  const completeNode = Promise.all([
+                    trackNode,
+                    trackFileNode
+                  ]).then(resolvedNodes => {
+                    const createdNode = getNode(id);
+                    const fileNode = resolvedNodes[1];
+
+                    const { name } = fileNode;
+
+                    createdNode.file = fileNode;
+                    createdNode.publicPath = path.join('static', `${name}.vtt`);
+
+                    return createdNode;
+                  });
+
+                  nodes.push(completeNode);
+                });
+              }
+
+              return Promise.all(nodes);
+            };
+
+            const createVideoNode = data => {
+              const nodes = [];
+              const cached = [];
+
+              data.forEach(video => {
+                const { id } = video;
+
+                if (cached.includes(id)) {
+                  return;
+                }
+
+                const node = createNode({
+                  id,
+                  sources: video.video.files
+                    ? video.video.files.map(file => {
+                        const { link, type, width } = file;
+
+                        return { link, type, width };
+                      })
+                    : [],
+                  parent: null,
+                  children: [],
+                  internal: {
+                    type: `VimeoVideo`,
+                    contentDigest: crypto
+                      .createHash(`md5`)
+                      .update(JSON.stringify(video))
+                      .digest(`hex`)
+                  }
+                }).then(() => {
+                  const createdNode = getNode(id);
+
+                  return createTrackNodes(createdNode, video).then(tracks => {
+                    createdNode.tracks = tracks;
+
+                    tracks.forEach(track => {
+                      const { absolutePath, name } = track.file;
+                      const publicPath = path.join(
+                        process.cwd(),
+                        `public`,
+                        `static`,
+                        `${name}.vtt`
+                      );
+
+                      if (!fsExtra.existsSync(publicPath)) {
+                        fsExtra.copy(absolutePath, publicPath, err => {
+                          if (err) {
+                            // eslint-disable-next-line no-console
+                            console.error(
+                              `Error copying file from ${absolutePath} to ${publicPath}`,
+                              err
+                            );
+                          }
+                        });
+                      }
+                    });
+
+                    return createdNode;
+                  });
+                });
+
+                nodes.push(node);
+                cached.push(id);
+              });
+
+              return nodes;
+            };
+
+            return Promise.all([...createVideoNode(videoData)]).then(
+              () => videoData
+            );
+          })
+          .then(videoData => ({
+            protagonists,
+            episodes,
+            videos: videoData,
+            background
+          }));
       })
       // create pages
       .then(({ episodes, protagonists, background, videos }) => {

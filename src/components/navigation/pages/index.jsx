@@ -3,7 +3,7 @@ import React from 'react';
 
 import styles, { linkStyles } from './styles';
 
-export default ({ items }) => (
+export default ({ small = false, items }) => (
   <>
     {items.map(({ node: { title, link } }) => (
       <li key={`page-${link}`}>
@@ -11,7 +11,7 @@ export default ({ items }) => (
         {linkStyles.styles}
 
         <Link to={link} className={linkStyles.className}>
-          <em className="title">{title}</em>
+          <em className={`title ${small && 'title--is-small'}`}>{title}</em>
         </Link>
       </li>
     ))}

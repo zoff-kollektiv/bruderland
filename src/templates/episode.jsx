@@ -113,7 +113,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { status: { eq: "publish" }, acf: { number: { ne: "-1" } } }
+      filter: { acf: { number: { ne: "-1" } } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       ...navigationEpisodes

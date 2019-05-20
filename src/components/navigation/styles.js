@@ -29,23 +29,33 @@ export default css`
   }
 
   .navigation {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    max-height: 100%;
+    padding: 4rem 0.5rem;
+    width: 100%;
+  }
+
+  .navigation-list {
     align-items: flex-start;
     color: white;
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     flex-direction: column;
     list-style: none;
     margin-bottom: 0;
     margin-top: 0;
-    min-height: 100vh;
-    padding: 5rem 1rem;
+    padding-left: 0;
+    width: 90%;
   }
 
   @media ${mq.tablet} {
-    .navigation {
+    .navigation-list {
       flex-wrap: wrap;
       height: 100%;
-      justify-content: flex-start;
+      justify-content: space-between;
     }
   }
 

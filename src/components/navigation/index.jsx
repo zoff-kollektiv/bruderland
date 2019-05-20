@@ -94,26 +94,47 @@ export default class Navigation extends Component {
           className="modal"
           overlayClassName="modal-overlay"
         >
-          <ul className="navigation">
-            <Episodes items={items} />
-            <Pages
-              items={[
-                {
-                  node: {
-                    title: 'Hintergründe',
-                    link: '/background/'
-                  }
-                },
+          <div className="navigation">
+            <ul className="navigation-list">
+              <Episodes items={items} />
+              <Pages
+                items={[
+                  {
+                    node: {
+                      title: 'Hintergründe',
+                      link: '/background/'
+                    }
+                  },
 
-                {
-                  node: {
-                    title: 'Protagonist*innen',
-                    link: '/protagonists/'
+                  {
+                    node: {
+                      title: 'Protagonist*innen',
+                      link: '/protagonists/'
+                    }
                   }
-                }
-              ]}
-            />
-          </ul>
+                ]}
+              />
+
+              <Pages
+                small
+                items={[
+                  {
+                    node: {
+                      title: 'Kontakt & Impressum',
+                      link: '/contact/'
+                    }
+                  },
+
+                  {
+                    node: {
+                      title: 'Datenschutz',
+                      link: '/data-protection/'
+                    }
+                  }
+                ]}
+              />
+            </ul>
+          </div>
         </ReactModal>
       </nav>
     );
@@ -127,6 +148,7 @@ export const fragment = graphql`
         ...navigation
         title
         acf {
+          published
           quote
           number
           text

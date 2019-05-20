@@ -12,6 +12,11 @@ export default css`
     font-weight: ${fonts.superla.weight.extraBold};
     letter-spacing: 0.05rem;
   }
+
+  .title--is-small {
+    font-size: 1.25rem;
+    font-weight: ${fonts.superla.weight.regular};
+  }
 `;
 
 export const linkStyles = css.resolve`

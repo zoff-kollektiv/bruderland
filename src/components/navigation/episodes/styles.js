@@ -12,7 +12,7 @@ export default css`
 
   @media ${mq.tablet} {
     li {
-      width: 50%;
+      width: 40%;
     }
   }
 
@@ -37,13 +37,17 @@ export default css`
 `;
 
 export const linkStyles = css.resolve`
+  span,
   a {
-    color: currentColor;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     padding: 0.75rem 1rem;
     text-decoration: none;
+  }
+
+  a {
+    color: currentColor;
   }
 
   @media ${mq.tablet} {
@@ -53,5 +57,9 @@ export const linkStyles = css.resolve`
   a:hover,
   a:focus {
     background-color: ${colors.blue};
+  }
+
+  span {
+    color: rgb(165, 165, 165);
   }
 `;

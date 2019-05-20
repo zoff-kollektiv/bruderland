@@ -3,6 +3,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Episode from '../components/episode';
+import Metadata from '../components/metadata';
 import Navigation from '../components/navigation';
 import withLayout from '../components/with-layout';
 
@@ -20,7 +21,13 @@ const Page = ({
 }) => {
   const {
     title,
-    acf: { topic }
+    acf: {
+      topic,
+      og_descriptiom: ogDescription,
+      og_title: ogTitle,
+      og_image: ogImage,
+      twitter_image: twitterImage
+    }
   } = episode;
   const episodeTitle = topic || title;
 
@@ -29,6 +36,14 @@ const Page = ({
       <Helmet>
         <title>{episodeTitle}</title>
       </Helmet>
+
+      <Metadata
+        title={episodeTitle}
+        ogDescription={ogDescription}
+        ogTitle={ogTitle}
+        ogImage={ogImage}
+        twitterImage={twitterImage}
+      />
 
       <Navigation items={allEpisodes} topic={topic} />
 
@@ -54,6 +69,26 @@ export const query = graphql`
         text
         topic
         intro
+        og_image {
+          localFile {
+            childImageSharp {
+              fixed(width: 1200, height: 630) {
+                src
+              }
+            }
+          }
+        }
+        twitter_image: og_image {
+          localFile {
+            childImageSharp {
+              fixed(width: 1200, height: 675) {
+                src
+              }
+            }
+          }
+        }
+        og_title
+        og_description
         backgroundImage {
           caption
           localFile {

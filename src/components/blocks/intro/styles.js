@@ -72,6 +72,7 @@ export default css`
 
   .quote {
     height: 50vh;
+    justify-content: flex-start;
     position: absolute;
     top: 50%;
   }
@@ -79,7 +80,6 @@ export default css`
   @media ${mq.tablet} {
     .quote {
       height: 100%;
-      margin-top: -5rem;
       position: relative;
       top: auto;
     }
@@ -91,10 +91,13 @@ export default css`
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 20%;
+    padding: 0 25%;
     width: 100%;
     z-index: 10;
+  }
+
+  .logo {
+    justify-content: center;
   }
 
   @media ${mq.tablet} {
@@ -114,12 +117,14 @@ export default css`
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.3;
     margin: 0;
+    padding-top: 2.5rem;
     text-align: center;
   }
 
   @media ${mq.tablet} {
     blockquote {
       font-size: 2.875rem;
+      padding-top: 5rem;
     }
   }
 

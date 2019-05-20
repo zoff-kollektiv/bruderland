@@ -20,7 +20,7 @@ export default ({ vimeo, title, data: { acf }, next }) => {
         <Blockrenderer blocks={contentBlocks} vimeo={vimeo} />
       </main>
 
-      {next && <NextEpisode {...next} />}
+      {next && <NextEpisode currentTitle={title} {...next} />}
     </Fragment>
   );
 };

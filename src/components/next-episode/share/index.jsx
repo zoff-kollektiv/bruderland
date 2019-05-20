@@ -23,7 +23,11 @@ export default ({ title }) => (
           </a>
         </li>
         <li>
-          <a href="https://twitter.com/">
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+              title
+            )}`}
+          >
             <TwitterIcon className={shareIcon.className} />
           </a>
         </li>

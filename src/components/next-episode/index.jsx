@@ -8,12 +8,12 @@ import { arrowLink, arrowDownIcon } from './styles';
 
 import ArrowDownIcon from '../../static/long-arrow-down.svg';
 
-export default ({ node: { acf, title, slug } }) => (
+export default ({ currentTitle, node: { acf, title, slug } }) => (
   <footer>
     {arrowLink.styles}
     {arrowDownIcon.styles}
 
-    <Share title={title} />
+    <Share title={currentTitle} />
 
     <Intro
       renderQuote={false}

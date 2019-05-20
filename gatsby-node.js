@@ -20,7 +20,7 @@ exports.createPages = ({ actions, graphql }) => {
     graphql(`
       {
         episodes: allWordpressWpEpisodes(
-          filter: { status: { eq: "publish" } }
+          filter: { acf: { published: { ne: false } } }
         ) {
           edges {
             node {

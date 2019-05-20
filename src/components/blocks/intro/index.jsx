@@ -79,7 +79,7 @@ export default ({
                 dangerouslySetInnerHTML={{ __html: title }}
               />
             ) : (
-              <>{title}</>
+              <span dangerouslySetInnerHTML={{ __html: title }} />
             )}
           </h1>
 

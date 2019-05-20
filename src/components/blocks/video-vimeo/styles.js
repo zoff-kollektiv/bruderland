@@ -37,6 +37,17 @@ export default css`
     footer {
       flex-direction: row;
       margin-top: 2rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  .is-fullsize footer {
+    padding-right: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    .is-fullsize footer {
+      padding-right: 2.5rem;
     }
   }
 
@@ -103,12 +114,6 @@ export default css`
     margin-top: 0;
     min-width: 4.5rem;
     white-space: nowrap;
-  }
-
-  @media ${mq.tablet} {
-    .current-time {
-      font-size: 1.125rem;
-    }
   }
 
   video {

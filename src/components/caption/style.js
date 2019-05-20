@@ -15,6 +15,7 @@ export default css`
     margin-top: 0;
     max-width: 30rem;
     text-align: left;
+    width: 100%;
   }
 
   @media ${mq.tablet} {

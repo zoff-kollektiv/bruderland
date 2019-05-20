@@ -112,7 +112,7 @@ export default css`
     font-size: 2.18rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
-    line-height: 1.1;
+    line-height: 1.3;
     margin: 0;
     text-align: center;
   }

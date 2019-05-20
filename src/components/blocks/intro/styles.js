@@ -193,6 +193,18 @@ export const nextLink = css.resolve`
   }
 `;
 
+export const logoLink = css.resolve`
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    opacity: 0.8;
+  }
+`;
+
 export const arrowIcon = css.resolve`
   svg {
     color: white;

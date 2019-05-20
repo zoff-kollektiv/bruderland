@@ -5,7 +5,7 @@ import ChevronDown from '../../../static/chevron-down.svg';
 import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import Richtext from '../richtext';
-import styles, { nextLink, logoIcon, arrowIcon } from './styles';
+import styles, { nextLink, logoIcon, arrowIcon, logoLink } from './styles';
 
 const skipIntro = el => {
   const { offsetHeight } = el;
@@ -30,6 +30,7 @@ export default ({
       <style jsx>{styles}</style>
 
       {nextLink.styles}
+      {logoLink.styles}
 
       {renderQuote && (
         <>
@@ -45,7 +46,9 @@ export default ({
 
             <div className="logo">
               {logoIcon.styles}
-              <HandshakeIcon className={logoIcon.className} />
+              <Link to="/" className={logoLink.className}>
+                <HandshakeIcon className={logoIcon.className} />
+              </Link>
             </div>
 
             <div className="quote">

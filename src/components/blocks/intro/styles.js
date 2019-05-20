@@ -213,7 +213,7 @@ export const logoLink = css.resolve`
 export const arrowIcon = css.resolve`
   svg {
     color: white;
-    bottom: 1rem;
+    bottom: 2.5rem;
     height: 2rem;
     left: 50%;
     position: absolute;
@@ -223,7 +223,6 @@ export const arrowIcon = css.resolve`
 
   @media ${mq.tablet} {
     svg {
-      bottom: 0;
       height: 3rem;
       width: 3rem;
     }

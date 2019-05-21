@@ -5,12 +5,40 @@ import ChevronDown from '../../../static/chevron-down.svg';
 import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import Richtext from '../richtext';
-import styles, { nextLink, logoIcon, arrowIcon, logoLink } from './styles';
+import styles, {
+  nextLink,
+  logoIcon,
+  logoLabel,
+  arrowIcon,
+  logoLink
+} from './styles';
 
 const skipIntro = el => {
   const { offsetHeight } = el;
 
   window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
+};
+
+const Logo = ({ number }) => {
+  if (parseInt(number, 10) === 0) {
+    return (
+      <div className={logoIcon.className}>
+        {logoIcon.styles}
+        {logoLink.styles}
+        {logoLabel.styles}
+        <span className={logoLabel.className}>Eigensinn im</span>
+        <HandshakeIcon className={logoIcon.className} />
+      </div>
+    );
+  }
+
+  return (
+    <Link to="/" className={logoLink.className}>
+      {logoLink.styles}
+      {logoIcon.styles}
+      <HandshakeIcon className={logoIcon.className} />
+    </Link>
+  );
 };
 
 export default ({
@@ -21,6 +49,7 @@ export default ({
   renderQuote = true,
   linkTitle = false,
   linkTitleSlug = '',
+  number,
   title
 }) => {
   const introRef = useRef(null);
@@ -30,7 +59,6 @@ export default ({
       <style jsx>{styles}</style>
 
       {nextLink.styles}
-      {logoLink.styles}
 
       {renderQuote && (
         <>
@@ -45,10 +73,7 @@ export default ({
             )}
 
             <div className="logo">
-              {logoIcon.styles}
-              <Link to="/" className={logoLink.className}>
-                <HandshakeIcon className={logoIcon.className} />
-              </Link>
+              <Logo number={number} />
             </div>
 
             <div className="quote">

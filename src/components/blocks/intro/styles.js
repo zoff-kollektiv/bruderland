@@ -187,6 +187,39 @@ export const logoIcon = css.resolve`
       width: 28rem;
     }
   }
+
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+export const logoLabel = css.resolve`
+  span {
+    font-family: ${fonts.superla.family};
+    font-size: 1.15rem;
+    font-weight: ${fonts.superla.weight.extraBold};
+    letter-spacing: 0.1rem;
+    line-height: 1;
+    padding-left: 0.65rem;
+    text-transform: uppercase;
+  }
+
+  @media ${mq.tablet} {
+    span {
+      font-size: 1.75rem;
+      letter-spacing: 0.1rem;
+      padding-left: 0.75rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    span {
+      font-size: 2.75rem;
+      letter-spacing: 0.3rem;
+      padding-left: 1.5rem;
+    }
+  }
 `;
 
 export const nextLink = css.resolve`

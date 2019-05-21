@@ -22,33 +22,31 @@ const Page = ({
   const {
     title,
     acf: {
-      topic,
       og_descriptiom: ogDescription,
       og_title: ogTitle,
       og_image: ogImage,
       twitter_image: twitterImage
     }
   } = episode;
-  const episodeTitle = topic || title;
 
   return (
     <>
       <Helmet>
-        <title>{episodeTitle}</title>
+        <title>{title}</title>
       </Helmet>
 
       <Metadata
-        title={episodeTitle}
+        title={title}
         ogDescription={ogDescription}
         ogTitle={ogTitle}
         ogImage={ogImage}
         twitterImage={twitterImage}
       />
 
-      <Navigation items={allEpisodes} topic={topic} />
+      <Navigation items={allEpisodes} title={title} />
 
       <Episode
-        title={episodeTitle}
+        title={title}
         data={episode}
         next={getNextEpisode(allEpisodes, episode)}
         vimeo={videos}
@@ -67,7 +65,6 @@ export const query = graphql`
         quote
         number
         text
-        topic
         intro
         og_image {
           localFile {

@@ -16,7 +16,7 @@ export default css`
     }
   }
 
-  .topic {
+  .title {
     border-bottom: 2px solid transparent;
     font-family: ${fonts.superla.family};
     font-size: 1.15rem;
@@ -26,14 +26,14 @@ export default css`
   }
 
   @media ${mq.tablet} {
-    .topic {
+    .title {
       font-size: 1.5rem;
       letter-spacing: 0.05rem;
     }
   }
 
   @media ${mq.desktop} {
-    .topic {
+    .title {
       font-size: 1.625rem;
     }
   }

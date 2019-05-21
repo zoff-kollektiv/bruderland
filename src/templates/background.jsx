@@ -20,7 +20,7 @@ const Page = ({
         <title>{title}</title>
       </Helmet>
 
-      <Navigation items={allEpisodes} topic={title} />
+      <Navigation items={allEpisodes} title={title} />
 
       <Background data={background} />
     </>

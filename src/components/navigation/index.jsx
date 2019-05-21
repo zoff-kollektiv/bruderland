@@ -65,7 +65,7 @@ export default class Navigation extends Component {
   }
 
   render() {
-    const { items, topic } = this.props;
+    const { items, title } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -86,7 +86,7 @@ export default class Navigation extends Component {
 
         <div className="logo">
           {iconStyles.styles}
-          <span className="logo-label">{topic}</span>
+          <span className="logo-label">{title}</span>
           <HandshakeIcon className={iconStyles.className} />
         </div>
 
@@ -172,7 +172,6 @@ export const fragment = graphql`
           quote
           number
           text
-          topic
         }
       }
     }

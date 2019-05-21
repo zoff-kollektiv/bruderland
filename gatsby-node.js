@@ -71,7 +71,6 @@ exports.createPages = ({
                 quote
                 number
                 text
-                topic
                 content_episodes {
                   ... on WordPressAcf_vimeoVideo {
                     __typename

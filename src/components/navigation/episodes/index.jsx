@@ -11,7 +11,7 @@ export default ({ items }) => (
         node: {
           slug,
           title,
-          acf: { number, topic, text, published }
+          acf: { number, text, published }
         }
       }) => (
         <li key={`episode-${slug}`}>
@@ -25,8 +25,8 @@ export default ({ items }) => (
             >
               <div className="episode-title-container">
                 <em
-                  className="topic"
-                  dangerouslySetInnerHTML={{ __html: topic || title }}
+                  className="title"
+                  dangerouslySetInnerHTML={{ __html: title }}
                 />
                 <p className="intro">{text}</p>
               </div>
@@ -35,9 +35,9 @@ export default ({ items }) => (
             <span className={linkStyles.className}>
               <div className="episode-title-container">
                 <em
-                  className="topic"
+                  className="title"
                   dangerouslySetInnerHTML={{
-                    __html: `Demnächst: ${topic || title}`
+                    __html: `Demnächst: ${title}`
                   }}
                 />
                 <p className="intro">{text}</p>
@@ -56,7 +56,6 @@ export const fragment = graphql`
     status
     acf {
       number
-      topic
       text
     }
   }

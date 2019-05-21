@@ -10,7 +10,7 @@ export default ({ data: { title, acf } }) => {
   return (
     <>
       <main>
-        <Title title={title} />
+        <Title title={title} context="Protagonist*in" />
         <Blockrenderer blocks={contentBlocks} />
       </main>
     </>

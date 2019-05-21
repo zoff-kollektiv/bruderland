@@ -41,10 +41,6 @@ export default css`
     }
   }
 
-  .is-fullsize footer {
-    padding-right: 1.5rem;
-  }
-
   @media ${mq.tablet} {
     .is-fullsize footer {
       padding-right: 2.5rem;
@@ -58,8 +54,9 @@ export default css`
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     margin-left: auto;
+    margin-right: 1.5rem;
     order: -1;
   }
 

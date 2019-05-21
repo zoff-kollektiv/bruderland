@@ -1,10 +1,4 @@
-export const formatDuration = time => {
-  let durationFormatted = `${Math.round((time / 60) * 100) / 100} min`;
-
-  durationFormatted = durationFormatted.replace('.', ':');
-
-  return durationFormatted;
-};
+/* eslint-disable import/prefer-default-export */
 
 export const formatCurrentTime = time => {
   if (time < 60) {
@@ -16,11 +10,7 @@ export const formatCurrentTime = time => {
 
   if (time > 60) {
     const minutes = parseInt(time / 60, 10);
-    let seconds = parseInt(`${time}`.substring(1), 10);
-
-    if (minutes > 99) {
-      seconds = parseInt(`${time}`.substring(2), 10);
-    }
+    const seconds = parseInt(time - minutes * 60, 10);
 
     return `${minutes < 10 ? `0${minutes}` : minutes}:${
       seconds < 10 ? `0${seconds}` : seconds

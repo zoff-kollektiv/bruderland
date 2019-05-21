@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import React, { Component } from 'react';
 
 import Caption from '../../caption';
-import { formatDuration, formatCurrentTime } from '../../../lib/time';
+import { formatCurrentTime } from '../../../lib/time';
 import PauseIcon from '../../../static/pause.svg';
 import PlayIcon from '../../../static/play.svg';
 import Progress from '../../progress';
@@ -120,7 +120,7 @@ export default class Video extends Component {
     const { current: video } = this.video;
     const { duration } = video;
 
-    this.setState({ currentTime: formatDuration(duration) });
+    this.setState({ currentTime: formatCurrentTime(duration) });
 
     return undefined;
   };

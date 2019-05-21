@@ -11,9 +11,10 @@ export default css`
     font-size: 0.9rem;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.33;
-    margin-left: 1.5rem;
     margin-top: 0;
     max-width: 30rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     text-align: left;
     width: 100%;
   }
@@ -21,8 +22,8 @@ export default css`
   @media ${mq.tablet} {
     figcaption {
       font-size: 1rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
   }
 `;

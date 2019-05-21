@@ -85,9 +85,9 @@ export default ({
               <span dangerouslySetInnerHTML={{ __html: title }} />
             )}
           </h1>
-
-          <Richtext text={intro || text} />
         </Constraint>
+
+        <Richtext text={intro || text} />
       </div>
     </header>
   );

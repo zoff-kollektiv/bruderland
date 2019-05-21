@@ -73,6 +73,7 @@ export default css`
   .quote {
     height: 50vh;
     justify-content: flex-start;
+    padding: 0 1.5rem;
     position: absolute;
     top: 50%;
   }
@@ -80,6 +81,7 @@ export default css`
   @media ${mq.tablet} {
     .quote {
       height: 100%;
+      padding: 0 25%;
       position: relative;
       top: auto;
     }
@@ -91,13 +93,13 @@ export default css`
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
-    padding: 0 25%;
     width: 100%;
     z-index: 10;
   }
 
   .logo {
     justify-content: center;
+    padding: 0 25%;
   }
 
   @media ${mq.tablet} {
@@ -129,8 +131,9 @@ export default css`
   }
 
   .lower-intro {
+    align-items: center;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
   }
 
   .title {

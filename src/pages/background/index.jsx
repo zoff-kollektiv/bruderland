@@ -1,9 +1,11 @@
 import { Helmet } from 'react-helmet';
 import React from 'react';
 import { graphql } from 'gatsby';
-import Link from 'gatsby-link';
 
+import BackgroundList from '../../components/background-list';
+import BackgroundOverview from '../../components/background-overview';
 import Navigation from '../../components/navigation';
+import Title from '../../components/title';
 import withLayout from '../../components/with-layout';
 
 const Page = ({
@@ -20,18 +22,16 @@ const Page = ({
 
       <Navigation items={allEpisodes} />
 
-      <br />
-      <br />
-      <br />
+      <Title title="Hintergründe" context={false} />
 
-      <ul>
-        {backgrounds &&
-          backgrounds.map(({ title, slug }) => (
-            <li>
-              <Link to={`/background/${slug}/`}>{title}</Link>
-            </li>
-          ))}
-      </ul>
+      <BackgroundOverview>
+        <BackgroundList
+          items={backgrounds.map(({ slug, ...rest }) => ({
+            ...rest,
+            link: `/background/${slug}/`
+          }))}
+        />
+      </BackgroundOverview>
     </>
   );
 };

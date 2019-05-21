@@ -13,10 +13,10 @@ const getNextEpisode = (episodes, current) => {
 };
 
 const Page = ({
-  pageContext: { videos },
   data: {
     episode,
-    allEpisodes: { edges: allEpisodes }
+    allEpisodes: { edges: allEpisodes },
+    videos: { edges: videos }
   }
 }) => {
   const {
@@ -117,6 +117,28 @@ export const query = graphql`
       sort: { fields: [acf___number], order: ASC }
     ) {
       ...navigationEpisodes
+    }
+
+    videos: allVimeoVideo {
+      edges {
+        node {
+          id
+          sources {
+            link
+            type
+            width
+          }
+          tracks {
+            name
+            language
+            publicPath
+          }
+          pictures {
+            width
+            link
+          }
+        }
+      }
     }
   }
 `;

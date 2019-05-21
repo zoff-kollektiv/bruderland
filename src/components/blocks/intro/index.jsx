@@ -2,7 +2,6 @@ import Link from 'gatsby-link';
 import React, { useRef } from 'react';
 
 import ChevronDown from '../../../static/chevron-down.svg';
-import Constraint from '../../constraint';
 import HandshakeIcon from '../../../static/logo-handshake.svg';
 import Richtext from '../richtext';
 import styles, {
@@ -98,19 +97,17 @@ export default ({
       )}
 
       <div className="lower-intro">
-        <Constraint size="wide">
-          <h1 className="title">
-            {linkTitle ? (
-              <Link
-                className={nextLink.className}
-                to={`/episodes/${linkTitleSlug}/`}
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-            ) : (
-              <span dangerouslySetInnerHTML={{ __html: title }} />
-            )}
-          </h1>
-        </Constraint>
+        <h1 className="title">
+          {linkTitle ? (
+            <Link
+              className={nextLink.className}
+              to={`/episodes/${linkTitleSlug}/`}
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+          ) : (
+            <span dangerouslySetInnerHTML={{ __html: title }} />
+          )}
+        </h1>
 
         <Richtext text={intro || text} />
       </div>

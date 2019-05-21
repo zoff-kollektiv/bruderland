@@ -146,18 +146,30 @@ export default css`
   .title {
     color: ${colors.brand};
     font-family: ${fonts.superla.family};
-    font-size: 2.6rem;
+    font-size: 2.25rem;
     font-weight: ${fonts.superla.weight.extraBold};
     line-height: 1;
-    margin-bottom: 1.5rem;
-    margin-top: 2rem;
+    margin: 2rem 1.5rem;
     text-align: center;
   }
 
   @media ${mq.tablet} {
     .title {
+      font-size: 3rem;
+      margin: 6rem 0.5rem 4rem 0.5rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .title {
+      font-size: 4rem;
+      margin: 6rem 0.5rem 4rem 0.5rem;
+    }
+  }
+
+  @media ${mq.wide} {
+    .title {
       font-size: 4.75rem;
-      margin-top: 4rem;
     }
   }
 
@@ -166,11 +178,20 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 0.7rem;
     font-weight: ${fonts.superla.weight.regular};
+    letter-spacing: 0.025rem;
     line-height: 1.33;
     margin-left: auto;
     margin-right: 1rem;
     margin-top: 0.5rem;
     text-align: right;
+  }
+
+  @media ${mq.tablet} {
+    .caption {
+      font-size: 0.8rem;
+      margin-right: 1.5rem;
+      margin-top: 1rem;
+    }
   }
 
   :global(.caption > p) {

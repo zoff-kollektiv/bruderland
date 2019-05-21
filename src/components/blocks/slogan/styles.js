@@ -23,6 +23,21 @@ export default css`
     }
   }
 
+  @media ${mq.desktop} {
+    section {
+      min-height: 0;
+      padding-bottom: 12rem;
+      padding-top: 12rem;
+    }
+  }
+
+  @media ${mq.wide} {
+    section {
+      padding-bottom: 15rem;
+      padding-top: 15rem;
+    }
+  }
+
   blockquote {
     font-family: ${fonts.lapture.family};
     font-size: 3rem;

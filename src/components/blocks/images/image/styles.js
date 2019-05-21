@@ -38,7 +38,7 @@ export default css`
       max-width: 15rem;
       position: absolute;
       text-align: left;
-      text-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+      text-shadow: 0 2px 3px rgba(0, 0, 0, 0.75);
     }
   }
 `;

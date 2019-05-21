@@ -67,6 +67,19 @@ export default css`
     }
   }
 
+  @media ${mq.desktop} {
+    .is-fullsize .control-button-container {
+      color: white;
+      transform: translateY(-12rem);
+    }
+  }
+
+  @media ${mq.wide} {
+    .is-fullsize .control-button-container {
+      transform: translateY(-15rem);
+    }
+  }
+
   .control-button {
     background: transparent;
     border: none;

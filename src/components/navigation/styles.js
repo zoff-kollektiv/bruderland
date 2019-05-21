@@ -18,28 +18,40 @@ export default css`
 
   @media ${mq.tablet} {
     :global(.modal) {
+      align-items: center;
+      display: flex;
+      justify-content: center;
       height: 100%;
       position: fixed;
     }
-  }
-
-  :global(.ReactModal__Body--open),
-  :global(.ReactModal__Html--open) {
-    overflow: hidden;
   }
 
   .navigation {
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 100vh;
-    max-height: 100%;
-    padding: 4rem 0.5rem;
+    height: 100%;
+    padding: 3.5rem 0.5rem;
     width: 100%;
   }
 
+  @media ${mq.tablet} {
+    .navigation {
+      padding-bottom: 2.5rem;
+      padding-top: 2.5rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .navigation {
+      max-height: 45rem;
+      max-width: 80rem;
+      padding-bottom: 2.5rem;
+      padding-top: 2.5rem;
+    }
+  }
+
   .navigation-list {
-    align-items: flex-start;
     color: white;
     display: flex;
     flex: 0 0 auto;
@@ -47,8 +59,9 @@ export default css`
     list-style: none;
     margin-bottom: 0;
     margin-top: 0;
+    max-width: 80rem;
     padding-left: 0;
-    width: 90%;
+    width: 100%;
   }
 
   @media ${mq.tablet} {

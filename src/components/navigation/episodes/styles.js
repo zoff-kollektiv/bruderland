@@ -12,17 +12,30 @@ export default css`
 
   @media ${mq.tablet} {
     li {
-      width: 40%;
+      width: 50%;
     }
   }
 
   .topic {
     border-bottom: 2px solid transparent;
     font-family: ${fonts.superla.family};
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     font-style: normal;
     font-weight: ${fonts.superla.weight.extraBold};
     letter-spacing: 0.05rem;
+  }
+
+  @media ${mq.tablet} {
+    .topic {
+      font-size: 1.5rem;
+      letter-spacing: 0.05rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .topic {
+      font-size: 1.625rem;
+    }
   }
 
   .intro {
@@ -30,9 +43,21 @@ export default css`
     font-size: 0.9rem;
     font-weight: ${fonts.superla.weight.regular};
     margin-bottom: 0;
-    margin-top: 0.5rem;
-    max-width: 450px;
+    margin-top: 0.25rem;
     width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    .intro {
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .intro {
+      font-size: 1.05rem;
+    }
   }
 `;
 

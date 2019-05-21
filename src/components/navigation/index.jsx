@@ -4,6 +4,7 @@ import ReactModal from 'react-modal';
 
 import Burger from './burger';
 import Episodes from './episodes';
+import Follow from './follow';
 import Pages from './pages';
 
 import styles, { iconStyles } from './styles';
@@ -129,6 +130,25 @@ export default class Navigation extends Component {
                     node: {
                       title: 'Datenschutz',
                       link: '/data-protection/'
+                    }
+                  }
+                ]}
+              />
+
+              <Follow
+                title="Follow us"
+                items={[
+                  {
+                    node: {
+                      title: 'Twitter',
+                      link: 'https://twitter.com/'
+                    }
+                  },
+
+                  {
+                    node: {
+                      title: 'Facebook',
+                      link: 'https://facebook.com.com/'
                     }
                   }
                 ]}

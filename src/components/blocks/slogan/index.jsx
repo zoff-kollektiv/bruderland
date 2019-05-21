@@ -10,7 +10,7 @@ export default ({ text, source }) => (
     <style jsx>{styles}</style>
 
     <blockquote>
-      <Constraint>
+      <Constraint size="wide">
         {text}
 
         {source && <cite>{source}</cite>}

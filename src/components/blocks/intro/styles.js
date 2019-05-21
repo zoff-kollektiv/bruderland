@@ -130,6 +130,13 @@ export default css`
     }
   }
 
+  @media ${mq.wide} {
+    blockquote {
+      font-size: 3.75rem;
+      padding-top: 10rem;
+    }
+  }
+
   .lower-intro {
     align-items: center;
     display: flex;

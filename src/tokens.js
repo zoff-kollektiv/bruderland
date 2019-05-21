@@ -1,4 +1,9 @@
-const SCREEN_SIZES = [['phone', 500], ['tablet', 768], ['desktop', 1024]];
+const SCREEN_SIZES = [
+  ['phone', 500],
+  ['tablet', 768],
+  ['desktop', 1024],
+  ['wide', 1300]
+];
 
 const colors = {
   brand: 'rgb(208, 2, 27)',

@@ -217,7 +217,7 @@ export const logoLabel = css.resolve`
     span {
       font-size: 2.75rem;
       letter-spacing: 0.3rem;
-      padding-left: 1.5rem;
+      padding-left: 1.25rem;
     }
   }
 `;

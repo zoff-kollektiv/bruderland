@@ -49,7 +49,7 @@ export default css`
 
   .control-button-container {
     align-items: center;
-    color: ${colors.blue};
+    color: black;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

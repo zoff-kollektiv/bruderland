@@ -10,8 +10,9 @@ exports.sourceNodes = ({ actions }) => {
 
   createTypes(`
     type VimeoVideo implements Node @infer {
-      sources: [VimeoVideoSource]
-      tracks: [VimeoVideoTrack]
+      sources: [VimeoVideoSource]!
+      tracks: [VimeoVideoTrack]!
+      pictures: [VimeoVideoPoster]!
     }
 
     type VimeoVideoSource @infer {
@@ -22,7 +23,14 @@ exports.sourceNodes = ({ actions }) => {
 
     type VimeoVideoTrack @infer {
       publicPath: String
+      name: String
+      language: String
       file: File!
+    }
+
+    type VimeoVideoPoster @infer {
+      width: Int!
+      link: String!
     }
   `);
 };
@@ -149,7 +157,12 @@ exports.createPages = ({
               ) {
                 video.tracks.data.forEach((track, index) => {
                   const id = `${node.id}-track-${index}`;
+                  const { name, language, link } = track;
+
                   const trackNode = createNode({
+                    name,
+                    language,
+
                     id,
                     parent: null,
                     children: [],
@@ -163,7 +176,7 @@ exports.createPages = ({
                   });
 
                   const trackFileNode = createRemoteFileNode({
-                    url: track.link,
+                    url: link,
                     store,
                     cache,
                     createNode,
@@ -179,10 +192,14 @@ exports.createPages = ({
                     const createdNode = getNode(id);
                     const fileNode = resolvedNodes[1];
 
-                    const { name } = fileNode;
+                    const { name: trackFileName } = fileNode;
 
                     createdNode.file = fileNode;
-                    createdNode.publicPath = path.join('static', `${name}.vtt`);
+                    createdNode.publicPath = path.join(
+                      'static',
+                      'subtitles',
+                      `${trackFileName}.vtt`
+                    );
 
                     return createdNode;
                   });
@@ -214,6 +231,12 @@ exports.createPages = ({
                         return { link, type, width };
                       })
                     : [],
+                  pictures: video.video.pictures
+                    ? video.video.pictures.sizes.map(({ width, link }) => ({
+                        width,
+                        link
+                      }))
+                    : [],
                   parent: null,
                   children: [],
                   internal: {
@@ -230,20 +253,20 @@ exports.createPages = ({
                     createdNode.tracks = tracks;
 
                     tracks.forEach(track => {
-                      const { absolutePath, name } = track.file;
-                      const publicPath = path.join(
+                      const { absolutePath } = track.file;
+                      const { publicPath } = track;
+                      const fullPublicPath = path.join(
                         process.cwd(),
-                        `public`,
-                        `static`,
-                        `${name}.vtt`
+                        'public',
+                        publicPath
                       );
 
-                      if (!fsExtra.existsSync(publicPath)) {
-                        fsExtra.copy(absolutePath, publicPath, err => {
+                      if (!fsExtra.existsSync(fullPublicPath)) {
+                        fsExtra.copy(absolutePath, fullPublicPath, err => {
                           if (err) {
                             // eslint-disable-next-line no-console
                             console.error(
-                              `Error copying file from ${absolutePath} to ${publicPath}`,
+                              `Error copying file from ${absolutePath} to ${fullPublicPath}`,
                               err
                             );
                           }
@@ -266,15 +289,14 @@ exports.createPages = ({
               () => videoData
             );
           })
-          .then(videoData => ({
+          .then(() => ({
             protagonists,
             episodes,
-            videos: videoData,
             background
           }));
       })
       // create pages
-      .then(({ episodes, protagonists, background, videos }) => {
+      .then(({ episodes, protagonists, background }) => {
         protagonists.forEach(({ node }) => {
           const { slug, wordpress_id: wordpressId } = node;
           const pagePath = `/protagonists/${slug}/`;
@@ -303,8 +325,7 @@ exports.createPages = ({
           }
 
           const context = {
-            number: `${number}`,
-            videos
+            number: `${number}`
           };
 
           // eslint-disable-next-line no-console

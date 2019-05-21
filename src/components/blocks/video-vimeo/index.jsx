@@ -134,15 +134,16 @@ export default class Video extends Component {
       loop = false
     } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
-    const vimeoVideo = vimeo && vimeo.find(({ id: vimeoId }) => vimeoId === id);
+    const vimeoVideo =
+      // eslint-disable-next-line eqeqeq
+      vimeo && vimeo.find(({ node: { id: vimeoId } }) => vimeoId == id);
 
-    if (!vimeoVideo || !vimeoVideo.video) {
+    if (!vimeoVideo) {
       return null;
     }
 
-    const { pictures, files: sources } = vimeoVideo.video;
-    const { tracks } = vimeoVideo;
-    const poster = pictures.sizes.find(image => image.width >= 1280);
+    const { sources, tracks, pictures } = vimeoVideo.node;
+    const poster = pictures && pictures.find(picture => picture.width >= 1280);
 
     return (
       <figure className={classnames({ 'is-fullsize': fullsize })}>
@@ -174,14 +175,14 @@ export default class Video extends Component {
             ))}
 
           {tracks &&
-            tracks.data.length > 0 &&
-            tracks.data.map(({ name, link, language }, index) => (
+            tracks.length > 0 &&
+            tracks.map(({ name, publicPath, language }, index) => (
               <track
-                key={link}
+                key={publicPath}
                 label={name}
                 kind="subtitles"
                 srcLang={language}
-                src={link}
+                src={publicPath}
                 default={index === 0}
               />
             ))}

@@ -123,7 +123,7 @@ export default css`
   video::-webkit-media-text-track-display,
   video::cue {
     font-family: ${fonts.superla.family};
-    font-size: 1rem;
+    font-size: 1.15rem;
     font-weight: ${fonts.superla.weight.regular};
   }
 

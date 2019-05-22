@@ -195,6 +195,7 @@ exports.createPages = ({
 
                     createdNode.file = fileNode;
                     createdNode.publicPath = path.join(
+                      '/',
                       'static',
                       'subtitles',
                       `${trackFileName}.vtt`

@@ -52,12 +52,24 @@ export default css`
   .text {
     color: ${colors.brand};
     font-family: ${fonts.lapture.family};
-    font-size: 2.875rem;
+    font-size: 2rem;
     font-style: italic;
     line-height: 1.08;
     margin-bottom: 0;
     margin-top: 0;
     position: relative;
+  }
+
+  @media ${mq.tablet} {
+    .text {
+      font-size: 2.4rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    .text {
+      font-size: 2.875rem;
+    }
   }
 
   .richtext {

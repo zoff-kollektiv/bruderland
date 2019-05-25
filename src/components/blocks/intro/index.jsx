@@ -109,7 +109,7 @@ export default ({
           )}
         </h1>
 
-        <Richtext text={intro || text} />
+        <Richtext text={intro || text} bold />
       </div>
     </header>
   );

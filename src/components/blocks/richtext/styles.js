@@ -14,6 +14,10 @@ export default css`
     line-height: 1.4;
   }
 
+  .richtext--is-bold {
+    font-weight: 700;
+  }
+
   :global(.richtext a) {
     color: currentColor;
     text-decoration: underline;

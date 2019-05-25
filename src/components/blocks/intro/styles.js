@@ -156,14 +156,14 @@ export default css`
   @media ${mq.tablet} {
     .title {
       font-size: 3rem;
-      margin: 6rem 0.5rem 4rem 0.5rem;
+      margin: 6rem 0.5rem 1.5rem 0.5rem;
     }
   }
 
   @media ${mq.desktop} {
     .title {
       font-size: 4rem;
-      margin: 6rem 0.5rem 4rem 0.5rem;
+      margin: 6rem 0.5rem 2rem 0.5rem;
     }
   }
 

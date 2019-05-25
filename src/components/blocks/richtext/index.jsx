@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import classnames from 'classnames';
 import React from 'react';
 
 import Constraint from '../../constraint';
@@ -23,14 +24,14 @@ const replaceFootnotes = (id, text) => {
   return newText;
 };
 
-export default ({ footnotesRepeat, id, text }) => {
+export default ({ footnotesRepeat, id, text, bold = false }) => {
   const hasFootnotes = footnotesRepeat && footnotesRepeat.length > 0;
 
   return (
     <section>
       <style jsx>{styles}</style>
 
-      <div className="richtext">
+      <div className={classnames('richtext', { 'richtext--is-bold': bold })}>
         <Constraint>
           <div
             dangerouslySetInnerHTML={{

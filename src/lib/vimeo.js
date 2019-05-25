@@ -15,7 +15,7 @@ const fetchVimeoVideo = videoId => {
     new Promise((resolve, reject) => {
       client.request(
         {
-          path: `/videos/${videoId}/`
+          path: `/videos/${parseInt(videoId, 10)}/`
         },
         (error, res) => {
           if (error) {
@@ -31,7 +31,7 @@ const fetchVimeoVideo = videoId => {
     new Promise((resolve, reject) => {
       client.request(
         {
-          path: `/videos/${videoId}/texttracks`
+          path: `/videos/${parseInt(videoId, 10)}/texttracks`
         },
         (error, res) => {
           if (error) {

@@ -215,7 +215,7 @@ exports.createPages = ({
               const nodes = [];
               const cached = [];
 
-              data.forEach(video => {
+              data.filter(Boolean).forEach(video => {
                 const { id } = video;
 
                 if (cached.includes(id)) {

@@ -30,9 +30,9 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
-          'Link: </fonts/lapture/lapture-bold-italic.woff2>; as=font; rel=preload',
-          'Link: </fonts/superla/superla-book.woff2>; as=font; rel=preload',
-          'Link: </fonts/superla/superla-extra-bold.woff2>; as=font; rel=preload'
+          'Link: </fonts/lapture/lapture-bold-italic.woff2>; as=font; rel=preload; crossorigin=anonymous',
+          'Link: </fonts/superla/superla-book.woff2>; as=font; rel=preload; crossorigin=anonymous',
+          'Link: </fonts/superla/superla-extra-bold.woff2>; as=font; rel=preload; crossorigin=anonymous'
         ]
       }
     },

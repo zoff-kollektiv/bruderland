@@ -32,7 +32,7 @@ const Page = ({
   return (
     <>
       <Helmet>
-        <title dangerouslySetInnerHTML={{ __html: title }} />
+        <title>{title}</title>
       </Helmet>
 
       <Metadata

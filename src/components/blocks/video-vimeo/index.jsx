@@ -193,6 +193,7 @@ export default class Video extends Component {
 
           <div className="control-button-container">
             <button
+              aria-label={isPlaying ? 'Pause' : 'Video abspielen'}
               type="button"
               className="control-button"
               onClick={event => {

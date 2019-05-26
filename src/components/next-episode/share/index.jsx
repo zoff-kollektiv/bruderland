@@ -18,7 +18,10 @@ export default ({ title }) => (
 
       <ul>
         <li>
-          <a href="https://facebook.com/">
+          <a
+            href="https://facebook.com/"
+            aria-label="Episode auf Facebook teilen"
+          >
             <FacebookIcon className={shareIcon.className} />
           </a>
         </li>
@@ -27,12 +30,13 @@ export default ({ title }) => (
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
               title
             )}`}
+            aria-label="Episode auf Twitter teilen"
           >
             <TwitterIcon className={shareIcon.className} />
           </a>
         </li>
         <li>
-          <a href="mailto:">
+          <a href="mailto:" aria-label="Episode per Email teilen">
             <EnvelopeIcon className={shareIcon.className} />
           </a>
         </li>

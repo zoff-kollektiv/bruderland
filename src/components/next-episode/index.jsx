@@ -27,6 +27,7 @@ export default ({ currentTitle, node: { acf, title, slug } }) => (
       to={`/episodes/${slug}/`}
       className={arrowLink.className}
       rel="nofollow"
+      aria-label={`Nächste Episode ${title}`}
     >
       <ArrowDownIcon className={arrowDownIcon.className} />
     </Link>

@@ -41,16 +41,41 @@ export default ({
               type="button"
               onClick={event => {
                 event.preventDefault();
-                setModalState(!modalOpen);
+                setModalState(true);
               }}
-              aria-label={`Bild ${modalOpen ? 'verkleinern' : 'vergrößern'}`}
+              aria-label="Bild vergrößern"
             >
               <ExpandIcon className={expandIcon.className} />
             </button>
 
             {modalOpen && (
-              <Modal isOpen className="modal" overlayClassName="modal-overlay">
-                Fullscreen image
+              <Modal
+                isOpen
+                className="image-modal"
+                overlayClassName="image-modal-overlay"
+              >
+                <button
+                  className="fullscreen-toggle"
+                  type="button"
+                  onClick={event => {
+                    event.preventDefault();
+                    setModalState(false);
+                  }}
+                  aria-label="Bild verkleinern"
+                >
+                  <ExpandIcon className={expandIcon.className} />
+                </button>
+
+                <figure>
+                  <img
+                    src={localFile.childImageSharp.fluid.src}
+                    srcSet={localFile.childImageSharp.fluid.srcSet}
+                    alt={alt}
+                    loading="lazy"
+                  />
+
+                  {caption && <Caption caption={caption} />}
+                </figure>
               </Modal>
             )}
           </>

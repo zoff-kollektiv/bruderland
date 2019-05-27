@@ -58,6 +58,27 @@ export default css`
   .fullscreen-toggle:hover {
     color: ${colors.brand};
   }
+
+  :global(.image-modal) {
+    background-color: rgb(77, 77, 77);
+    color: white;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 101;
+  }
+
+  @media ${mq.tablet} {
+    :global(.image-modal) {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      position: fixed;
+    }
+  }
 `;
 
 export const expandIcon = css.resolve`

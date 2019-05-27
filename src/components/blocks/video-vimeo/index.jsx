@@ -37,15 +37,21 @@ export default class Video extends Component {
     el.pause();
   };
 
-  play = el => {
+  play = (el, options = { force: false }) => {
     el.play();
 
-    // check if really is really playing (in case autoplay was blocked)
-    setTimeout(() => {
-      if (el.currentTime > 0 && el.paused === false && el.ended === false) {
-        this.setState({ isPlaying: true });
-      }
-    }, 500);
+    const { force } = options;
+
+    if (force === false) {
+      // check if really is really playing (in case autoplay was blocked)
+      setTimeout(() => {
+        if (el.currentTime > 0 && el.paused === false && el.ended === false) {
+          this.setState({ isPlaying: true });
+        }
+      }, 500);
+    } else {
+      this.setState({ isPlaying: true });
+    }
   };
 
   stop = el => {
@@ -80,11 +86,11 @@ export default class Video extends Component {
     }
   };
 
-  togglePlayAndPause = () => {
+  togglePlayAndPause = options => {
     const { current: video } = this.video;
 
     if (video.paused || video.ended) {
-      this.play(video);
+      this.play(video, options);
     } else {
       this.pause(video);
     }
@@ -198,7 +204,7 @@ export default class Video extends Component {
               className="control-button"
               onClick={event => {
                 event.preventDefault();
-                this.togglePlayAndPause();
+                this.togglePlayAndPause({ force: true });
               }}
             >
               <Progress

@@ -183,6 +183,8 @@ export default css`
     margin-left: auto;
     margin-right: 1rem;
     margin-top: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     text-align: right;
   }
 
@@ -191,6 +193,8 @@ export default css`
       font-size: 0.8rem;
       margin-right: 1.5rem;
       margin-top: 1rem;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 

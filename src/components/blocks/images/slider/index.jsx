@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import Slider from 'react-slick';
 
-import ArrowLeftIcon from '../../../../static/arrow-left.svg';
-import ArrowRightIcon from '../../../../static/arrow-right.svg';
+import ChevronLeftIcon from '../../../../static/chevron-left.svg';
+import ChevronRightIcon from '../../../../static/chevron-right.svg';
 import Constraint from '../../../constraint';
 import Image from '../image';
 import VisuallyHidden from '../../../visually-hidden';
@@ -33,7 +33,7 @@ export default ({ images }) => {
             className="slider-control slider-control--prev"
             onClick={() => slider.current.slickNext()}
           >
-            <ArrowLeftIcon className={arrowStyles.className} />
+            <ChevronLeftIcon className={arrowStyles.className} />
             <VisuallyHidden>Zurück</VisuallyHidden>
           </button>
 
@@ -51,7 +51,7 @@ export default ({ images }) => {
             onClick={() => slider.current.slickNext()}
           >
             <VisuallyHidden>Weiter</VisuallyHidden>
-            <ArrowRightIcon className={arrowStyles.className} />
+            <ChevronRightIcon className={arrowStyles.className} />
           </button>
         </div>
       </Constraint>

@@ -135,6 +135,21 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 1.15rem;
     font-weight: ${fonts.superla.weight.regular};
+    line-height: 1.2;
+  }
+
+  @media ${mq.tablet} {
+    video::-webkit-media-text-track-display,
+    video::cue {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    video::-webkit-media-text-track-display,
+    video::cue {
+      font-size: 1.45rem;
+    }
   }
 
   .is-fullsize video::-webkit-media-text-track-display,

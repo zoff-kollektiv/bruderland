@@ -32,6 +32,7 @@ export default withLayout(Page);
 export const query = graphql`
   query($wordpressId: Int) {
     background: wordpressWpBackground(wordpress_id: { eq: $wordpressId }) {
+      slug
       title
       acf {
         content_background {

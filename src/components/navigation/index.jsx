@@ -122,14 +122,14 @@ export default class Navigation extends Component {
                   {
                     node: {
                       title: 'Kontakt & Impressum',
-                      link: '/contact/'
+                      link: '/background/impressum/'
                     }
                   },
 
                   {
                     node: {
                       title: 'Datenschutz',
-                      link: '/data-protection/'
+                      link: '/background/datenschutz/'
                     }
                   }
                 ]}

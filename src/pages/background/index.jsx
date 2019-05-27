@@ -40,7 +40,9 @@ export default withLayout(Page);
 
 export const query = graphql`
   query {
-    backgrounds: allWordpressWpBackground {
+    backgrounds: allWordpressWpBackground(
+      filter: { acf: { show_in_overview: { eq: true } } }
+    ) {
       nodes {
         slug
         title

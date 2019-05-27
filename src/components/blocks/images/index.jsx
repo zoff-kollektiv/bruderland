@@ -10,10 +10,14 @@ export default ({ imagesRepeat }) => (
   <section>
     <style jsx>{styles}</style>
 
-    {imagesRepeat.length === 1 ? (
-      <Image {...imagesRepeat[0]} />
-    ) : (
-      <Slider images={imagesRepeat} />
+    {imagesRepeat && (
+      <>
+        {imagesRepeat.length === 1 ? (
+          <Image {...imagesRepeat[0]} />
+        ) : (
+          <Slider images={imagesRepeat} />
+        )}
+      </>
     )}
   </section>
 );

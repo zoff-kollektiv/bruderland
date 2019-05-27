@@ -37,8 +37,9 @@ export const query = graphql`
         content_protagonists {
           ...annotations
           ...quote
-          ...imageTextCombination
           ...richtext
+          ...images
+          ...imageTextCombination
           ...slogan
         }
       }

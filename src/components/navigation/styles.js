@@ -46,8 +46,8 @@ export default css`
     .navigation {
       max-height: 45rem;
       max-width: 80rem;
-      padding-bottom: 2.5rem;
-      padding-top: 2.5rem;
+      padding-bottom: 4.5rem;
+      padding-top: 4.5rem;
     }
   }
 

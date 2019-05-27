@@ -31,10 +31,10 @@ export default ({ images }) => {
           <button
             type="button"
             className="slider-control slider-control--prev"
-            onClick={() => slider.current.slickNext()}
+            onClick={() => slider.current.slickPrev()}
           >
             <ChevronLeftIcon className={arrowStyles.className} />
-            <VisuallyHidden>Zurück</VisuallyHidden>
+            <VisuallyHidden>Vorheriges Bild</VisuallyHidden>
           </button>
 
           <Slider ref={slider} {...settings}>
@@ -50,7 +50,7 @@ export default ({ images }) => {
             className="slider-control slider-control--next"
             onClick={() => slider.current.slickNext()}
           >
-            <VisuallyHidden>Weiter</VisuallyHidden>
+            <VisuallyHidden>Nächstes Bild</VisuallyHidden>
             <ChevronRightIcon className={arrowStyles.className} />
           </button>
         </div>

@@ -23,6 +23,12 @@ export default css`
     z-index: 10;
   }
 
+  .slider-control:hover,
+  .slider-control:focus {
+    color: ${colors.brand};
+    cursor: pointer;
+  }
+
   @media ${mq.tablet} {
     .slider-control {
       top: 12rem;

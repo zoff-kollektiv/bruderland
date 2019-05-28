@@ -30,11 +30,13 @@ export const fragment = graphql`
         id
         alt_text
         caption
+        mimeType: mime_type
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200) {
               src
               srcSet
+              srcSetWebp
             }
           }
         }

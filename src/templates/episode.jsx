@@ -88,11 +88,13 @@ export const query = graphql`
         og_description
         backgroundImage {
           caption
+          mimeType: mime_type
           localFile {
             childImageSharp {
               fluid(maxHeight: 1200, maxWidth: 2000) {
                 src
                 srcSet
+                srcSetWebp
               }
             }
           }

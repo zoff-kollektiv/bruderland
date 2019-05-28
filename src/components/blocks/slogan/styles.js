@@ -12,14 +12,13 @@ export default css`
     justify-content: center;
     margin-bottom: 3rem;
     margin-top: 3rem;
-    padding: 1.5rem;
+    padding: 3.5rem 0;
+    width: 100%;
   }
 
   @media ${mq.tablet} {
     section {
       min-height: 100vh;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
     }
   }
 
@@ -47,11 +46,14 @@ export default css`
     margin: 0;
     text-align: center;
     padding: 0;
+    width: 100%;
+    word-break: break-word;
   }
 
   @media ${mq.tablet} {
     blockquote {
       font-size: 4.375rem;
+      width: auto;
     }
   }
 
@@ -62,6 +64,12 @@ export default css`
     font-style: normal;
     font-weight: ${fonts.superla.weight.regular};
     line-height: 1.6;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    blockquote {
+      margin-top: 3rem;
+    }
   }
 `;

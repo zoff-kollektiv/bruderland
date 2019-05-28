@@ -1,40 +1,109 @@
 import classnames from 'classnames';
-import React from 'react';
+import Modal from 'react-modal';
+import React, { useState } from 'react';
 
 import Caption from '../../../caption';
-import styles from './styles';
+import ExpandIcon from '../../../../static/expand.svg';
+import styles, {
+  expandIcon,
+  imageStyle,
+  imageFullScreenStyle,
+  imageExpanendStyle
+} from './styles';
 
-export default ({ fullscreen = false, imagesImage }) => {
+const Picture = ({ file, alt, mimeType, ...rest }) => (
+  <picture>
+    <source type="image/webp" srcSet={file.childImageSharp.fluid.srcSetWebp} />
+    <source type={mimeType} srcSet={file.childImageSharp.fluid.srcSet} />
+
+    <img
+      src={file.childImageSharp.fluid.src}
+      alt={alt}
+      loading="lazy"
+      {...rest}
+    />
+  </picture>
+);
+
+export default ({
+  fullscreen = false,
+  allow_expansion: allowExpansion = false,
+  imagesImage
+}) => {
   if (!imagesImage) {
     return null;
   }
 
   const { alt_text: alt, caption, mimeType, localFile } = imagesImage;
+  const [modalOpen, setModalState] = useState(false);
 
   return (
     imagesImage &&
     localFile && (
       <figure className={classnames({ 'is-fullscreen': fullscreen })}>
         <style jsx>{styles}</style>
-        <picture>
-          <source
-            type="image/webp"
-            srcSet={localFile.childImageSharp.fluid.srcSetWebp}
-          />
+        {expandIcon.styles}
+        {imageStyle.styles}
+        {fullscreen && imageFullScreenStyle.styles}
 
-          <source
-            type={mimeType}
-            srcSet={localFile.childImageSharp.fluid.srcSet}
-          />
-
-          <img
-            src={localFile.childImageSharp.fluid.src}
-            alt={alt}
-            loading="lazy"
-          />
-        </picture>
+        <Picture
+          mimeType={mimeType}
+          alt={alt}
+          file={localFile}
+          className={classnames(imageStyle.className, {
+            [imageFullScreenStyle.className]: fullscreen
+          })}
+        />
 
         {caption && <Caption caption={caption} />}
+
+        {allowExpansion && (
+          <>
+            <button
+              className="fullscreen-toggle"
+              type="button"
+              onClick={event => {
+                event.preventDefault();
+                setModalState(true);
+              }}
+              aria-label="Bild vergrößern"
+            >
+              <ExpandIcon className={expandIcon.className} />
+            </button>
+
+            {modalOpen && (
+              <Modal
+                isOpen
+                className="image-modal"
+                overlayClassName="image-modal-overlay"
+              >
+                {imageExpanendStyle.styles}
+
+                <button
+                  className="fullscreen-toggle"
+                  type="button"
+                  onClick={event => {
+                    event.preventDefault();
+                    setModalState(false);
+                  }}
+                  aria-label="Bild verkleinern"
+                >
+                  <ExpandIcon className={expandIcon.className} />
+                </button>
+
+                <Picture
+                  mimeType={mimeType}
+                  alt={alt}
+                  file={localFile}
+                  className={classnames(
+                    imageStyle.className,
+                    imageExpanendStyle.className
+                  )}
+                />
+              </Modal>
+            )}
+          </>
+        )}
       </figure>
     )
   );

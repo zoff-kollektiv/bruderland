@@ -72,8 +72,8 @@ export default css`
 
   .quote {
     height: 50vh;
-    justify-content: flex-start;
-    padding: 0 1.5rem;
+    justify-content: flex-end;
+    padding: 0 1rem 4rem 1rem;
     position: absolute;
     top: 50%;
   }
@@ -81,6 +81,7 @@ export default css`
   @media ${mq.tablet} {
     .quote {
       height: 100%;
+      justify-content: flex-start;
       padding: 0 25%;
       position: relative;
       top: auto;
@@ -114,10 +115,10 @@ export default css`
   blockquote {
     color: white;
     font-family: ${fonts.lapture.family};
-    font-size: 2.18rem;
+    font-size: 2rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
-    line-height: 1.3;
+    line-height: 1.2;
     margin: 0;
     padding-top: 2.5rem;
     text-align: center;
@@ -126,6 +127,7 @@ export default css`
   @media ${mq.tablet} {
     blockquote {
       font-size: 2.875rem;
+      line-height: 1.3;
       padding-top: 5rem;
     }
   }
@@ -281,7 +283,7 @@ export const logoLink = css.resolve`
 export const arrowIcon = css.resolve`
   svg {
     color: white;
-    bottom: 2.5rem;
+    bottom: 1.5rem;
     height: 2rem;
     left: 50%;
     position: absolute;
@@ -290,6 +292,13 @@ export const arrowIcon = css.resolve`
   }
 
   @media ${mq.tablet} {
+    svg {
+      height: 2.5rem;
+      width: 3rem;
+    }
+  }
+
+  @media ${mq.desktop} {
     svg {
       height: 3rem;
       width: 3rem;

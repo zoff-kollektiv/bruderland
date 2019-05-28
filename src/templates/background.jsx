@@ -43,6 +43,7 @@ export const query = graphql`
           ...imageTextCombination
           ...slogan
           ...videoVimeo
+          ...logos
         }
       }
     }

@@ -140,15 +140,8 @@ export default class Navigation extends Component {
                 items={[
                   {
                     node: {
-                      title: 'Twitter',
-                      link: 'https://twitter.com/'
-                    }
-                  },
-
-                  {
-                    node: {
                       title: 'Facebook',
-                      link: 'https://facebook.com.com/'
+                      link: 'https://www.facebook.com/Bruderland/'
                     }
                   }
                 ]}

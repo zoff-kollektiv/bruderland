@@ -22,7 +22,7 @@ const Page = ({
   const {
     title,
     acf: {
-      og_descriptiom: ogDescription,
+      og_description: ogDescription,
       og_title: ogTitle,
       og_image: ogImage,
       twitter_image: twitterImage

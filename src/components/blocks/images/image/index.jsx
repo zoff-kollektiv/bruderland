@@ -4,7 +4,26 @@ import React, { useState } from 'react';
 
 import Caption from '../../../caption';
 import ExpandIcon from '../../../../static/expand.svg';
-import styles, { expandIcon } from './styles';
+import styles, {
+  expandIcon,
+  imageStyle,
+  imageFullScreenStyle,
+  imageExpanendStyle
+} from './styles';
+
+const Picture = ({ file, alt, mimeType, ...rest }) => (
+  <picture>
+    <source type="image/webp" srcSet={file.childImageSharp.fluid.srcSetWebp} />
+    <source type={mimeType} srcSet={file.childImageSharp.fluid.srcSet} />
+
+    <img
+      src={file.childImageSharp.fluid.src}
+      alt={alt}
+      loading="lazy"
+      {...rest}
+    />
+  </picture>
+);
 
 export default ({
   fullscreen = false,
@@ -24,24 +43,17 @@ export default ({
       <figure className={classnames({ 'is-fullscreen': fullscreen })}>
         <style jsx>{styles}</style>
         {expandIcon.styles}
+        {imageStyle.styles}
+        {fullscreen && imageFullScreenStyle.styles}
 
-        <picture>
-          <source
-            type="image/webp"
-            srcSet={localFile.childImageSharp.fluid.srcSetWebp}
-          />
-
-          <source
-            type={mimeType}
-            srcSet={localFile.childImageSharp.fluid.srcSet}
-          />
-
-          <img
-            src={localFile.childImageSharp.fluid.src}
-            alt={alt}
-            loading="lazy"
-          />
-        </picture>
+        <Picture
+          mimeType={mimeType}
+          alt={alt}
+          file={localFile}
+          className={classnames(imageStyle.className, {
+            [imageFullScreenStyle.className]: fullscreen
+          })}
+        />
 
         {caption && <Caption caption={caption} />}
 
@@ -65,6 +77,8 @@ export default ({
                 className="image-modal"
                 overlayClassName="image-modal-overlay"
               >
+                {imageExpanendStyle.styles}
+
                 <button
                   className="fullscreen-toggle"
                   type="button"
@@ -77,16 +91,15 @@ export default ({
                   <ExpandIcon className={expandIcon.className} />
                 </button>
 
-                <figure>
-                  <img
-                    src={localFile.childImageSharp.fluid.src}
-                    srcSet={localFile.childImageSharp.fluid.srcSet}
-                    alt={alt}
-                    loading="lazy"
-                  />
-
-                  {caption && <Caption caption={caption} />}
-                </figure>
+                <Picture
+                  mimeType={mimeType}
+                  alt={alt}
+                  file={localFile}
+                  className={classnames(
+                    imageStyle.className,
+                    imageExpanendStyle.className
+                  )}
+                />
               </Modal>
             )}
           </>

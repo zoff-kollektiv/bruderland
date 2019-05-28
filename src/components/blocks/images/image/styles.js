@@ -20,19 +20,6 @@ export default css`
     width: 100%;
   }
 
-  img {
-    align-self: flex-start;
-    max-height: 60vh;
-    max-width: 100%;
-    width: auto;
-  }
-
-  .is-fullscreen img {
-    height: auto;
-    max-height: none;
-    width: 100%;
-  }
-
   @media ${mq.tablet} {
     .is-fullscreen :global(figcaption) {
       bottom: 2.5rem;
@@ -60,24 +47,18 @@ export default css`
   }
 
   :global(.image-modal) {
+    align-items: center;
     background-color: rgb(77, 77, 77);
     color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
     left: 0;
     overflow: hidden;
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 101;
-  }
-
-  @media ${mq.tablet} {
-    :global(.image-modal) {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      height: 100%;
-      position: fixed;
-    }
   }
 `;
 
@@ -85,5 +66,31 @@ export const expandIcon = css.resolve`
   svg {
     height: 2rem;
     width: 2rem;
+  }
+`;
+
+export const imageStyle = css.resolve`
+  img {
+    align-self: flex-start;
+    max-height: 60vh;
+    max-width: 100%;
+    width: auto;
+  }
+`;
+
+export const imageFullScreenStyle = css.resolve`
+  img {
+    height: auto;
+    max-height: none;
+    width: 100%;
+  }
+`;
+
+export const imageExpanendStyle = css.resolve`
+  img {
+    height: auto;
+    padding: 1.5rem;
+    max-height: 100vh;
+    width: 100%;
   }
 `;

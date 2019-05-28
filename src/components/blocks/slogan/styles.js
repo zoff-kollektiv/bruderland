@@ -39,7 +39,7 @@ export default css`
 
   blockquote {
     font-family: ${fonts.lapture.family};
-    font-size: 3rem;
+    font-size: 2rem;
     font-style: italic;
     font-weight: ${fonts.lapture.weight.bold};
     line-height: 1.1;
@@ -52,8 +52,14 @@ export default css`
 
   @media ${mq.tablet} {
     blockquote {
-      font-size: 4.375rem;
+      font-size: 3rem;
       width: auto;
+    }
+  }
+
+  @media ${mq.desktop} {
+    blockquote {
+      font-size: 4.375rem;
     }
   }
 

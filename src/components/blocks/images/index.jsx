@@ -33,7 +33,7 @@ export const fragment = graphql`
         mimeType: mime_type
         localFile {
           childImageSharp {
-            fluid(maxWidth: 1200) {
+            fluid(maxWidth: 1200, quality: 80) {
               src
               srcSet
               srcSetWebp

@@ -91,7 +91,7 @@ export const query = graphql`
           mimeType: mime_type
           localFile {
             childImageSharp {
-              fluid(maxHeight: 1200, maxWidth: 2000) {
+              fluid(maxHeight: 1200, maxWidth: 2000, quality: 70) {
                 src
                 srcSet
                 srcSetWebp

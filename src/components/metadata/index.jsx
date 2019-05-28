@@ -5,6 +5,8 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
   <Helmet>
     {title && <title>{title}</title>}
 
+    {ogDescription && <meta name="description" content={ogDescription} />}
+
     {/* disable phone number detection on iOS */}
     <meta name="format-detection" content="telephone=no" />
 
@@ -13,13 +15,7 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
     <meta property="og:site_name" content="Bruderland" />
 
     <meta property="og:title" content={ogTitle || title} />
-
-    {ogDescription && (
-      <>
-        <meta name="description" content={ogDescription} />
-        <meta property="og:title" content={ogDescription} />
-      </>
-    )}
+    {ogDescription && <meta property="og:title" content={ogDescription} />}
 
     {ogImage && ogImage.localFile && (
       <meta

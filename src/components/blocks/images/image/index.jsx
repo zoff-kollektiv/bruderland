@@ -15,7 +15,7 @@ export default ({
     return null;
   }
 
-  const { alt_text: alt, caption, localFile } = imagesImage;
+  const { alt_text: alt, caption, mimeType, localFile } = imagesImage;
   const [modalOpen, setModalState] = useState(false);
 
   return (
@@ -25,12 +25,23 @@ export default ({
         <style jsx>{styles}</style>
         {expandIcon.styles}
 
-        <img
-          src={localFile.childImageSharp.fluid.src}
-          srcSet={localFile.childImageSharp.fluid.srcSet}
-          alt={alt}
-          loading="lazy"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={localFile.childImageSharp.fluid.srcSetWebp}
+          />
+
+          <source
+            type={mimeType}
+            srcSet={localFile.childImageSharp.fluid.srcSet}
+          />
+
+          <img
+            src={localFile.childImageSharp.fluid.src}
+            alt={alt}
+            loading="lazy"
+          />
+        </picture>
 
         {caption && <Caption caption={caption} />}
 

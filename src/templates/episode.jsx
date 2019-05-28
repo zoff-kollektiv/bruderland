@@ -22,7 +22,7 @@ const Page = ({
   const {
     title,
     acf: {
-      og_descriptiom: ogDescription,
+      og_description: ogDescription,
       og_title: ogTitle,
       og_image: ogImage,
       twitter_image: twitterImage
@@ -88,11 +88,13 @@ export const query = graphql`
         og_description
         backgroundImage {
           caption
+          mimeType: mime_type
           localFile {
             childImageSharp {
-              fluid(maxHeight: 1200, maxWidth: 2000) {
+              fluid(maxHeight: 1200, maxWidth: 2000, quality: 70) {
                 src
                 srcSet
+                srcSetWebp
               }
             }
           }

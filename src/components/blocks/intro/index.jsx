@@ -63,12 +63,27 @@ export default ({
         <>
           <div className="quote-container" ref={introRef}>
             {backgroundImage.localFile && (
-              <img
-                src={backgroundImage.localFile.childImageSharp.fluid.src}
-                srcSet={backgroundImage.localFile.childImageSharp.fluid.srcSet}
-                alt={backgroundImage.alt_text}
-                className="image"
-              />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcSet={
+                    backgroundImage.localFile.childImageSharp.fluid.srcSetWebp
+                  }
+                />
+
+                <source
+                  type={backgroundImage.mimeType}
+                  srcSet={
+                    backgroundImage.localFile.childImageSharp.fluid.srcSet
+                  }
+                />
+
+                <img
+                  src={backgroundImage.localFile.childImageSharp.fluid.src}
+                  alt={backgroundImage.alt_text}
+                  className="image"
+                />
+              </picture>
             )}
 
             <div className="logo">

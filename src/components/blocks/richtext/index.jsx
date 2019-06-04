@@ -24,8 +24,19 @@ const replaceFootnotes = (id, text) => {
   return newText;
 };
 
+const replaceWpBaseUrl = text => {
+  const WP_BASE = 'https://b2oulrk7.myraidbox.de';
+
+  return text.replace(new RegExp(WP_BASE, 'g'), '');
+};
+
 export default ({ footnotesRepeat, id, text, bold = false }) => {
   const hasFootnotes = footnotesRepeat && footnotesRepeat.length > 0;
+  let cleanText = replaceWpBaseUrl(text);
+
+  if (hasFootnotes) {
+    cleanText = replaceFootnotes(id, text);
+  }
 
   return (
     <section>
@@ -35,7 +46,7 @@ export default ({ footnotesRepeat, id, text, bold = false }) => {
         <Constraint>
           <div
             dangerouslySetInnerHTML={{
-              __html: hasFootnotes ? replaceFootnotes(id, text) : text
+              __html: cleanText
             }}
           />
         </Constraint>

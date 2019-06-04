@@ -10,7 +10,7 @@ import '../../../../../node_modules/slick-carousel/slick/slick.css';
 import styles, { arrowStyles } from './styles';
 
 const settings = {
-  adaptiveHeight: true,
+  adaptiveHeight: false,
   arrows: false,
   dots: false,
   infinite: true,
@@ -20,12 +20,6 @@ const settings = {
 
 export default ({ images }) => {
   const slider = useRef(null);
-
-  setTimeout(() => {
-    if (slider && slider.current) {
-      slider.current.slickGoTo(0);
-    }
-  }, 200);
 
   return (
     <section>

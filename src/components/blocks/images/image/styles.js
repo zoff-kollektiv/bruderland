@@ -24,7 +24,7 @@ export default css`
       bottom: 2.5rem;
       color: white;
       left: 2.5rem;
-      max-width: 15rem;
+      max-width: 20rem;
       position: absolute;
       text-align: left;
       text-shadow: 0 2px 3px rgba(0, 0, 0, 0.75);
@@ -37,7 +37,7 @@ export default css`
     color: white;
     position: absolute;
     right: 1rem;
-    top: 1rem;
+    top: 1.5rem;
   }
 
   .fullscreen-toggle:focus,
@@ -63,6 +63,7 @@ export default css`
 
 export const expandIcon = css.resolve`
   svg {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
     height: 2rem;
     width: 2rem;
   }

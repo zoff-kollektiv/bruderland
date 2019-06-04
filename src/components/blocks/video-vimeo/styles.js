@@ -36,6 +36,7 @@ export default css`
   @media ${mq.tablet} {
     footer {
       flex-direction: row;
+      margin-top: 1.5rem;
       padding-right: 0.5rem;
     }
   }

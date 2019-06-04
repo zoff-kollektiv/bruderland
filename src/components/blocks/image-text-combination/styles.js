@@ -15,7 +15,7 @@ export default css`
     figure {
       flex-direction: row;
       flex-wrap: nowrap;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       margin-top: 2rem;
       padding-left: 3.5rem;
       padding-right: 3.5rem;

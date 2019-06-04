@@ -4,14 +4,14 @@ import { fonts, colors, mq } from '../../../tokens';
 
 export default css`
   section {
-    padding-bottom: 4rem;
-    padding-top: 0;
+    margin-bottom: 4rem;
+    margin-top: 0;
   }
 
   @media ${mq.tablet} {
     section {
-      padding-bottom: 5rem;
-      padding-top: 7rem;
+      margin-bottom: 5rem;
+      margin-top: 3rem;
     }
   }
 

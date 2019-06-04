@@ -167,6 +167,7 @@ export default css`
 
 export const playPauseIconStyles = css.resolve`
   svg {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
     height: 1rem;
     left: 50%;
     margin-left: 0.05rem;
@@ -181,5 +182,11 @@ export const playPauseIconStyles = css.resolve`
       height: 1.5rem;
       width: 1.5rem;
     }
+  }
+`;
+
+export const progressIcon = css.resolve`
+  svg {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
   }
 `;

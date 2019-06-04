@@ -8,7 +8,7 @@ import PauseIcon from '../../../static/pause.svg';
 import PlayIcon from '../../../static/play.svg';
 import Progress from '../../progress';
 
-import styles, { playPauseIconStyles } from './styles';
+import styles, { playPauseIconStyles, progressIcon } from './styles';
 
 let observer;
 
@@ -155,6 +155,7 @@ export default class Video extends Component {
       <figure className={classnames({ 'is-fullsize': fullsize })}>
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
+        {progressIcon.styles}
 
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
@@ -208,6 +209,7 @@ export default class Video extends Component {
               }}
             >
               <Progress
+                className={classnames({ [progressIcon.className]: fullsize })}
                 ref={this.playButton}
                 strokeWidth="7"
                 percentage={progressPercentage}

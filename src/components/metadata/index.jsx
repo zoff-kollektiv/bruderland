@@ -1,6 +1,8 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
+const BASE_URL = 'https://develop--bruderland.netlify.com';
+
 export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
   <Helmet>
     {title && <title>{title}</title>}
@@ -20,7 +22,7 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
     {ogImage && ogImage.localFile && (
       <meta
         property="og:image"
-        content={ogImage.localFile.childImageSharp.fixed.src}
+        content={`${BASE_URL}${ogImage.localFile.childImageSharp.fixed.src}`}
       />
     )}
 
@@ -35,7 +37,9 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
     {twitterImage && twitterImage.localFile && (
       <meta
         property="twitter:image"
-        content={twitterImage.localFile.childImageSharp.fixed.src}
+        content={`${BASE_URL}${
+          twitterImage.localFile.childImageSharp.fixed.src
+        }`}
       />
     )}
   </Helmet>

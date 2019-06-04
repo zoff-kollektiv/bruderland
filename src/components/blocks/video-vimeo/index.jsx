@@ -8,7 +8,11 @@ import PauseIcon from '../../../static/pause.svg';
 import PlayIcon from '../../../static/play.svg';
 import Progress from '../../progress';
 
-import styles, { playPauseIconStyles, progressIcon } from './styles';
+import styles, {
+  playPauseIconStyles,
+  progressIcon,
+  playPauseDropShadow
+} from './styles';
 
 let observer;
 
@@ -156,6 +160,7 @@ export default class Video extends Component {
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
         {progressIcon.styles}
+        {playPauseDropShadow.styles}
 
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
@@ -217,9 +222,17 @@ export default class Video extends Component {
               />
 
               {isPlaying ? (
-                <PauseIcon className={playPauseIconStyles.className} />
+                <PauseIcon
+                  className={classnames(playPauseIconStyles.className, {
+                    [playPauseDropShadow.className]: fullsize
+                  })}
+                />
               ) : (
-                <PlayIcon className={playPauseIconStyles.className} />
+                <PlayIcon
+                  className={classnames(playPauseIconStyles.className, {
+                    [playPauseDropShadow.className]: fullsize
+                  })}
+                />
               )}
             </button>
 

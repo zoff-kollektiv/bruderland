@@ -34,7 +34,14 @@ export default ({
     return null;
   }
 
-  const { alt_text: alt, caption, mimeType, localFile } = imagesImage;
+  const {
+    alt_text: alt,
+    caption,
+    mimeType,
+    mediaDetails: { imageWidth, imageHeight },
+    localFile
+  } = imagesImage;
+  const isPortrait = imageWidth < imageHeight;
   const [modalOpen, setModalState] = useState(false);
 
   return (
@@ -55,7 +62,7 @@ export default ({
           })}
         />
 
-        {caption && <Caption caption={caption} />}
+        {caption && <Caption caption={caption} isPortrait={isPortrait} />}
 
         {allowExpansion && (
           <>

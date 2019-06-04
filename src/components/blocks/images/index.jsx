@@ -32,6 +32,10 @@ export const fragment = graphql`
         alt_text
         caption
         mimeType: mime_type
+        mediaDetails: media_details {
+          imageHeight: height
+          imageWidth: width
+        }
         localFile {
           childImageSharp {
             fluid(maxWidth: 1200, quality: 80) {

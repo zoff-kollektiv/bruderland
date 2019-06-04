@@ -9,6 +9,7 @@ export default css`
   }
 
   ul {
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

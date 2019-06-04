@@ -5,8 +5,8 @@ import ChevronLeftIcon from '../../../../static/chevron-left.svg';
 import ChevronRightIcon from '../../../../static/chevron-right.svg';
 import Constraint from '../../../constraint';
 import Image from '../image';
-import VisuallyHidden from '../../../visually-hidden';
 
+import '../../../../../node_modules/slick-carousel/slick/slick.css';
 import styles, { arrowStyles } from './styles';
 
 const settings = {
@@ -21,6 +21,12 @@ const settings = {
 export default ({ images }) => {
   const slider = useRef(null);
 
+  setTimeout(() => {
+    if (slider && slider.current) {
+      slider.current.slickGoTo(0);
+    }
+  }, 200);
+
   return (
     <section>
       <style jsx>{styles}</style>
@@ -32,9 +38,9 @@ export default ({ images }) => {
             type="button"
             className="slider-control slider-control--prev"
             onClick={() => slider.current.slickPrev()}
+            aria-label="Vorheriges Bild"
           >
             <ChevronLeftIcon className={arrowStyles.className} />
-            <VisuallyHidden>Vorheriges Bild</VisuallyHidden>
           </button>
 
           <Slider ref={slider} {...settings}>
@@ -49,8 +55,8 @@ export default ({ images }) => {
             type="button"
             className="slider-control slider-control--next"
             onClick={() => slider.current.slickNext()}
+            aria-label="Nächstes Bild"
           >
-            <VisuallyHidden>Nächstes Bild</VisuallyHidden>
             <ChevronRightIcon className={arrowStyles.className} />
           </button>
         </div>

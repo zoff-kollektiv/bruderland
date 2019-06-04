@@ -24,6 +24,7 @@
     "react-helmet": "^5.2.1",
     "react-modal": "^3.8.1",
     "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1",
     "styled-jsx": "^3.2.1",
     "tinycolor2": "^1.4.1",
     "vimeo": "^2.1.1"

@@ -8,8 +8,7 @@ export default css`
   figure {
     display: table;
     margin: 0 auto;
-    max-height: 60vh;
-    max-width: 750px;
+    max-width: 780px;
     position: relative;
   }
 
@@ -72,7 +71,7 @@ export const expandIcon = css.resolve`
 export const imageStyle = css.resolve`
   img {
     align-self: flex-start;
-    max-height: 60vh;
+    max-height: 75vh;
     max-width: 100%;
     width: auto;
   }

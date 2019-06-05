@@ -27,15 +27,15 @@ export default css`
   }
 
   footer {
+    align-items: flex-start;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 1rem;
     width: 100%;
   }
 
   @media ${mq.tablet} {
     footer {
-      flex-direction: row;
       margin-top: 1.5rem;
       padding-right: 0.5rem;
     }
@@ -55,28 +55,35 @@ export default css`
     flex-wrap: nowrap;
     justify-content: center;
     margin-bottom: 1rem;
-    margin-left: auto;
-    margin-right: 1.5rem;
-    order: -1;
+    margin-left: -1rem;
+    margin-right: 0.5rem;
   }
 
   @media ${mq.tablet} {
     .control-button-container {
       margin-bottom: 0;
+      margin-left: auto;
+      margin-right: 1.5rem;
       order: 2;
+    }
+  }
+
+  @media ${mq.tablet} {
+    .is-fullsize .control-button-container {
+      color: white;
+      transform: translateY(-9rem);
     }
   }
 
   @media ${mq.desktop} {
     .is-fullsize .control-button-container {
-      color: white;
-      transform: translateY(-12rem);
+      transform: translateY(-11rem);
     }
   }
 
   @media ${mq.wide} {
     .is-fullsize .control-button-container {
-      transform: translateY(-15rem);
+      transform: translateY(-13rem);
     }
   }
 
@@ -117,13 +124,19 @@ export default css`
 
   .current-time {
     font-family: ${fonts.superla.family};
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: ${fonts.superla.weight.regular};
     margin-bottom: 0;
     margin-left: 0.5rem;
     margin-top: 0;
     min-width: 4.5rem;
     white-space: nowrap;
+  }
+
+  @media ${mq.tablet} {
+    .current-time {
+      font-size: 1rem;
+    }
   }
 
   video {
@@ -174,6 +187,13 @@ export const playPauseIconStyles = css.resolve`
     top: 50%;
     transform: translate(-50%, -50%);
     width: 1rem;
+  }
+
+  @media ${mq.tablet} {
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
   }
 
   @media ${mq.tablet} {

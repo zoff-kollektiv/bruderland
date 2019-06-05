@@ -37,6 +37,20 @@ module.exports = {
       }
     },
 
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Eigensinn im Bruderland',
+        short_name: 'Bruderland',
+        start_url: '/',
+        background_color: 'white',
+        theme_color: '#D0021B',
+        display: 'standalone',
+        icon: './static/favicon.png',
+        legacy: false
+      }
+    },
+
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',

@@ -8,28 +8,38 @@ import { arrowLink, arrowDownIcon } from './styles';
 
 import ArrowDownIcon from '../../static/long-arrow-down.svg';
 
-export default ({ currentTitle, node: { acf, title, slug } }) => (
-  <footer>
-    {arrowLink.styles}
-    {arrowDownIcon.styles}
+export default ({ currentTitle, next }) => {
+  const {
+    node: { acf, title, slug }
+  } = next || { node: { acf: { title: false } } };
 
-    <Share title={currentTitle} />
+  return (
+    <footer>
+      {arrowLink.styles}
+      {arrowDownIcon.styles}
 
-    <Intro
-      renderQuote={false}
-      linkTitle
-      linkTitleSlug={slug}
-      title={title}
-      {...acf}
-    />
+      <Share title={currentTitle} />
 
-    <Link
-      to={`/episodes/${slug}/`}
-      className={arrowLink.className}
-      rel="nofollow"
-      aria-label={`Nächste Episode ${title}`}
-    >
-      <ArrowDownIcon className={arrowDownIcon.className} />
-    </Link>
-  </footer>
-);
+      {title && (
+        <>
+          <Intro
+            renderQuote={false}
+            linkTitle
+            linkTitleSlug={slug}
+            title={title}
+            {...acf}
+          />
+
+          <Link
+            to={`/episodes/${slug}/`}
+            className={arrowLink.className}
+            rel="nofollow"
+            aria-label={`Nächste Episode ${title}`}
+          >
+            <ArrowDownIcon className={arrowDownIcon.className} />
+          </Link>
+        </>
+      )}
+    </footer>
+  );
+};

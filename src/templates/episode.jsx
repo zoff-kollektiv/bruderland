@@ -9,7 +9,15 @@ import withLayout from '../components/with-layout';
 
 const getNextEpisode = (episodes, current) => {
   const number = parseInt(current.acf.number, 10);
-  return episodes[number + 1] || null;
+  const next = episodes.find(
+    ({
+      node: {
+        acf: { number: episodeNumber, published }
+      }
+    }) => parseInt(episodeNumber, 10) === number + 1 && published === true
+  );
+
+  return next;
 };
 
 const Page = ({

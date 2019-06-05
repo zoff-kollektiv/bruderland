@@ -64,8 +64,15 @@ export default css`
 export const expandIcon = css.resolve`
   svg {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
-    height: 2rem;
-    width: 2rem;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  @media ${mq.tablet} {
+    svg {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 `;
 

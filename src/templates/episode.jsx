@@ -108,7 +108,6 @@ export const query = graphql`
           }
         }
         content_episodes {
-          ...annotations
           ...quote
           ...richtext
           ...images

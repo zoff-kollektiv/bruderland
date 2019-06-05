@@ -4,11 +4,9 @@ import Images from './images';
 import ImageTextCombination from './image-text-combination';
 import Vimeo from './video-vimeo';
 import slogan from './slogan';
-import annotations from './annotations';
 import logos from './logos';
 
 const blocks = {
-  WordPressAcf_annotations: annotations,
   WordPressAcf_quote: Quote,
   WordPressAcf_text: Richtext,
   WordPressAcf_imageTextCombination: ImageTextCombination,

@@ -13,11 +13,14 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
     <meta name="format-detection" content="telephone=no" />
 
     {/* Facebook */}
+    <meta property="og:url" content={BASE_URL} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Bruderland" />
 
     <meta property="og:title" content={ogTitle || title} />
-    {ogDescription && <meta property="og:title" content={ogDescription} />}
+    {ogDescription && (
+      <meta property="og:description" content={ogDescription} />
+    )}
 
     {ogImage && ogImage.localFile && (
       <meta

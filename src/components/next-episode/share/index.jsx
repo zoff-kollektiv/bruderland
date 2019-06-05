@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Constraint from '../../constraint';
 
@@ -8,39 +8,56 @@ import TwitterIcon from '../../../static/twitter.svg';
 
 import styles, { shareIcon } from './styles';
 
-export default ({ title }) => (
-  <footer>
-    <style jsx>{styles}</style>
-    {shareIcon.styles}
+export default ({ title }) => {
+  const [url, setUrl] = useState('');
 
-    <Constraint>
-      <h4 className="title">Teile die Episode {title} auf</h4>
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setUrl(window.location.href);
+    }
+  }, [url]);
 
-      <ul>
-        <li>
-          <a
-            href="https://facebook.com/"
-            aria-label="Episode auf Facebook teilen"
-          >
-            <FacebookIcon className={shareIcon.className} />
-          </a>
-        </li>
-        <li>
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-              title
-            )}`}
-            aria-label="Episode auf Twitter teilen"
-          >
-            <TwitterIcon className={shareIcon.className} />
-          </a>
-        </li>
-        <li>
-          <a href="mailto:" aria-label="Episode per Email teilen">
-            <EnvelopeIcon className={shareIcon.className} />
-          </a>
-        </li>
-      </ul>
-    </Constraint>
-  </footer>
-);
+  const sharingText = `${title} | Eigensinn im Bruderland`;
+
+  return (
+    <footer>
+      <style jsx>{styles}</style>
+      {shareIcon.styles}
+
+      <Constraint>
+        <h4 className="title">Teile die Episode {title} auf</h4>
+
+        <ul>
+          <li>
+            <a
+              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                url
+              )}`}
+              aria-label="Episode auf Facebook teilen"
+            >
+              <FacebookIcon className={shareIcon.className} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                sharingText
+              )}&url=${encodeURIComponent(url)}`}
+              aria-label="Episode auf Twitter teilen"
+            >
+              <TwitterIcon className={shareIcon.className} />
+            </a>
+          </li>
+          <li>
+            <a
+              href={`mailto:?subject=${sharingText}&body=${url}`}
+              aria-label="Episode per Email teilen"
+            >
+              <EnvelopeIcon className={shareIcon.className} />
+            </a>
+          </li>
+        </ul>
+      </Constraint>
+    </footer>
+  );
+};

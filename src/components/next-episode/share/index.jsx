@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Constraint from '../../constraint';
 
@@ -9,12 +9,15 @@ import TwitterIcon from '../../../static/twitter.svg';
 import styles, { shareIcon } from './styles';
 
 export default ({ title }) => {
-  let currentUrl = '';
-  const sharingText = `${title} | Eigensinn im Bruderland`;
+  const [url, setUrl] = useState('');
 
-  if (typeof window !== 'undefined') {
-    currentUrl = window.location.href;
-  }
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setUrl(window.location.href);
+    }
+  }, [url]);
+
+  const sharingText = `${title} | Eigensinn im Bruderland`;
 
   return (
     <footer>
@@ -28,7 +31,7 @@ export default ({ title }) => {
           <li>
             <a
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                currentUrl
+                url
               )}`}
               aria-label="Episode auf Facebook teilen"
             >
@@ -39,7 +42,7 @@ export default ({ title }) => {
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
                 sharingText
-              )}&url=${encodeURIComponent(currentUrl)}`}
+              )}&url=${encodeURIComponent(url)}`}
               aria-label="Episode auf Twitter teilen"
             >
               <TwitterIcon className={shareIcon.className} />
@@ -47,7 +50,7 @@ export default ({ title }) => {
           </li>
           <li>
             <a
-              href={`mailto:?subject=${sharingText}&body=${currentUrl}`}
+              href={`mailto:?subject=${sharingText}&body=${url}`}
               aria-label="Episode per Email teilen"
             >
               <EnvelopeIcon className={shareIcon.className} />

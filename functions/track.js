@@ -3,6 +3,8 @@ const ua = require('universal-analytics');
 const visitor = ua(process.env.GA_ID);
 
 exports.handler = async event => {
+  const isProduction = process.env.NODE_ENV === 'production';
+
   if (!process.env.GA_ID) {
     return {
       body: 'No GA Account supplied.',
@@ -13,7 +15,7 @@ exports.handler = async event => {
   const { queryStringParameters } = event;
   const { target } = queryStringParameters;
 
-  if (target) {
+  if (isProduction && target) {
     visitor.pageview(target).send();
   }
 

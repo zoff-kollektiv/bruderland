@@ -10,7 +10,7 @@ import '../../../../../node_modules/slick-carousel/slick/slick.css';
 import styles, { arrowStyles } from './styles';
 
 const settings = {
-  adaptiveHeight: false,
+  adaptiveHeight: true,
   arrows: false,
   dots: false,
   infinite: true,

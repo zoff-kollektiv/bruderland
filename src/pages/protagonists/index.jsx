@@ -40,7 +40,7 @@ export default withLayout(Page);
 
 export const query = graphql`
   query {
-    protagonists: allWordpressWpProtagonists {
+    protagonists: allWordpressWpProtagonists(sort: { fields: title }) {
       nodes {
         slug
         title

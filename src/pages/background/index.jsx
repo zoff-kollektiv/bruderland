@@ -42,6 +42,7 @@ export const query = graphql`
   query {
     backgrounds: allWordpressWpBackground(
       filter: { acf: { show_in_overview: { eq: true } } }
+      sort: { fields: title }
     ) {
       nodes {
         slug

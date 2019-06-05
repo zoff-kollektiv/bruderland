@@ -3,16 +3,15 @@ import css from 'styled-jsx/css';
 import { fonts, mq } from '../../../tokens';
 
 export default css`
-  figure {
+  section {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    margin: 0;
     padding: 1.5rem 0;
   }
 
   @media ${mq.tablet} {
-    figure {
+    section {
       flex-direction: row;
       flex-wrap: nowrap;
       margin-bottom: 2rem;
@@ -20,6 +19,11 @@ export default css`
       padding-left: 3.5rem;
       padding-right: 3.5rem;
     }
+  }
+
+  figure {
+    display: table;
+    margin: 0;
   }
 
   .image-container,

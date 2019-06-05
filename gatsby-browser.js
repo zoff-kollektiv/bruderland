@@ -1,17 +1,16 @@
-exports.onClientEntry = () => {
-  const elem = document.createElement('div');
+const trackView = target => {
+  if (!('fetch' in window)) {
+    return;
+  }
 
-  elem.id = 'statify-js-snippet';
-  elem.setAttribute('data-home-url', 'https://b2oulrk7.myraidbox.de');
+  fetch(
+    `https://b2oulrk7.myraidbox.de?statify_target=${encodeURIComponent(
+      target
+    )}&statify_referrer=${encodeURIComponent(document.referrer)}`,
+    { redirect: 'error' }
+  ).catch(err => console.log(err));
+};
 
-  const trackingSnippet =
-    'https://b2oulrk7.myraidbox.de/wp-content/plugins/statify/js/snippet.js';
-
-  const s = document.createElement('script');
-
-  s.src = trackingSnippet;
-  s.async = true;
-
-  document.head.appendChild(s);
-  document.body.appendChild(elem);
+exports.onRouteUpdate = ({ location }) => {
+  trackView(location.pathname);
 };

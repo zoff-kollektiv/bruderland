@@ -16,6 +16,7 @@
     "fs-extra": "^8.0.1",
     "gatsby": "^2.8.2",
     "gatsby-link": "^2.1.1",
+    "gatsby-plugin-manifest": "^2.1.1",
     "gatsby-plugin-netlify": "^2.0.17",
     "gatsby-plugin-styled-jsx": "^3.0.5",
     "gatsby-source-filesystem": "^2.0.38",

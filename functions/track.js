@@ -15,6 +15,8 @@ exports.handler = async event => {
   const { queryStringParameters } = event;
   const { target } = queryStringParameters;
 
+  console.log('data', isProduction, target);
+
   if (isProduction && target) {
     visitor.pageview(target).send();
   }

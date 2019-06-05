@@ -70,15 +70,14 @@ export const expandIcon = css.resolve`
 
   @media ${mq.tablet} {
     svg {
-      height: 2rem;
-      width: 2rem;
+      height: 1.75rem;
+      width: 1.75rem;
     }
   }
 `;
 
 export const imageStyle = css.resolve`
   img {
-    align-self: flex-start;
     max-height: 75vh;
     max-width: 100%;
     width: auto;

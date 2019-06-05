@@ -9,7 +9,22 @@ import withLayout from '../components/with-layout';
 
 const getNextEpisode = (episodes, current) => {
   const number = parseInt(current.acf.number, 10);
-  return episodes[number + 1] || null;
+  const next = episodes[number + 1] || {};
+
+  if (!next) {
+    return null;
+  }
+
+  // Check whether the next Episode is already published
+  const {
+    acf: { published }
+  } = next;
+
+  if (!published) {
+    return null;
+  }
+
+  return next;
 };
 
 const Page = ({

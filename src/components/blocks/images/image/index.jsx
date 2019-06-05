@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import React, { useState } from 'react';
 
 import Caption from '../../../caption';
+import CompressIcon from '../../../../static/compress.svg';
 import ExpandIcon from '../../../../static/expand.svg';
 import styles, {
   expandIcon,
@@ -95,7 +96,7 @@ export default ({
                   }}
                   aria-label="Bild verkleinern"
                 >
-                  <ExpandIcon className={expandIcon.className} />
+                  <CompressIcon className={expandIcon.className} />
                 </button>
 
                 <Picture

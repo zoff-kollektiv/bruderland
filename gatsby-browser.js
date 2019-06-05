@@ -3,12 +3,9 @@ const trackView = target => {
     return;
   }
 
-  fetch(
-    `https://b2oulrk7.myraidbox.de?statify_target=${encodeURIComponent(
-      target
-    )}&statify_referrer=${encodeURIComponent(document.referrer)}`,
-    { redirect: 'error' }
-  ).catch(err => console.log(err));
+  fetch(`/.netlify/functions/track?target=${encodeURIComponent(target)}`).catch(
+    err => console.log(err)
+  );
 };
 
 exports.onRouteUpdate = ({ location }) => {

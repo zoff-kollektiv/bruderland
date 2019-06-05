@@ -1,6 +1,6 @@
 {
   "name": "bruderland",
-  "description": "A web documentary about the GDR",
+  "description": "Eigensinn im Bruderland - Webdokumentation",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

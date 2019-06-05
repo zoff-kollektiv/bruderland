@@ -1,7 +1,7 @@
 import Helmet from 'react-helmet';
 import React from 'react';
 
-const BASE_URL = 'https://develop--bruderland.netlify.com';
+const BASE_URL = 'https://bruderland.de';
 
 export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => (
   <Helmet>

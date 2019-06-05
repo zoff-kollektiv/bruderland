@@ -9,20 +9,13 @@ import withLayout from '../components/with-layout';
 
 const getNextEpisode = (episodes, current) => {
   const number = parseInt(current.acf.number, 10);
-  const next = episodes[number + 1] || {};
-
-  if (!next) {
-    return null;
-  }
-
-  // Check whether the next Episode is already published
-  const {
-    acf: { published }
-  } = next;
-
-  if (!published) {
-    return null;
-  }
+  const next = episodes.find(
+    ({
+      node: {
+        acf: { number: episodeNumber, published }
+      }
+    }) => parseInt(episodeNumber, 10) === number + 1 && published === true
+  );
 
   return next;
 };

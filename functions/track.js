@@ -5,6 +5,17 @@ const visitor = ua(process.env.GA_ID);
 exports.handler = async event => {
   const isProduction = process.env.NODE_ENV === 'production';
 
+  const trackView = path =>
+    new Promise((resolve, reject) => {
+      visitor.pageview(path, error => {
+        if (error) {
+          reject(error);
+        }
+
+        resolve();
+      });
+    });
+
   if (!process.env.GA_ID) {
     return {
       body: 'No GA Account supplied.',
@@ -15,10 +26,15 @@ exports.handler = async event => {
   const { queryStringParameters } = event;
   const { target } = queryStringParameters;
 
-  console.log('data', isProduction, target);
-
   if (isProduction && target) {
-    visitor.pageview(target).send();
+    try {
+      await trackView(target);
+    } catch (error) {
+      return {
+        body: JSON.stringify(error),
+        statusCode: 500
+      };
+    }
   }
 
   return {

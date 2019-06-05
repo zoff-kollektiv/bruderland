@@ -7,6 +7,7 @@ export default css`
     align-items: flex-start;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
     padding: 1.5rem 0;
   }
 
@@ -14,7 +15,7 @@ export default css`
     section {
       flex-direction: row;
       flex-wrap: nowrap;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       margin-top: 2rem;
       padding-left: 3.5rem;
       padding-right: 3.5rem;

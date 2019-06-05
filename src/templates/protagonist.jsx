@@ -35,7 +35,6 @@ export const query = graphql`
       title
       acf {
         content_protagonists {
-          ...quote
           ...richtext
           ...images
         }

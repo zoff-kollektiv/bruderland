@@ -1,6 +1,6 @@
 const ua = require('universal-analytics');
 
-const visitor = ua('UA-141497940-1');
+const visitor = ua(process.env.GA_ID);
 
 exports.handler = async event => {
   const { queryStringParameters } = event;

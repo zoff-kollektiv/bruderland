@@ -32,4 +32,8 @@ export default css`
     padding-right: 0.5rem;
     width: auto;
   }
+
+  :global(figcaption a) {
+    color: currentColor;
+  }
 `;

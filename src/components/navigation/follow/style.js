@@ -23,15 +23,7 @@ export default css`
   }
 
   .list-item {
-    flex: 0 0 auto;
     padding-left: 1.25rem;
-    width: 100%;
-  }
-
-  @media ${mq.tablet} {
-    .list-item {
-      width: 40%;
-    }
   }
 
   strong {

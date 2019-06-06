@@ -37,8 +37,8 @@ export const query = graphql`
       acf {
         content_background {
           ...richtext
-          ...images
           ...logos
+          ...images
         }
       }
     }

@@ -14,16 +14,18 @@ export default css`
   }
 
   .list-item--is-small ul {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
-  .list-item {
-    flex: 0 0 auto;
-    width: 100%;
+  @media ${mq.desktop} {
+    .list-item--is-small ul {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
   }
 
-  @media ${mq.tablet} {
+  @media ${mq.desktop} {
     .list-item {
       width: 50%;
     }
@@ -39,7 +41,7 @@ export default css`
 
   @media ${mq.tablet} {
     .title {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
     }
   }
 

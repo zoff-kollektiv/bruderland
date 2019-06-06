@@ -38,6 +38,7 @@ export const query = graphql`
         content_background {
           ...richtext
           ...logos
+          ...images
         }
       }
     }

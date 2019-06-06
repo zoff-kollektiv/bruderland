@@ -5,17 +5,6 @@ import React from 'react';
 import { fonts, colors, mq } from '../../../tokens';
 
 export default css`
-  li {
-    flex: 0 0 auto;
-    width: 100%;
-  }
-
-  @media ${mq.tablet} {
-    li {
-      width: 50%;
-    }
-  }
-
   .title {
     border-bottom: 2px solid transparent;
     font-family: ${fonts.superla.family};
@@ -27,7 +16,7 @@ export default css`
 
   @media ${mq.tablet} {
     .title {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       letter-spacing: 0.05rem;
     }
   }
@@ -50,13 +39,14 @@ export default css`
   @media ${mq.tablet} {
     .intro {
       font-size: 1rem;
-      margin-top: 0.5rem;
+      margin-top: 0.35rem;
     }
   }
 
   @media ${mq.desktop} {
     .intro {
       font-size: 1.05rem;
+      margin-top: 0.5rem;
     }
   }
 `;
@@ -76,7 +66,12 @@ export const linkStyles = css.resolve`
   }
 
   @media ${mq.tablet} {
-    padding: 1rem 3rem;
+    padding: 0.85rem 3rem;
+  }
+
+  @media ${mq.desktop} {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 
   a[aria-current="page"],

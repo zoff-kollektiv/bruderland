@@ -37,38 +37,31 @@ export default css`
 
   @media ${mq.tablet} {
     .navigation {
-      padding-bottom: 2.5rem;
-      padding-top: 2.5rem;
+      padding-bottom: 1.5rem;
+      padding-top: 5rem;
     }
   }
 
   @media ${mq.desktop} {
     .navigation {
-      max-height: 45rem;
       max-width: 80rem;
-      padding-bottom: 4.5rem;
       padding-top: 4.5rem;
     }
   }
 
   .navigation-list {
     color: white;
-    display: flex;
-    flex: 0 0 auto;
-    flex-direction: column;
     list-style: none;
     margin-bottom: 0;
     margin-top: 0;
-    max-width: 80rem;
     padding-left: 0;
     width: 100%;
   }
 
   @media ${mq.tablet} {
     .navigation-list {
-      flex-wrap: wrap;
+      column-count: 2;
       height: 100%;
-      justify-content: space-between;
     }
   }
 

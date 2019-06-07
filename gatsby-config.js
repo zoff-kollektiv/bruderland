@@ -3,6 +3,9 @@ const proxy = require('http-proxy-middleware');
 const config = require('./config.json');
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: 'https://www.bruderland.de'
+  },
   plugins: [
     {
       resolve: 'gatsby-source-wordpress',
@@ -56,7 +59,8 @@ module.exports = {
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet'
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap'
   ],
 
   developMiddleware: app => {

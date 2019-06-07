@@ -3,6 +3,9 @@ const proxy = require('http-proxy-middleware');
 const config = require('./config.json');
 
 module.exports = {
+  siteMetadata: {
+    siteUrl: 'https://www.bruderland.de'
+  },
   plugins: [
     {
       resolve: 'gatsby-source-wordpress',
@@ -50,6 +53,13 @@ module.exports = {
         display: 'standalone',
         icon: './static/favicon.png',
         legacy: false
+      }
+    },
+
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/navigation/']
       }
     },
 

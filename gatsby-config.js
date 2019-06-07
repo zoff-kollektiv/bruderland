@@ -56,11 +56,17 @@ module.exports = {
       }
     },
 
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: ['/navigation/']
+      }
+    },
+
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap'
+    'gatsby-plugin-react-helmet'
   ],
 
   developMiddleware: app => {

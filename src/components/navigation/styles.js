@@ -61,7 +61,6 @@ export default css`
   @media ${mq.tablet} {
     .navigation-list {
       column-count: 2;
-      height: 100%;
     }
   }
 

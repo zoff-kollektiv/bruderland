@@ -27,7 +27,6 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => {
       <meta name="format-detection" content="telephone=no" />
 
       {/* Facebook */}
-      <meta property="og:url" content={siteUrl} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="Bruderland" />
 

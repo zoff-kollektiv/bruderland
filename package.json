@@ -1,6 +1,6 @@
 {
   "name": "bruderland",
-  "description": "Eigensinn im Bruderland - Webdokumentation",
+  "description": "Eigensinn im Bruderland - Dokumentation",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",

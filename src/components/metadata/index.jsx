@@ -28,7 +28,7 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => {
 
       {/* Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Bruderland" />
+      <meta property="og:site_name" content="Eigensinn im Bruderland" />
 
       <meta property="og:title" content={ogTitle || title} />
       {ogDescription && (

@@ -1,4 +1,4 @@
-# Bruderland
+# Eigensinn im Bruderland
 
 ## Running in development
 

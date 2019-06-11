@@ -7,7 +7,10 @@ export default WrappedComponent => props => (
   <>
     <style jsx>{styles}</style>
 
-    <Helmet htmlAttributes={{ lang: 'de' }} titleTemplate="%s | Bruderland" />
+    <Helmet
+      htmlAttributes={{ lang: 'de' }}
+      titleTemplate="%s | Eigensinn im Bruderland"
+    />
 
     <WrappedComponent {...props} />
   </>

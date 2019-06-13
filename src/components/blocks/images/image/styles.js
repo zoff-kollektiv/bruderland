@@ -95,6 +95,7 @@ export const imageFullScreenStyle = css.resolve`
 export const imageExpanendStyle = css.resolve`
   img {
     height: auto;
+    object-fit: contain;
     padding: 1.5rem;
     max-height: 100vh;
     width: 100%;

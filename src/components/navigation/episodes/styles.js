@@ -74,7 +74,7 @@ export const linkStyles = css.resolve`
     padding-top: 1rem;
   }
 
-  a[aria-current="page"],
+  a[aria-current='page'],
   a:hover,
   a:focus {
     background-color: ${colors.blue};

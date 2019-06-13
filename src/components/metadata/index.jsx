@@ -53,9 +53,7 @@ export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => {
       {twitterImage && twitterImage.localFile && (
         <meta
           property="twitter:image"
-          content={`${siteUrl}${
-            twitterImage.localFile.childImageSharp.fixed.src
-          }`}
+          content={`${siteUrl}${twitterImage.localFile.childImageSharp.fixed.src}`}
         />
       )}
     </Helmet>

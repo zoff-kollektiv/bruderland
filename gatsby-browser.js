@@ -4,6 +4,7 @@ const trackView = target => {
   }
 
   fetch(`/.netlify/functions/track?target=${encodeURIComponent(target)}`).catch(
+    // eslint-disable-next-line no-console
     err => console.log(err)
   );
 };

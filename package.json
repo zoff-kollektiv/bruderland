@@ -51,7 +51,7 @@
     "gatsby-plugin-sharp": "^2.1.5",
     "gatsby-transformer-sharp": "^2.1.21",
     "husky": "^2.4.1",
-    "lint-staged": "^8.2.0",
+    "lint-staged": "^8.2.1",
     "prettier": "^1.18.2"
   },
   "husky": {

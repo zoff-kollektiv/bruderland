@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import Constraint from '../../constraint';
-import style from './style';
+import style, { logoLink } from './style';
 
 const Linked = ({ link = false, children }) => {
   if (link) {
@@ -15,6 +15,7 @@ const Linked = ({ link = false, children }) => {
 export default ({ logos = [] }) => (
   <section>
     <style jsx>{style}</style>
+    {logoLink.styles}
 
     <Constraint size="wide">
       <ul>
@@ -29,8 +30,8 @@ export default ({ logos = [] }) => (
                 }
               }
             }) => (
-              <li>
-                <Linked link={link}>
+              <li key={`logo-${link}`}>
+                <Linked link={link} className={logoLink.className}>
                   <img {...fluid} alt={altText} />
                 </Linked>
               </li>
@@ -44,8 +45,8 @@ export default ({ logos = [] }) => (
 export const fragment = graphql`
   fragment logos on WordPressAcf_logos {
     logos {
+      link
       logo {
-        link
         altText: alt_text
         localFile {
           childImageSharp {

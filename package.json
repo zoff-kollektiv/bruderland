@@ -21,7 +21,7 @@
     "gatsby-plugin-sitemap": "^2.2.0",
     "gatsby-plugin-styled-jsx": "^3.0.5",
     "gatsby-source-filesystem": "^2.1.0",
-    "gatsby-source-wordpress": "^3.0.69",
+    "gatsby-source-wordpress": "^3.1.0",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.4.13",
     "node-fetch": "^2.6.0",

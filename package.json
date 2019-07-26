@@ -23,7 +23,7 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-source-wordpress": "^3.1.10",
     "http-proxy-middleware": "^0.19.1",
-    "netlify-lambda": "^1.5.0",
+    "netlify-lambda": "^1.5.1",
     "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -14,7 +14,7 @@
     "classnames": "^2.2.6",
     "dotenv": "^8.0.0",
     "fs-extra": "^8.1.0",
-    "gatsby": "^2.13.32",
+    "gatsby": "^2.13.58",
     "gatsby-link": "^2.2.2",
     "gatsby-plugin-manifest": "^2.2.0",
     "gatsby-plugin-netlify": "^2.1.3",

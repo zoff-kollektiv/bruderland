@@ -19,7 +19,7 @@
     "gatsby-plugin-manifest": "^2.2.0",
     "gatsby-plugin-netlify": "^2.1.8",
     "gatsby-plugin-sitemap": "^2.2.8",
-    "gatsby-plugin-styled-jsx": "^3.1.2",
+    "gatsby-plugin-styled-jsx": "^3.1.4",
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-source-wordpress": "^3.1.20",
     "http-proxy-middleware": "^0.19.1",

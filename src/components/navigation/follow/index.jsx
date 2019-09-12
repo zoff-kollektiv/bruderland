@@ -27,7 +27,7 @@ export default ({ items, title }) => (
 
     <ul>
       {items.map(({ node: { link, title: itemTitle } }) => (
-        <li>
+        <li key={`follow-${itemTitle}`}>
           <a href={link} aria-label={itemTitle}>
             <Icon type={itemTitle} />
           </a>

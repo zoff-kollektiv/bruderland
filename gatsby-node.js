@@ -55,7 +55,7 @@ exports.createPages = ({
   cache,
   createNodeId,
 }) => {
-  const { createPage, createNode } = actions;
+  const { createPage, createNode, createRedirect } = actions;
 
   return (
     graphql(`
@@ -362,6 +362,13 @@ exports.createPages = ({
           context: {
             episodes,
           },
+        });
+
+        createRedirect({
+          fromPath: '/episodes/377/',
+          toPath: '/episodes/werktaetige/',
+          isPermanent: true,
+          redirectInBrowser: true,
         });
       })
   );

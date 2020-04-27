@@ -1,10 +1,10 @@
-const proxy = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const config = require('./config.json');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.bruderland.de'
+    siteUrl: 'https://www.bruderland.de',
   },
   plugins: [
     {
@@ -17,18 +17,18 @@ module.exports = {
           '**/protagonists',
           '**/countries',
           '**/media',
-          '**/background'
-        ]
-      }
+          '**/background',
+        ],
+      },
     },
 
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /static/
-        }
-      }
+          include: /static/,
+        },
+      },
     },
 
     {
@@ -37,9 +37,9 @@ module.exports = {
         allPageHeaders: [
           'Link: </fonts/lapture/lapture-bold-italic.woff2>; as=font; rel=preload; crossorigin=anonymous',
           'Link: </fonts/superla/superla-book.woff2>; as=font; rel=preload; crossorigin=anonymous',
-          'Link: </fonts/superla/superla-extra-bold.woff2>; as=font; rel=preload; crossorigin=anonymous'
-        ]
-      }
+          'Link: </fonts/superla/superla-extra-bold.woff2>; as=font; rel=preload; crossorigin=anonymous',
+        ],
+      },
     },
 
     {
@@ -52,30 +52,30 @@ module.exports = {
         theme_color: '#D0021B',
         display: 'standalone',
         icon: './static/favicon.png',
-        legacy: false
-      }
+        legacy: false,
+      },
     },
 
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: ['/navigation/']
-      }
+        exclude: ['/navigation/'],
+      },
     },
 
     'gatsby-plugin-styled-jsx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-preact'
+    'gatsby-plugin-preact',
   ],
 
-  developMiddleware: app => {
+  developMiddleware: (app) => {
     app.use(
       '/.netlify/functions/',
-      proxy({
-        target: 'http://localhost:9000'
+      createProxyMiddleware({
+        target: 'http://localhost:9000',
       })
     );
-  }
+  },
 };

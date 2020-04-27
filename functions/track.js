@@ -2,12 +2,12 @@ const ua = require('universal-analytics');
 
 const visitor = ua(process.env.GA_ID);
 
-exports.handler = async event => {
+exports.handler = async (event) => {
   const isProduction = process.env.NODE_ENV === 'production';
 
-  const trackView = path =>
+  const trackView = (path) =>
     new Promise((resolve, reject) => {
-      visitor.pageview(path, error => {
+      visitor.pageview(path, (error) => {
         if (error) {
           reject(error);
         }
@@ -19,7 +19,7 @@ exports.handler = async event => {
   if (!process.env.GA_ID) {
     return {
       body: 'No GA Account supplied.',
-      statusCode: 500
+      statusCode: 500,
     };
   }
 
@@ -32,13 +32,13 @@ exports.handler = async event => {
     } catch (error) {
       return {
         body: JSON.stringify(error),
-        statusCode: 500
+        statusCode: 500,
       };
     }
   }
 
   return {
     body: '',
-    statusCode: 204
+    statusCode: 204,
   };
 };

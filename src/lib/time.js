@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-export const formatCurrentTime = time => {
+export const formatCurrentTime = (time) => {
   if (time < 60) {
     // show seconds
     const seconds = parseInt(time, 10);

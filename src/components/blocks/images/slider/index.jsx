@@ -15,7 +15,7 @@ const settings = {
   dots: false,
   infinite: true,
   slidesToShow: 1,
-  slidesToScroll: 1
+  slidesToScroll: 1,
 };
 
 export default ({ images }) => {
@@ -38,7 +38,7 @@ export default ({ images }) => {
           </button>
 
           <Slider ref={slider} {...settings}>
-            {images.map(image => (
+            {images.map((image) => (
               <div key={image.imagesImage && image.imagesImage.id}>
                 <Image {...image} />
               </div>

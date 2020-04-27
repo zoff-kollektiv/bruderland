@@ -13,7 +13,7 @@ import HandshakeIcon from '../../static/handshake.svg';
 
 ReactModal.setAppElement('#___gatsby');
 
-const hideLogoOnIntro = navigation => {
+const hideLogoOnIntro = (navigation) => {
   if (!('IntersectionObserver' in window)) {
     return;
   }
@@ -25,7 +25,7 @@ const hideLogoOnIntro = navigation => {
     return;
   }
 
-  const io = new IntersectionObserver(entries => {
+  const io = new IntersectionObserver((entries) => {
     entries.forEach(({ isIntersecting }) => {
       navigation.classList.toggle(
         'navigation-container--intro-not-visible',
@@ -43,7 +43,7 @@ export default class Navigation extends Component {
   navigation = React.createRef();
 
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   constructor(props) {
@@ -74,7 +74,7 @@ export default class Navigation extends Component {
 
         <Burger
           isOpen={isOpen}
-          onClick={event => {
+          onClick={(event) => {
             event.preventDefault();
             if (isOpen) {
               this.closeNavigation();
@@ -103,16 +103,16 @@ export default class Navigation extends Component {
                   {
                     node: {
                       title: 'Hintergründe',
-                      link: '/background/'
-                    }
+                      link: '/background/',
+                    },
                   },
 
                   {
                     node: {
                       title: 'Protagonist*innen',
-                      link: '/protagonists/'
-                    }
-                  }
+                      link: '/protagonists/',
+                    },
+                  },
                 ]}
               />
 
@@ -122,16 +122,16 @@ export default class Navigation extends Component {
                   {
                     node: {
                       title: 'Kontakt & Impressum',
-                      link: '/background/impressum/'
-                    }
+                      link: '/background/impressum/',
+                    },
                   },
 
                   {
                     node: {
                       title: 'Datenschutz',
-                      link: '/background/datenschutz/'
-                    }
-                  }
+                      link: '/background/datenschutz/',
+                    },
+                  },
                 ]}
               />
 
@@ -141,16 +141,16 @@ export default class Navigation extends Component {
                   {
                     node: {
                       title: 'Twitter',
-                      link: 'https://twitter.com/EigensinnB'
-                    }
+                      link: 'https://twitter.com/EigensinnB',
+                    },
                   },
 
                   {
                     node: {
                       title: 'Facebook',
-                      link: 'https://www.facebook.com/Bruderland/'
-                    }
-                  }
+                      link: 'https://www.facebook.com/Bruderland/',
+                    },
+                  },
                 ]}
               />
             </ul>

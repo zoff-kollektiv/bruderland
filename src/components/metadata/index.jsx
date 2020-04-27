@@ -5,8 +5,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 export default ({ title, ogImage, twitterImage, ogTitle, ogDescription }) => {
   const {
     site: {
-      siteMetadata: { siteUrl }
-    }
+      siteMetadata: { siteUrl },
+    },
   } = useStaticQuery(graphql`
     query HeaderQuery {
       site {

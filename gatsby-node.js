@@ -53,7 +53,7 @@ exports.createPages = ({
   getNode,
   store,
   cache,
-  createNodeId
+  createNodeId,
 }) => {
   const { createPage, createNode } = actions;
 
@@ -112,8 +112,8 @@ exports.createPages = ({
           data: {
             episodes: { edges: episodes },
             protagonists: { edges: protagonists },
-            background: { edges: background }
-          }
+            background: { edges: background },
+          },
         }) => {
           if (errors) {
             return Promise.reject(errors);
@@ -122,7 +122,7 @@ exports.createPages = ({
           return {
             episodes,
             protagonists,
-            background
+            background,
           };
         }
       )
@@ -144,7 +144,7 @@ exports.createPages = ({
         });
 
         return Promise.all(videos)
-          .then(videoData => {
+          .then((videoData) => {
             const createTrackNodes = (node, video) => {
               const nodes = [];
 
@@ -170,8 +170,8 @@ exports.createPages = ({
                       contentDigest: crypto
                         .createHash(`md5`)
                         .update(JSON.stringify(video))
-                        .digest(`hex`)
-                    }
+                        .digest(`hex`),
+                    },
                   });
 
                   const trackFileNode = createRemoteFileNode({
@@ -181,13 +181,13 @@ exports.createPages = ({
                     createNode,
                     createNodeId,
                     parentNodeId: node.id,
-                    auth: {}
+                    auth: {},
                   });
 
                   const completeNode = Promise.all([
                     trackNode,
-                    trackFileNode
-                  ]).then(resolvedNodes => {
+                    trackFileNode,
+                  ]).then((resolvedNodes) => {
                     const createdNode = getNode(id);
                     const fileNode = resolvedNodes[1];
 
@@ -211,11 +211,11 @@ exports.createPages = ({
               return Promise.all(nodes);
             };
 
-            const createVideoNode = data => {
+            const createVideoNode = (data) => {
               const nodes = [];
               const cached = [];
 
-              data.filter(Boolean).forEach(video => {
+              data.filter(Boolean).forEach((video) => {
                 const { id } = video;
 
                 if (cached.includes(id)) {
@@ -225,7 +225,7 @@ exports.createPages = ({
                 const node = createNode({
                   id,
                   sources: video.video.files
-                    ? video.video.files.map(file => {
+                    ? video.video.files.map((file) => {
                         const { link, type, width } = file;
 
                         return { link, type, width };
@@ -234,7 +234,7 @@ exports.createPages = ({
                   pictures: video.video.pictures
                     ? video.video.pictures.sizes.map(({ width, link }) => ({
                         width,
-                        link
+                        link,
                       }))
                     : [],
                   parent: null,
@@ -244,15 +244,15 @@ exports.createPages = ({
                     contentDigest: crypto
                       .createHash(`md5`)
                       .update(JSON.stringify(video))
-                      .digest(`hex`)
-                  }
+                      .digest(`hex`),
+                  },
                 }).then(() => {
                   const createdNode = getNode(id);
 
-                  return createTrackNodes(createdNode, video).then(tracks => {
+                  return createTrackNodes(createdNode, video).then((tracks) => {
                     createdNode.tracks = tracks;
 
-                    tracks.forEach(track => {
+                    tracks.forEach((track) => {
                       const { absolutePath } = track.file;
                       const { publicPath } = track;
                       const fullPublicPath = path.join(
@@ -262,7 +262,7 @@ exports.createPages = ({
                       );
 
                       if (!fsExtra.existsSync(fullPublicPath)) {
-                        fsExtra.copy(absolutePath, fullPublicPath, err => {
+                        fsExtra.copy(absolutePath, fullPublicPath, (err) => {
                           if (err) {
                             // eslint-disable-next-line no-console
                             console.error(
@@ -292,7 +292,7 @@ exports.createPages = ({
           .then(() => ({
             protagonists,
             episodes,
-            background
+            background,
           }));
       })
       // create pages
@@ -308,8 +308,8 @@ exports.createPages = ({
             path: pagePath,
             component: path.resolve('src/templates/protagonist.jsx'),
             context: {
-              wordpressId
-            }
+              wordpressId,
+            },
           });
         });
 
@@ -325,7 +325,7 @@ exports.createPages = ({
           }
 
           const context = {
-            number: `${number}`
+            number: `${number}`,
           };
 
           // eslint-disable-next-line no-console
@@ -334,7 +334,7 @@ exports.createPages = ({
           createPage({
             path: pagePath,
             component: path.resolve('src/templates/episode.jsx'),
-            context
+            context,
           });
         });
 
@@ -348,8 +348,8 @@ exports.createPages = ({
             path: pagePath,
             component: path.resolve('src/templates/background.jsx'),
             context: {
-              wordpressId
-            }
+              wordpressId,
+            },
           });
         });
 
@@ -360,8 +360,8 @@ exports.createPages = ({
           path: '/navigation/',
           component: path.resolve('src/templates/navigation.jsx'),
           context: {
-            episodes
-          }
+            episodes,
+          },
         });
       })
   );

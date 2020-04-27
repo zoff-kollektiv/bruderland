@@ -9,8 +9,8 @@ import withLayout from '../components/with-layout';
 const Page = ({
   data: {
     protagonist,
-    allEpisodes: { edges: allEpisodes }
-  }
+    allEpisodes: { edges: allEpisodes },
+  },
 }) => {
   const { title } = protagonist;
 

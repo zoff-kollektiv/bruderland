@@ -4,7 +4,7 @@ const { parsed: env } = require('dotenv').config();
 const { VIMEO_CLIENT_ID, VIMEO_CLIENT_SECRET, VIMEO_ACCESS_TOKEN } =
   env || process.env;
 
-const fetchVimeoVideo = videoId => {
+const fetchVimeoVideo = (videoId) => {
   const client = new Vimeo(
     VIMEO_CLIENT_ID,
     VIMEO_CLIENT_SECRET,
@@ -15,7 +15,7 @@ const fetchVimeoVideo = videoId => {
     new Promise((resolve, reject) => {
       client.request(
         {
-          path: `/videos/${parseInt(videoId, 10)}/`
+          path: `/videos/${parseInt(videoId, 10)}/`,
         },
         (error, res) => {
           if (error) {
@@ -31,7 +31,7 @@ const fetchVimeoVideo = videoId => {
     new Promise((resolve, reject) => {
       client.request(
         {
-          path: `/videos/${parseInt(videoId, 10)}/texttracks`
+          path: `/videos/${parseInt(videoId, 10)}/texttracks`,
         },
         (error, res) => {
           if (error) {
@@ -52,5 +52,5 @@ const fetchVimeoVideo = videoId => {
 };
 
 module.exports = {
-  fetchVimeoVideo
+  fetchVimeoVideo,
 };

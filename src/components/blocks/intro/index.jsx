@@ -9,10 +9,10 @@ import styles, {
   logoIcon,
   logoLabel,
   arrowIcon,
-  logoLink
+  logoLink,
 } from './styles';
 
-const skipIntro = el => {
+const skipIntro = (el) => {
   const { offsetHeight } = el;
 
   window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
@@ -49,7 +49,7 @@ export default ({
   linkTitle = false,
   linkTitleSlug = '',
   number,
-  title
+  title,
 }) => {
   const introRef = useRef(null);
 

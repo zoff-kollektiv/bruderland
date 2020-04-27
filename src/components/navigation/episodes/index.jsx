@@ -11,8 +11,8 @@ export default ({ items }) => (
         node: {
           slug,
           title,
-          acf: { number, text, published }
-        }
+          acf: { number, text, published },
+        },
       }) => (
         <li key={`episode-${slug}`}>
           <style jsx>{styles}</style>
@@ -37,7 +37,7 @@ export default ({ items }) => (
                 <em
                   className="title"
                   dangerouslySetInnerHTML={{
-                    __html: `Demnächst: ${title}`
+                    __html: `Demnächst: ${title}`,
                   }}
                 />
                 <p className="intro">{text}</p>

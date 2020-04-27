@@ -32,7 +32,7 @@ export default class Progress extends Component {
           transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
           style={{
             strokeDasharray: dashArray,
-            strokeDashoffset: dashOffset
+            strokeDashoffset: dashOffset,
           }}
         />
       </svg>

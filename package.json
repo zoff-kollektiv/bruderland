@@ -13,7 +13,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.0",
     "gatsby": "^2.20.36",
     "gatsby-link": "^2.3.5",
     "gatsby-plugin-manifest": "^2.3.7",

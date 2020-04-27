@@ -12,8 +12,8 @@ const getNextEpisode = (episodes, current) => {
   const next = episodes.find(
     ({
       node: {
-        acf: { number: episodeNumber, published }
-      }
+        acf: { number: episodeNumber, published },
+      },
     }) => parseInt(episodeNumber, 10) === number + 1 && published === true
   );
 
@@ -24,8 +24,8 @@ const Page = ({
   data: {
     episode,
     allEpisodes: { edges: allEpisodes },
-    videos: { edges: videos }
-  }
+    videos: { edges: videos },
+  },
 }) => {
   const {
     title,
@@ -33,8 +33,8 @@ const Page = ({
       og_description: ogDescription,
       og_title: ogTitle,
       og_image: ogImage,
-      twitter_image: twitterImage
-    }
+      twitter_image: twitterImage,
+    },
   } = episode;
 
   return (

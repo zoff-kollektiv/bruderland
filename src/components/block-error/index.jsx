@@ -6,7 +6,7 @@ export default class BlockError extends Component {
   state = {
     error: null,
     info: null,
-    hasError: false
+    hasError: false,
   };
 
   componentDidCatch(error, info) {

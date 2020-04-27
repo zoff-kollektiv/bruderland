@@ -1,9 +1,9 @@
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import React from 'react';
 
 import styles from './styles';
 
-export default WrappedComponent => props => (
+export default (WrappedComponent) => (props) => (
   <>
     <style jsx>{styles}</style>
 

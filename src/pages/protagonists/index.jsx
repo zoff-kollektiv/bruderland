@@ -11,8 +11,8 @@ import withLayout from '../../components/with-layout';
 const Page = ({
   data: {
     protagonists: { nodes: protagonists },
-    allEpisodes: { edges: allEpisodes }
-  }
+    allEpisodes: { edges: allEpisodes },
+  },
 }) => {
   return (
     <>
@@ -28,7 +28,7 @@ const Page = ({
         <BackgroundList
           items={protagonists.map(({ slug, ...rest }) => ({
             ...rest,
-            link: `/protagonists/${slug}/`
+            link: `/protagonists/${slug}/`,
           }))}
         />
       </BackgroundOverview>

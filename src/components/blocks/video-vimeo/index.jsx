@@ -11,7 +11,7 @@ import Progress from '../../progress';
 import styles, {
   playPauseIconStyles,
   progressIcon,
-  playPauseDropShadow
+  playPauseDropShadow,
 } from './styles';
 
 let observer;
@@ -20,7 +20,7 @@ export default class Video extends Component {
   state = {
     isPlaying: false,
     progressPercentage: 0,
-    currentTime: ''
+    currentTime: '',
   };
 
   video = React.createRef();
@@ -36,7 +36,7 @@ export default class Video extends Component {
     }
   };
 
-  pause = el => {
+  pause = (el) => {
     this.setState({ isPlaying: false });
     el.pause();
   };
@@ -58,7 +58,7 @@ export default class Video extends Component {
     }
   };
 
-  stop = el => {
+  stop = (el) => {
     this.setState({ isPlaying: false });
 
     el.pause();
@@ -66,14 +66,14 @@ export default class Video extends Component {
     el.currentTime = 0;
   };
 
-  observeIfInScreen = el => {
+  observeIfInScreen = (el) => {
     if (!el) {
       return;
     }
 
     if ('IntersectionObserver' in window) {
-      const onChange = entries => {
-        entries.forEach(entry => {
+      const onChange = (entries) => {
+        entries.forEach((entry) => {
           const { target, intersectionRatio } = entry;
 
           if (intersectionRatio > 0) {
@@ -90,7 +90,7 @@ export default class Video extends Component {
     }
   };
 
-  togglePlayAndPause = options => {
+  togglePlayAndPause = (options) => {
     const { current: video } = this.video;
 
     if (video.paused || video.ended) {
@@ -114,7 +114,7 @@ export default class Video extends Component {
 
     this.setState({
       progressPercentage: percentage,
-      currentTime: currentTimeFormatted
+      currentTime: currentTimeFormatted,
     });
 
     return undefined;
@@ -141,7 +141,7 @@ export default class Video extends Component {
       wordpress_id: id,
       caption,
       fullsize,
-      loop = false
+      loop = false,
     } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo =
@@ -153,7 +153,8 @@ export default class Video extends Component {
     }
 
     const { sources, tracks, pictures } = vimeoVideo.node;
-    const poster = pictures && pictures.find(picture => picture.width >= 1280);
+    const poster =
+      pictures && pictures.find((picture) => picture.width >= 1280);
 
     return (
       <figure className={classnames({ 'is-fullsize': fullsize })}>
@@ -208,7 +209,7 @@ export default class Video extends Component {
               aria-label={isPlaying ? 'Pause' : 'Video abspielen'}
               type="button"
               className="control-button"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 this.togglePlayAndPause({ force: true });
               }}
@@ -224,13 +225,13 @@ export default class Video extends Component {
               {isPlaying ? (
                 <PauseIcon
                   className={classnames(playPauseIconStyles.className, {
-                    [playPauseDropShadow.className]: fullsize
+                    [playPauseDropShadow.className]: fullsize,
                   })}
                 />
               ) : (
                 <PlayIcon
                   className={classnames(playPauseIconStyles.className, {
-                    [playPauseDropShadow.className]: fullsize
+                    [playPauseDropShadow.className]: fullsize,
                   })}
                 />
               )}

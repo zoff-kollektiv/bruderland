@@ -10,7 +10,7 @@ import ArrowDownIcon from '../../static/long-arrow-down.svg';
 
 export default ({ currentTitle, next }) => {
   const {
-    node: { acf, title, slug }
+    node: { acf, title, slug },
   } = next || { node: { acf: { title: false } } };
 
   return (

@@ -26,9 +26,9 @@ export default ({ logos = [] }) => (
               logo: {
                 altText,
                 localFile: {
-                  childImageSharp: { fluid }
-                }
-              }
+                  childImageSharp: { fluid },
+                },
+              },
             }) => (
               <li key={`logo-${link}`}>
                 <Linked link={link} className={logoLink.className}>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import Blockrenderer from '../block-renderer';
 import Intro from '../blocks/intro';
@@ -11,7 +11,7 @@ export default ({ vimeo, title, data: { acf }, next }) => {
   const { content_episodes: contentBlocks, ...intro } = acf;
 
   return (
-    <Fragment>
+    <>
       <style jsx>{styles}</style>
 
       <Intro title={title} {...intro} />
@@ -21,6 +21,6 @@ export default ({ vimeo, title, data: { acf }, next }) => {
       </main>
 
       <NextEpisode currentTitle={title} next={next} />
-    </Fragment>
+    </>
   );
 };

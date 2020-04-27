@@ -9,7 +9,7 @@ import styles, {
   expandIcon,
   imageStyle,
   imageFullScreenStyle,
-  imageExpanendStyle
+  imageExpanendStyle,
 } from './styles';
 
 const Picture = ({ file, alt, mimeType, ...rest }) => (
@@ -29,7 +29,7 @@ const Picture = ({ file, alt, mimeType, ...rest }) => (
 export default ({
   fullscreen = false,
   allow_expansion: allowExpansion = false,
-  imagesImage
+  imagesImage,
 }) => {
   if (!imagesImage) {
     return null;
@@ -40,7 +40,7 @@ export default ({
     caption,
     mimeType,
     mediaDetails: { imageWidth, imageHeight },
-    localFile
+    localFile,
   } = imagesImage;
   const isPortrait = imageWidth < imageHeight;
   const [modalOpen, setModalState] = useState(false);
@@ -59,7 +59,7 @@ export default ({
           alt={alt}
           file={localFile}
           className={classnames(imageStyle.className, {
-            [imageFullScreenStyle.className]: fullscreen
+            [imageFullScreenStyle.className]: fullscreen,
           })}
         />
 
@@ -70,7 +70,7 @@ export default ({
             <button
               className="fullscreen-toggle"
               type="button"
-              onClick={event => {
+              onClick={(event) => {
                 event.preventDefault();
                 setModalState(true);
               }}
@@ -90,7 +90,7 @@ export default ({
                 <button
                   className="fullscreen-toggle"
                   type="button"
-                  onClick={event => {
+                  onClick={(event) => {
                     event.preventDefault();
                     setModalState(false);
                   }}

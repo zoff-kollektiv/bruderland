@@ -13,7 +13,7 @@ const replaceFootnotes = (id, text) => {
   const matches = newText.match(search);
 
   if (matches) {
-    matches.forEach(match => {
+    matches.forEach((match) => {
       const number = match.split('#')[1];
       const link = `<a href="#footnote-${id}-${number}" class="footnote">(${number})</a>`;
 
@@ -24,7 +24,7 @@ const replaceFootnotes = (id, text) => {
   return newText;
 };
 
-const replaceWpBaseUrl = text => {
+const replaceWpBaseUrl = (text) => {
   const WP_BASE = 'https://b2oulrk7.myraidbox.de';
 
   return text.replace(new RegExp(WP_BASE, 'g'), '');
@@ -46,7 +46,7 @@ export default ({ footnotesRepeat, id, text, bold = false }) => {
         <Constraint>
           <div
             dangerouslySetInnerHTML={{
-              __html: cleanText
+              __html: cleanText,
             }}
           />
         </Constraint>

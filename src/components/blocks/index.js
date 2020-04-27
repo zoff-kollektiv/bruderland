@@ -13,7 +13,7 @@ const blocks = {
   WordPressAcf_images: Images,
   WordPressAcf_logos: logos,
   WordPressAcf_slogan: slogan,
-  WordPressAcf_vimeoVideo: Vimeo
+  WordPressAcf_vimeoVideo: Vimeo,
 };
 
 export default blocks;

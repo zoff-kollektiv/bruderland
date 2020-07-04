@@ -4,7 +4,7 @@ const config = require('./config.json');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.bruderland.de',
+    siteUrl: 'https://bruderland.de',
   },
   plugins: [
     {

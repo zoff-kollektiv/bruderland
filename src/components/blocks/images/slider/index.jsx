@@ -18,7 +18,7 @@ const settings = {
   slidesToScroll: 1,
 };
 
-export default ({ images }) => {
+export default ({ images, language }) => {
   const slider = useRef(null);
 
   return (
@@ -40,7 +40,7 @@ export default ({ images }) => {
           <Slider ref={slider} {...settings}>
             {images.map((image) => (
               <div key={image.imagesImage && image.imagesImage.id}>
-                <Image {...image} />
+                <Image {...image} language={language} />
               </div>
             ))}
           </Slider>

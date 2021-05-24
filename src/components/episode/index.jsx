@@ -17,7 +17,11 @@ export default ({ vimeo, title, data: { acf }, next }) => {
       <Intro title={title} {...intro} language={acf.language} />
 
       <main>
-        <Blockrenderer blocks={contentBlocks} vimeo={vimeo} />
+        <Blockrenderer
+          blocks={contentBlocks}
+          vimeo={vimeo}
+          language={acf.language}
+        />
       </main>
 
       <NextEpisode currentTitle={title} next={next} />

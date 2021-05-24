@@ -30,6 +30,7 @@ export default ({
   fullscreen = false,
   allow_expansion: allowExpansion = false,
   imagesImage,
+  language,
 }) => {
   if (!imagesImage) {
     return null;
@@ -41,6 +42,7 @@ export default ({
     mimeType,
     mediaDetails: { imageWidth, imageHeight },
     localFile,
+    acf,
   } = imagesImage;
   const isPortrait = imageWidth < imageHeight;
   const [modalOpen, setModalState] = useState(false);
@@ -63,7 +65,16 @@ export default ({
           })}
         />
 
-        {caption && <Caption caption={caption} isPortrait={isPortrait} />}
+        {caption && (
+          <Caption
+            caption={
+              !language || language === 'de'
+                ? caption
+                : acf?.[`caption_${language}`]
+            }
+            isPortrait={isPortrait}
+          />
+        )}
 
         {allowExpansion && (
           <>

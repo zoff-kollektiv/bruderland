@@ -4,7 +4,7 @@ import React from 'react';
 import Caption from '../../caption';
 import styles from './styles';
 
-export default ({ title, text, image }) => {
+export default ({ title, text, image, language }) => {
   const fluidImage =
     image && image.localFile && image.localFile.childImageSharp.fluid;
 
@@ -13,7 +13,7 @@ export default ({ title, text, image }) => {
   }
 
   const { src, srcSet, srcSetWebp } = fluidImage;
-  const { caption, alt_text: alt, mimeType } = image;
+  const { caption, alt_text: alt, mimeType, acf } = image;
 
   return (
     <section>
@@ -27,7 +27,15 @@ export default ({ title, text, image }) => {
             <img src={src} alt={alt} loading="lazy" />
           </picture>
 
-          {caption && <Caption caption={caption} />}
+          {caption && (
+            <Caption
+              caption={
+                !language || language === 'de'
+                  ? caption
+                  : acf?.[`caption_${language}`]
+              }
+            />
+          )}
         </figure>
       </div>
 
@@ -45,6 +53,9 @@ export const fragment = graphql`
     title
     text
     image {
+      acf {
+        caption_en
+      }
       caption
       alt_text
       mimeType: mime_type

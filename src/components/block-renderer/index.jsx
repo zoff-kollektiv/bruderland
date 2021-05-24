@@ -4,7 +4,7 @@ import BlockError from '../block-error';
 import BLOCKS from '../blocks';
 import NotImplemented from '../not-implemented';
 
-export default ({ vimeo, blocks }) => (
+export default ({ vimeo, blocks, language }) => (
   <>
     {blocks.map((block, index) => {
       const { __typename, ...rest } = block;
@@ -19,9 +19,9 @@ export default ({ vimeo, blocks }) => (
       return (
         <BlockError key={`block-error-${key}`}>
           {__typename === 'WordPressAcf_vimeoVideo' ? (
-            <Block key={key} vimeo={vimeo} {...rest} />
+            <Block key={key} vimeo={vimeo} language={language} {...rest} />
           ) : (
-            <Block key={key} {...rest} />
+            <Block key={key} language={language} {...rest} />
           )}
         </BlockError>
       );

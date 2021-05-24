@@ -8,6 +8,7 @@ import styles, {
   nextLink,
   logoIcon,
   logoLabel,
+  logoTagline,
   arrowIcon,
   logoLink,
 } from './styles';
@@ -25,19 +26,32 @@ const Logo = ({ number, language }) => {
         {logoIcon.styles}
         {logoLink.styles}
         {logoLabel.styles}
+        {logoTagline.styles}
 
-        {language === 'de' && (
-          <>
-            <span className={logoLabel.className}>Eigensinn im</span>
-            <HandshakeIcon className={logoIcon.className} />
-          </>
+        {(!language || language === 'de') && (
+          <span className={logoLabel.className}>Eigensinn im</span>
+        )}
+
+        {language === 'en' && (
+          <span className={logoLabel.className}>Minds of their own</span>
+        )}
+
+        <HandshakeIcon className={logoIcon.className} />
+
+        {language === 'en' && (
+          <span className={logoTagline.className}>
+            Migration from socialist partner states into the GDR
+          </span>
         )}
       </div>
     );
   }
 
   return (
-    <Link to={language === 'de' ? '/' : '/en/'} className={logoLink.className}>
+    <Link
+      to={!language || language === 'de' ? '/' : '/en/'}
+      className={logoLink.className}
+    >
       {logoLink.styles}
       {logoIcon.styles}
       <HandshakeIcon className={logoIcon.className} />

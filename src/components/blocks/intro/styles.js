@@ -256,6 +256,38 @@ export const logoLabel = css.resolve`
   }
 `;
 
+export const logoTagline = css.resolve`
+  span {
+    display: flex;
+    font-family: ${fonts.superla.family};
+    font-size: 1rem;
+    font-weight: ${fonts.superla.weight.extraBold};
+    justify-self: flex-end;
+    letter-spacing: 0.1rem;
+    line-height: 1;
+    margin-left: auto;
+    text-align: right;
+    text-transform: uppercase;
+    width: 50%;
+  }
+
+  @media ${mq.tablet} {
+    span {
+      font-size: 1.5rem;
+      letter-spacing: 0.1rem;
+      padding-left: 0.75rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    span {
+      font-size: 1.5rem;
+      letter-spacing: 0.3rem;
+      padding-left: 1.25rem;
+    }
+  }
+`;
+
 export const nextLink = css.resolve`
   a {
     color: currentColor;

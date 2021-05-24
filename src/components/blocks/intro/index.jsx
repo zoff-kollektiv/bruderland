@@ -18,21 +18,26 @@ const skipIntro = (el) => {
   window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
 };
 
-const Logo = ({ number }) => {
+const Logo = ({ number, language }) => {
   if (parseInt(number, 10) === 0) {
     return (
       <div className={logoIcon.className}>
         {logoIcon.styles}
         {logoLink.styles}
         {logoLabel.styles}
-        <span className={logoLabel.className}>Eigensinn im</span>
-        <HandshakeIcon className={logoIcon.className} />
+
+        {language === 'de' && (
+          <>
+            <span className={logoLabel.className}>Eigensinn im</span>
+            <HandshakeIcon className={logoIcon.className} />
+          </>
+        )}
       </div>
     );
   }
 
   return (
-    <Link to="/" className={logoLink.className}>
+    <Link to={language === 'de' ? '/' : '/en/'} className={logoLink.className}>
       {logoLink.styles}
       {logoIcon.styles}
       <HandshakeIcon className={logoIcon.className} />
@@ -50,6 +55,7 @@ export default ({
   linkTitleSlug = '',
   number,
   title,
+  language,
 }) => {
   const introRef = useRef(null);
 
@@ -87,7 +93,7 @@ export default ({
             )}
 
             <div className="logo">
-              <Logo number={number} />
+              <Logo number={number} language={language} />
             </div>
 
             <div className="quote">

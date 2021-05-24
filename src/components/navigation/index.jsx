@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
@@ -86,6 +87,12 @@ export default class Navigation extends Component {
 
         <div className="logo">
           {iconStyles.styles}
+
+          <div className="language-switch">
+            Sprache wechseln
+            <Link to="/en/">EN</Link>| <Link to="/">DE</Link>
+          </div>
+
           <span className="logo-label">{title}</span>
           <HandshakeIcon className={iconStyles.className} />
         </div>

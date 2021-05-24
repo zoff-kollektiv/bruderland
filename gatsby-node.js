@@ -65,12 +65,14 @@ exports.createPages = ({
         ) {
           edges {
             node {
+              wordpress_id
               slug
               title
               acf {
                 quote
                 number
                 text
+                language
                 content_episodes {
                   ... on WordPressAcf_vimeoVideo {
                     __typename
@@ -298,8 +300,10 @@ exports.createPages = ({
       // create pages
       .then(({ episodes, protagonists, background }) => {
         protagonists.forEach(({ node }) => {
-          const { slug, wordpress_id: wordpressId } = node;
-          const pagePath = `/protagonists/${slug}/`;
+          const { slug, wordpress_id: wordpressId, acf } = node;
+          const languageSlug =
+            !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+          const pagePath = `${languageSlug}/protagonists/${slug}/`;
 
           // eslint-disable-next-line no-console
           console.log('create page', pagePath);
@@ -314,18 +318,21 @@ exports.createPages = ({
         });
 
         episodes.forEach(({ node }) => {
-          const { slug, acf } = node;
+          const { slug, acf, wordpress_id: wordpressId } = node;
           const number = parseInt(acf.number, 10);
-          let pagePath = `/episodes/${slug}/`;
+          const languageSlug =
+            !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+          let pagePath = `${languageSlug}/episodes/${slug}/`;
 
-          if (number < 0) {
-            pagePath = `/__internal${pagePath}`;
-          } else if (number === 0) {
+          if (number === 0 && (acf.language === 'de' || !acf.language)) {
             pagePath = '/';
+          } else if (number === 0 && acf.language !== 'de') {
+            pagePath = `/${acf.language}/`;
           }
 
           const context = {
-            number: `${number}`,
+            wordpressId,
+            language: acf?.language ?? 'de',
           };
 
           // eslint-disable-next-line no-console
@@ -338,30 +345,43 @@ exports.createPages = ({
           });
         });
 
-        background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
-          const pagePath = `/background/${slug}/`;
+        background.forEach(
+          ({ node: { slug, wordpress_id: wordpressId, acf } }) => {
+            const languageSlug =
+              !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+            const pagePath = `${languageSlug}/background/${slug}/`;
 
-          // eslint-disable-next-line no-console
-          console.log('create background', pagePath);
+            // eslint-disable-next-line no-console
+            console.log('create background', pagePath);
+
+            createPage({
+              path: pagePath,
+              component: path.resolve('src/templates/background.jsx'),
+              context: {
+                wordpressId,
+              },
+            });
+          }
+        );
+
+        ['de', 'en'].forEach((language) => {
+          const localeEpisodes = episodes.filter((episode) => {
+            if (language === 'de' && !episode?.node?.acf?.language) {
+              return true;
+            }
+
+            return episode?.node?.acf?.language === language;
+          });
+
+          console.log('Create navigation ', language, localeEpisodes.length);
 
           createPage({
-            path: pagePath,
-            component: path.resolve('src/templates/background.jsx'),
+            path: '/navigation/',
+            component: path.resolve('src/templates/navigation.jsx'),
             context: {
-              wordpressId,
+              episodes: localeEpisodes,
             },
           });
-        });
-
-        // eslint-disable-next-line no-console
-        console.log('create page', '/navigation/');
-
-        createPage({
-          path: '/navigation/',
-          component: path.resolve('src/templates/navigation.jsx'),
-          context: {
-            episodes,
-          },
         });
 
         createRedirect({

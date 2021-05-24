@@ -14,7 +14,7 @@ export default ({ vimeo, title, data: { acf }, next }) => {
     <>
       <style jsx>{styles}</style>
 
-      <Intro title={title} {...intro} />
+      <Intro title={title} {...intro} language={acf.language} />
 
       <main>
         <Blockrenderer blocks={contentBlocks} vimeo={vimeo} />

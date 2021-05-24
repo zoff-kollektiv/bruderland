@@ -66,14 +66,15 @@ const Page = ({
 export default withLayout(Page);
 
 export const query = graphql`
-  query($number: String) {
-    episode: wordpressWpEpisodes(acf: { number: { eq: $number } }) {
+  query($wordpressId: Int, $language: String) {
+    episode: wordpressWpEpisodes(wordpress_id: { eq: $wordpressId }) {
       title
       acf {
         quote
         number
         text
         intro
+        language
         og_image {
           localFile {
             childImageSharp {
@@ -119,7 +120,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { acf: { number: { ne: "-1" } } }
+      filter: { acf: { number: { ne: "-1" }, language: { eq: $language } } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       ...navigationEpisodes

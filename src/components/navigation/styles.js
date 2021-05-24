@@ -76,6 +76,7 @@ export default css`
   .logo {
     align-self: flex-end;
     color: ${colors.lightGrey};
+    display: flex;
     margin-left: auto;
     opacity: 0;
     transition: opacity 200ms ease;
@@ -85,8 +86,17 @@ export default css`
     display: inline-block;
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
+    margin-left: 1.5rem;
     margin-right: 0.5rem;
     vertical-align: middle;
+  }
+
+  .language-switch {
+    font-family: ${fonts.superla.family};
+    font-size: 0.9rem;
+    justify-self: flex-end;
+    margin-left: auto;
+    margin-right: 0;
   }
 
   .navigation-container--intro-not-visible .logo {

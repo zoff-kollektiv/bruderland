@@ -91,14 +91,24 @@ export default css`
   }
 
   .language-switch {
+    align-items: center;
+    display: flex;
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
     justify-self: flex-end;
     margin-right: 0.5rem;
-    margin-top: 0.35rem;
+    margin-top: -0.1rem;
+  }
+
+  @media ${mq.tablet} {
+    .language-switch {
+      align-items: flex-start;
+      margin-top: 0.35rem;
+    }
   }
 
   .language-switch-label {
+    font-weight: 700;
     margin-right: 0.5rem;
   }
 

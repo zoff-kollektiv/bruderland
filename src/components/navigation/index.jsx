@@ -8,7 +8,7 @@ import Episodes from './episodes';
 import Follow from './follow';
 import Pages from './pages';
 
-import styles, { iconStyles } from './styles';
+import styles, { iconStyles, languageStyles } from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
@@ -87,14 +87,21 @@ export default class Navigation extends Component {
 
         <div className="logo">
           {iconStyles.styles}
+          {languageStyles.styles}
 
-          <div className="language-switch">
-            Sprache wechseln
-            <Link to="/en/">EN</Link>| <Link to="/">DE</Link>
-          </div>
+          <span className="logo-label">
+            {title} <HandshakeIcon className={iconStyles.className} />
+          </span>
 
-          <span className="logo-label">{title}</span>
-          <HandshakeIcon className={iconStyles.className} />
+          <nav className="language-switch">
+            <span className="language-switch-label">Sprache:</span>
+            <Link to="/en/" className={languageStyles.className}>
+              English
+            </Link>
+            <Link to="/" className={languageStyles.className}>
+              Deutsch
+            </Link>
+          </nav>
         </div>
 
         <ReactModal

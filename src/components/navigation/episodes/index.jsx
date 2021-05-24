@@ -24,7 +24,7 @@ export default ({ items }) => (
                 parseInt(number, 10) === 0
                   ? '/'
                   : `${
-                      language || language === 'de' ? '' : `/${language}`
+                      !language || language === 'de' ? '' : `/${language}`
                     }/episodes/${slug}/`
               }
               className={linkStyles.className}

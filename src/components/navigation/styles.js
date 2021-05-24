@@ -78,16 +78,15 @@ export default css`
     color: ${colors.lightGrey};
     display: flex;
     margin-left: auto;
-    opacity: 0;
-    transition: opacity 200ms ease;
   }
 
   .logo-label {
     display: inline-block;
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
-    margin-left: 1.5rem;
-    margin-right: 0.5rem;
+    margin-right: 1.5rem;
+    opacity: 0;
+    transition: opacity 200ms ease;
     vertical-align: middle;
   }
 
@@ -95,11 +94,19 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
     justify-self: flex-end;
-    margin-left: auto;
-    margin-right: 0;
+    margin-right: 0.5rem;
+    margin-top: 0.35rem;
   }
 
-  .navigation-container--intro-not-visible .logo {
+  .language-switch-label {
+    margin-right: 0.5rem;
+  }
+
+  .language-switch > a {
+    color: currentColor;
+  }
+
+  .navigation-container--intro-not-visible .logo-label {
     opacity: 1;
   }
 `;
@@ -109,5 +116,23 @@ export const iconStyles = css.resolve`
     height: 2rem;
     vertical-align: middle;
     width: 2rem;
+  }
+`;
+
+export const languageStyles = css.resolve`
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a + a {
+    border-left: 1px solid rgba(205, 205, 205, 0.25);
+    margin-left: 0.35rem;
+    padding-left: 0.35rem;
   }
 `;

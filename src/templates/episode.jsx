@@ -12,9 +12,19 @@ const getNextEpisode = (episodes, current) => {
   const next = episodes.find(
     ({
       node: {
-        acf: { number: episodeNumber, published },
+        acf: { number: episodeNumber, published, language },
       },
-    }) => parseInt(episodeNumber, 10) === number + 1 && published === true
+    }) => {
+      const languageIsEqual = language
+        ? language === current.acf.language
+        : language === 'de';
+
+      return (
+        parseInt(episodeNumber, 10) === number + 1 &&
+        published === true &&
+        languageIsEqual
+      );
+    }
   );
 
   return next;

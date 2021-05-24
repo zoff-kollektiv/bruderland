@@ -11,7 +11,7 @@ export default ({ items }) => (
         node: {
           slug,
           title,
-          acf: { number, text, published },
+          acf: { number, text, published, language },
         },
       }) => (
         <li key={`episode-${slug}`}>
@@ -20,7 +20,13 @@ export default ({ items }) => (
 
           {published === true || published === null ? (
             <Link
-              to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
+              to={
+                parseInt(number, 10) === 0
+                  ? '/'
+                  : `${
+                      language || language === 'de' ? '' : `/${language}`
+                    }/episodes/${slug}/`
+              }
               className={linkStyles.className}
             >
               <div className="episode-title-container">
@@ -57,6 +63,7 @@ export const fragment = graphql`
     acf {
       number
       text
+      language
     }
   }
 `;

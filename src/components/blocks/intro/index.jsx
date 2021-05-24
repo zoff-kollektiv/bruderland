@@ -122,7 +122,9 @@ export default ({
           {linkTitle ? (
             <Link
               className={nextLink.className}
-              to={`/episodes/${linkTitleSlug}/`}
+              to={`${
+                language ? `/${language}` : ''
+              }/episodes/${linkTitleSlug}/`}
               dangerouslySetInnerHTML={{ __html: title }}
             />
           ) : (

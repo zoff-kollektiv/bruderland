@@ -179,6 +179,7 @@ export const fragment = graphql`
           quote
           number
           text
+          language
         }
       }
     }

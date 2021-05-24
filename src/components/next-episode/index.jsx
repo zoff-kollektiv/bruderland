@@ -31,7 +31,7 @@ export default ({ currentTitle, next }) => {
           />
 
           <Link
-            to={`/episodes/${slug}/`}
+            to={`${acf?.language ? `/${acf.language}` : ''}/episodes/${slug}/`}
             className={arrowLink.className}
             rel="nofollow"
             aria-label={`Nächste Episode ${title}`}

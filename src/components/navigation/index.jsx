@@ -66,7 +66,7 @@ export default class Navigation extends Component {
   }
 
   render() {
-    const { items, title } = this.props;
+    const { items, title, language } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -93,13 +93,15 @@ export default class Navigation extends Component {
             {title} <HandshakeIcon className={iconStyles.className} />
           </span>
 
-          <nav className="language-switch">
-            <span className="language-switch-label">Sprache:</span>
+          <nav
+            className="language-switch"
+            aria-label={language && language === 'en' ? 'Language' : 'Sprache'}
+          >
             <Link to="/en/" className={languageStyles.className}>
-              English
+              EN
             </Link>
             <Link to="/" className={languageStyles.className}>
-              Deutsch
+              DE
             </Link>
           </nav>
         </div>
@@ -116,15 +118,25 @@ export default class Navigation extends Component {
                 items={[
                   {
                     node: {
-                      title: 'Hintergründe',
-                      link: '/background/',
+                      title:
+                        language && language === 'en'
+                          ? 'Background'
+                          : 'Hintergründe',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/`,
                     },
                   },
 
                   {
                     node: {
-                      title: 'Protagonist*innen',
-                      link: '/protagonists/',
+                      title:
+                        language && language === 'en'
+                          ? 'Protagonists'
+                          : 'Protagonist*innen',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/protagonists/`,
                     },
                   },
                 ]}
@@ -135,15 +147,25 @@ export default class Navigation extends Component {
                 items={[
                   {
                     node: {
-                      title: 'Kontakt & Impressum',
-                      link: '/background/impressum/',
+                      title:
+                        language && language === 'en'
+                          ? 'Contact & Imprint'
+                          : 'Kontakt & Impressum',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/impressum/`,
                     },
                   },
 
                   {
                     node: {
-                      title: 'Datenschutz',
-                      link: '/background/datenschutz/',
+                      title:
+                        language && language === 'en'
+                          ? 'Privacy agreement'
+                          : 'Datenschutz',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/datenschutz/`,
                     },
                   },
                 ]}

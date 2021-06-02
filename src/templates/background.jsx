@@ -30,7 +30,7 @@ const Page = ({
 export default withLayout(Page);
 
 export const query = graphql`
-  query($wordpressId: Int) {
+  query($wordpressId: Int, $language: String) {
     background: wordpressWpBackground(wordpress_id: { eq: $wordpressId }) {
       slug
       title
@@ -44,7 +44,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { acf: { number: { ne: "-1" } } }
+      filter: { acf: { number: { ne: "-1" }, language: { eq: $language } } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       ...navigationEpisodes

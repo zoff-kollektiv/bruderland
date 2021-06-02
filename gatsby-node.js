@@ -91,6 +91,9 @@ exports.createPages = ({
             node {
               slug
               wordpress_id
+              acf {
+                language
+              }
             }
           }
         }
@@ -102,6 +105,9 @@ exports.createPages = ({
             node {
               slug
               wordpress_id
+              acf {
+                language
+              }
             }
           }
         }
@@ -308,12 +314,15 @@ exports.createPages = ({
           // eslint-disable-next-line no-console
           console.log('create page', pagePath);
 
+          const context = {
+            wordpressId,
+            language: acf?.language ?? 'de',
+          };
+
           createPage({
             path: pagePath,
             component: path.resolve('src/templates/protagonist.jsx'),
-            context: {
-              wordpressId,
-            },
+            context,
           });
         });
 
@@ -354,12 +363,15 @@ exports.createPages = ({
             // eslint-disable-next-line no-console
             console.log('create background', pagePath);
 
+            const context = {
+              wordpressId,
+              language: acf?.language ?? 'de',
+            };
+
             createPage({
               path: pagePath,
               component: path.resolve('src/templates/background.jsx'),
-              context: {
-                wordpressId,
-              },
+              context,
             });
           }
         );

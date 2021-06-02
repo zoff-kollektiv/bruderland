@@ -44,6 +44,7 @@ const Page = ({
       og_title: ogTitle,
       og_image: ogImage,
       twitter_image: twitterImage,
+      language,
     },
   } = episode;
 
@@ -61,7 +62,7 @@ const Page = ({
         twitterImage={twitterImage}
       />
 
-      <Navigation items={allEpisodes} title={title} />
+      <Navigation items={allEpisodes} title={title} language={language} />
 
       <Episode
         title={title}

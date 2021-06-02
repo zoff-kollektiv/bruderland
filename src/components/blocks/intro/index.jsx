@@ -8,6 +8,7 @@ import styles, {
   nextLink,
   logoIcon,
   logoLabel,
+  logoLabelEn,
   logoTagline,
   arrowIcon,
   logoLink,
@@ -25,15 +26,20 @@ const Logo = ({ number, language }) => {
       <div className={logoIcon.className}>
         {logoIcon.styles}
         {logoLink.styles}
-        {logoLabel.styles}
         {logoTagline.styles}
 
         {(!language || language === 'de') && (
-          <span className={logoLabel.className}>Eigensinn im</span>
+          <>
+            {logoLabel.styles}
+            <span className={logoLabel.className}>Eigensinn im</span>
+          </>
         )}
 
         {language === 'en' && (
-          <span className={logoLabel.className}>Minds of their own</span>
+          <>
+            {logoLabelEn.styles}
+            <span className={logoLabelEn.className}>Minds of their own</span>
+          </>
         )}
 
         <HandshakeIcon className={logoIcon.className} />

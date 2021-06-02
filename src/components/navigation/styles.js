@@ -107,11 +107,6 @@ export default css`
     }
   }
 
-  .language-switch-label {
-    font-weight: 700;
-    margin-right: 0.5rem;
-  }
-
   .language-switch > a {
     color: currentColor;
   }

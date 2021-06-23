@@ -27,6 +27,7 @@ export const fragment = graphql`
     imagesRepeat {
       fullscreen
       allow_expansion
+      transcription
       imagesImage {
         id
         alt_text

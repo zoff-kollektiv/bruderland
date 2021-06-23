@@ -65,6 +65,7 @@ export default css`
   }
 
   .navigation-container {
+    align-items: center;
     display: flex;
     padding: 1rem 1.5rem;
     position: fixed;
@@ -74,20 +75,41 @@ export default css`
   }
 
   .logo {
-    align-self: flex-end;
     color: ${colors.lightGrey};
     display: flex;
+    justify-self: flex-end;
     margin-left: auto;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    .logo {
+      margin-left: 0;
+    }
   }
 
   .logo-label {
-    display: inline-block;
+    display: none;
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
-    margin-right: 1.5rem;
-    opacity: 0;
-    transition: opacity 200ms ease;
     vertical-align: middle;
+  }
+
+  @media ${mq.tablet} {
+    .logo-label {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .logo-label-text {
+    display: none;
+  }
+
+  @media ${mq.tablet} {
+    .logo-label-text {
+      display: inline;
+    }
   }
 
   .language-switch {
@@ -96,23 +118,26 @@ export default css`
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
     justify-self: flex-end;
-    margin-right: 0.5rem;
-    margin-top: -0.1rem;
+    line-height: 1;
+    margin-left: auto;
+    margin-top: 0.05rem;
   }
 
   @media ${mq.tablet} {
     .language-switch {
-      align-items: flex-start;
-      margin-top: 0.35rem;
+      align-items: center;
+      justify-self: flex-start;
+      margin-left: 1.5rem;
     }
   }
 
   .language-switch > a {
     color: currentColor;
+    line-height: 1;
   }
 
   .navigation-container--intro-not-visible .logo-label {
-    opacity: 1;
+    display: inline-block;
   }
 `;
 
@@ -136,7 +161,7 @@ export const languageStyles = css.resolve`
   }
 
   a + a {
-    border-left: 1px solid rgba(205, 205, 205, 0.25);
+    border-left: 1px solid currentColor;
     margin-left: 0.35rem;
     padding-left: 0.35rem;
   }

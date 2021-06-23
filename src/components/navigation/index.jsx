@@ -89,10 +89,6 @@ export default class Navigation extends Component {
           {iconStyles.styles}
           {languageStyles.styles}
 
-          <span className="logo-label">
-            {title} <HandshakeIcon className={iconStyles.className} />
-          </span>
-
           <nav
             className="language-switch"
             aria-label={language && language === 'en' ? 'Language' : 'Sprache'}
@@ -104,6 +100,11 @@ export default class Navigation extends Component {
               DE
             </Link>
           </nav>
+
+          <span className="logo-label">
+            <span className="logo-label-text">{title}</span>
+            <HandshakeIcon className={iconStyles.className} />
+          </span>
         </div>
 
         <ReactModal

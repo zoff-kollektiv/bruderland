@@ -45,9 +45,7 @@ const Logo = ({ number, language }) => {
         <HandshakeIcon className={logoIcon.className} />
 
         {language === 'en' && (
-          <span className={logoTagline.className}>
-            Migration from socialist partner states into the GDR
-          </span>
+          <span className={logoTagline.className}>Migrants in the GDR</span>
         )}
       </div>
     );

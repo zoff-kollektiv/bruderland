@@ -20,9 +20,27 @@ const skipIntro = (el) => {
   window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
 };
 
-const Logo = ({ number, language }) => {
+const Wrapper = ({ number, language, children }) => {
   if (parseInt(number, 10) === 0) {
-    return (
+    return <>{children}</>;
+  }
+
+  return (
+    <>
+      {logoLink.styles}
+      <Link
+        to={!language || language === 'de' ? '/' : '/en/'}
+        className={logoLink.className}
+      >
+        {children}
+      </Link>
+    </>
+  );
+};
+
+const Logo = ({ number, language }) => {
+  return (
+    <Wrapper number={number} language={language}>
       <div className={logoIcon.className}>
         {logoIcon.styles}
         {logoLink.styles}
@@ -48,18 +66,7 @@ const Logo = ({ number, language }) => {
           <span className={logoTagline.className}>Migrants in the GDR</span>
         )}
       </div>
-    );
-  }
-
-  return (
-    <Link
-      to={!language || language === 'de' ? '/' : '/en/'}
-      className={logoLink.className}
-    >
-      {logoLink.styles}
-      {logoIcon.styles}
-      <HandshakeIcon className={logoIcon.className} />
-    </Link>
+    </Wrapper>
   );
 };
 

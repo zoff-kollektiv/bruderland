@@ -385,13 +385,29 @@ exports.createPages = ({
             return episode?.node?.acf?.language === language;
           });
 
-          console.log('Create navigation ', language, localeEpisodes.length);
+          console.log('Navigation ', language, localeEpisodes.length);
 
           createPage({
             path: '/navigation/',
             component: path.resolve('src/templates/navigation.jsx'),
             context: {
               episodes: localeEpisodes,
+            },
+          });
+
+          createPage({
+            path: `${language === 'de' ? '' : `/${language}`}/background/`,
+            component: path.resolve('src/templates/backgroundOverview.jsx'),
+            context: {
+              language: language ?? 'de',
+            },
+          });
+
+          createPage({
+            path: `${language === 'de' ? '' : `/${language}`}/protagonists/`,
+            component: path.resolve('src/templates/protagonistsOverview.jsx'),
+            context: {
+              language: language ?? 'de',
             },
           });
         });

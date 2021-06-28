@@ -257,7 +257,16 @@ export const logoLabel = css.resolve`
 `;
 
 export const logoLabelEn = css.resolve`
-  text-align: left;
+  span {
+    padding-left: 0.75rem;
+    text-align: left;
+  }
+
+  @media ${mq.tablet} {
+    span {
+      padding-left: 1.25rem;
+    }
+  }
 `;
 
 export const logoTagline = css.resolve`

@@ -3,8 +3,8 @@ import React from 'react';
 import Navigation from '../components/navigation';
 import withLayout from '../components/with-layout';
 
-const Page = ({ pageContext: { episodes } }) => (
-  <Navigation items={episodes} isOpen />
+const NavigationPage = ({ pageContext: { language, episodes } }) => (
+  <Navigation items={episodes} isOpen language={language} />
 );
 
-export default withLayout(Page);
+export default withLayout(NavigationPage);

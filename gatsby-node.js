@@ -55,7 +55,7 @@ exports.createPages = ({
   cache,
   createNodeId,
 }) => {
-  const { createPage, createNode, createRedirect } = actions;
+  const { createPage, createNode } = actions;
 
   return (
     graphql(`
@@ -391,13 +391,12 @@ exports.createPages = ({
             return episode?.node?.acf?.language === language;
           });
 
-          console.log('Navigation ', language, localeEpisodes.length);
-
           createPage({
-            path: '/navigation/',
+            path: `${language === 'de' ? '' : `/${language}`}/navigation/`,
             component: path.resolve('src/templates/navigation.jsx'),
             context: {
               episodes: localeEpisodes,
+              language,
             },
           });
 
@@ -416,13 +415,6 @@ exports.createPages = ({
               language: language ?? 'de',
             },
           });
-        });
-
-        createRedirect({
-          fromPath: '/episodes/377/',
-          toPath: '/episodes/werktaetige/',
-          isPermanent: true,
-          redirectInBrowser: true,
         });
       })
   );

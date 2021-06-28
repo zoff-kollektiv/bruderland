@@ -32,12 +32,20 @@ const ProtagonistsOverviewPage = ({
 
       <BackgroundOverview>
         <BackgroundList
-          items={protagonists.map(({ slug, ...rest }) => ({
-            ...rest,
-            link: `${
-              language === 'de' ? '' : `/${language}`
-            }/protagonists/${slug}/`,
-          }))}
+          items={protagonists.map(({ slug, ...rest }) => {
+            let normalizedSlug = slug;
+
+            if (normalizedSlug.endsWith('-2')) {
+              normalizedSlug = normalizedSlug.replace(/-2$/g, '');
+            }
+
+            return {
+              ...rest,
+              link: `${
+                language === 'de' ? '' : `/${language}`
+              }/protagonists/${normalizedSlug}/`,
+            };
+          })}
         />
       </BackgroundOverview>
     </>

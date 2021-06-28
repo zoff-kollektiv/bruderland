@@ -140,10 +140,7 @@ export default ({
             <Constraint>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: `
-                <p>${language === 'en' && 'The document states'}</p>
-                ${transcription}
-              `,
+                  __html: transcription,
                 }}
               />
             </Constraint>

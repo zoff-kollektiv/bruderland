@@ -116,7 +116,6 @@ export default css`
     align-items: center;
     display: flex;
     font-family: ${fonts.superla.family};
-    font-size: 0.9rem;
     justify-self: flex-end;
     line-height: 1;
     margin-left: auto;
@@ -152,6 +151,7 @@ export const iconStyles = css.resolve`
 export const languageStyles = css.resolve`
   a {
     color: currentColor;
+    font-size: 0.9rem;
     text-decoration: none;
   }
 
@@ -164,5 +164,12 @@ export const languageStyles = css.resolve`
     border-left: 1px solid currentColor;
     margin-left: 0.35rem;
     padding-left: 0.35rem;
+  }
+
+  a[aria-current] {
+    font-size: 0.88rem;
+    font-weight: 700;
+    position: relative;
+    top: 0.025rem;
   }
 `;

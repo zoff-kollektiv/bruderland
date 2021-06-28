@@ -7,6 +7,7 @@ import Protagonist from '../components/protagonist';
 import withLayout from '../components/with-layout';
 
 const Page = ({
+  pageContext: { language },
   data: {
     protagonist,
     allEpisodes: { edges: allEpisodes },
@@ -20,11 +21,7 @@ const Page = ({
         <title>{title}</title>
       </Helmet>
 
-      <Navigation
-        items={allEpisodes}
-        title={title}
-        langugage={protagonist.langugage}
-      />
+      <Navigation items={allEpisodes} title={title} langugage={language} />
 
       <Protagonist data={protagonist} />
     </>

@@ -7,6 +7,7 @@ import Background from '../components/background';
 import withLayout from '../components/with-layout';
 
 const Page = ({
+  pageContext: { language },
   data: {
     background,
     allEpisodes: { edges: allEpisodes },
@@ -20,7 +21,7 @@ const Page = ({
         <title>{title}</title>
       </Helmet>
 
-      <Navigation items={allEpisodes} title={title} />
+      <Navigation items={allEpisodes} title={title} language={language} />
 
       <Background data={background} />
     </>

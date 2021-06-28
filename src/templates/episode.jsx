@@ -31,6 +31,7 @@ const getNextEpisode = (episodes, current) => {
 };
 
 const Page = ({
+  pageContext: { language },
   data: {
     episode,
     allEpisodes: { edges: allEpisodes },
@@ -44,7 +45,6 @@ const Page = ({
       og_title: ogTitle,
       og_image: ogImage,
       twitter_image: twitterImage,
-      language,
     },
   } = episode;
 
@@ -69,6 +69,7 @@ const Page = ({
         data={episode}
         next={getNextEpisode(allEpisodes, episode)}
         vimeo={videos}
+        language={language}
       />
     </>
   );

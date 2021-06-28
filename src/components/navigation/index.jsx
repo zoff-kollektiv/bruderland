@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby';
+import classnames from 'classnames';
 import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
@@ -8,7 +9,11 @@ import Episodes from './episodes';
 import Follow from './follow';
 import Pages from './pages';
 
-import styles, { iconStyles, languageStyles } from './styles';
+import styles, {
+  iconStyles,
+  languageStyles,
+  languageActiveStyles,
+} from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
@@ -89,15 +94,29 @@ export default class Navigation extends Component {
         <div className="logo">
           {iconStyles.styles}
           {languageStyles.styles}
+          {languageActiveStyles.styles}
 
           <nav
             className="language-switch"
             aria-label={language && language === 'en' ? 'Language' : 'Sprache'}
           >
-            <Link to="/en/" className={languageStyles.className}>
+            <Link
+              to="/en/"
+              className={classnames(
+                languageStyles.className,
+                language === 'en' && languageActiveStyles.className
+              )}
+            >
               EN
             </Link>
-            <Link to="/" className={languageStyles.className}>
+            <Link
+              to="/"
+              className={classnames(
+                languageStyles.className,
+                (language === 'de' || !language) &&
+                  languageActiveStyles.className
+              )}
+            >
               DE
             </Link>
           </nav>

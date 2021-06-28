@@ -166,8 +166,10 @@ export const languageStyles = css.resolve`
     margin-left: 0.35rem;
     padding-left: 0.35rem;
   }
+`;
 
-  a[aria-current] {
+export const languageActiveStyles = css.resolve`
+  a {
     font-size: 0.88rem;
     font-weight: 700;
     position: relative;

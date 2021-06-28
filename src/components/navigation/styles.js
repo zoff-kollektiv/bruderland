@@ -142,9 +142,10 @@ export default css`
 
 export const iconStyles = css.resolve`
   svg {
-    height: 2rem;
+    height: 1.75rem;
+    margin-left: 0.5rem;
     vertical-align: middle;
-    width: 2rem;
+    width: auto;
   }
 `;
 

@@ -4,6 +4,7 @@
   status = 301
   conditions = {Language = ["en", "fr"]}
 
+[[redirects]]
   from = "/en/background/datenschutz/"
   to = "/background/datenschutz/"
   status = 301

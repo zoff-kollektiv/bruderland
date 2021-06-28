@@ -8,7 +8,6 @@ import styles, {
   nextLink,
   logoIcon,
   logoLabel,
-  logoLabelEn,
   logoTagline,
   arrowIcon,
   logoLink,
@@ -55,8 +54,8 @@ const Logo = ({ number, language }) => {
 
         {language === 'en' && (
           <>
-            {logoLabelEn.styles}
-            <span className={logoLabelEn.className}>Minds of their own</span>
+            {logoTagline.styles}
+            <span className={logoTagline.className}>Minds of their own</span>
           </>
         )}
 

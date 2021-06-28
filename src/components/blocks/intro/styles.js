@@ -256,34 +256,6 @@ export const logoLabel = css.resolve`
   }
 `;
 
-export const logoLabelEn = css.resolve`
-  span {
-    font-family: ${fonts.superla.family};
-    font-size: 0.9rem;
-    font-weight: ${fonts.superla.weight.extraBold};
-    letter-spacing: 0.1rem;
-    line-height: 1;
-    padding-left: 0.6rem;
-    text-transform: uppercase;
-  }
-
-  @media ${mq.tablet} {
-    span {
-      font-size: 1.4rem;
-      letter-spacing: 0.1rem;
-      padding-left: 0.85rem;
-    }
-  }
-
-  @media ${mq.desktop} {
-    span {
-      font-size: 1.95rem;
-      letter-spacing: 0.3rem;
-      padding-left: 1.25rem;
-    }
-  }
-`;
-
 export const logoTagline = css.resolve`
   span {
     display: block;
@@ -306,7 +278,7 @@ export const logoTagline = css.resolve`
 
   @media ${mq.desktop} {
     span {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       letter-spacing: 0.1rem;
       padding-right: 1.3rem;
     }

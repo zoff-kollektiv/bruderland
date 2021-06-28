@@ -138,7 +138,14 @@ export default ({
         {transcription && (
           <div className={transcriptionStyle.className}>
             <Constraint>
-              <div dangerouslySetInnerHTML={{ __html: transcription }} />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `
+                <p>${language === 'en' && 'The document states'}</p>
+                ${transcription}
+              `,
+                }}
+              />
             </Constraint>
           </div>
         )}

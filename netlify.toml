@@ -3,3 +3,7 @@
   to = "/en"
   status = 301
   conditions = {Language = ["en", "fr"]}
+
+  from = "/en/background/datenschutz/"
+  to = "/background/datenschutz/"
+  status = 301

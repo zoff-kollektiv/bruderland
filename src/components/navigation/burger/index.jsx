@@ -7,7 +7,10 @@ import VisuallyHidden from '../../visually-hidden';
 import styles, { iconStyles } from './styles';
 
 export default ({ isOpen, language, ...rest }) => (
-  <a href={`${language === 'de' ? '' : `/${language}`}/navigation`} {...rest}>
+  <a
+    href={`${language === 'de' || !language ? '' : `/${language}`}/navigation`}
+    {...rest}
+  >
     <style jsx>{styles}</style>
     {iconStyles.styles}
     {!isOpen ? (

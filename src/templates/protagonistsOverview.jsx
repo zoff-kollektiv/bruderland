@@ -23,7 +23,7 @@ const ProtagonistsOverviewPage = ({
         </title>
       </Helmet>
 
-      <Navigation items={allEpisodes} />
+      <Navigation items={allEpisodes} language={language} />
 
       <Title
         title={language === 'de' ? 'Protagonist*innen' : 'Protagonists'}

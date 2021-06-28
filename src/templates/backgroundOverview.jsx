@@ -23,7 +23,7 @@ const BackgroundOverviewPage = ({
         </title>
       </Helmet>
 
-      <Navigation items={allEpisodes} />
+      <Navigation items={allEpisodes} language={language} />
 
       <Title
         title={language === 'de' ? 'Hintergründe' : 'Background Articles'}

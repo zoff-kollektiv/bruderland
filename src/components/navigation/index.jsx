@@ -75,6 +75,7 @@ export default class Navigation extends Component {
 
         <Burger
           isOpen={isOpen}
+          language={language}
           onClick={(event) => {
             event.preventDefault();
             if (isOpen) {

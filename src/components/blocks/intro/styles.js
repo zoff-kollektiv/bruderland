@@ -256,6 +256,10 @@ export const logoLabel = css.resolve`
   }
 `;
 
+export const logoLabelEn = css.resolve`
+  text-align: left;
+`;
+
 export const logoTagline = css.resolve`
   span {
     display: block;

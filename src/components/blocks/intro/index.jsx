@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Link from 'gatsby-link';
 import React, { useRef } from 'react';
 
@@ -11,6 +12,7 @@ import styles, {
   logoTagline,
   arrowIcon,
   logoLink,
+  logoLabelEn,
 } from './styles';
 
 const skipIntro = (el) => {
@@ -55,7 +57,10 @@ const Logo = ({ number, language }) => {
         {language === 'en' && (
           <>
             {logoTagline.styles}
-            <span className={logoTagline.className}>Minds of their own</span>
+            {logoLabelEn.styles}
+            <span className={cn(logoTagline.className, logoLabelEn.className)}>
+              Minds of their own
+            </span>
           </>
         )}
 

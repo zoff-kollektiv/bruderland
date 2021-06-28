@@ -155,7 +155,9 @@ export default class Navigation extends Component {
                           : 'Kontakt & Impressum',
                       link: `${
                         language && language === 'en' ? '/en' : ''
-                      }/background/impressum/`,
+                      }/background/${
+                        !language || language === 'de' ? 'impressum' : 'imprint'
+                      }/`,
                     },
                   },
 

@@ -307,9 +307,15 @@ exports.createPages = ({
       .then(({ episodes, protagonists, background }) => {
         protagonists.forEach(({ node }) => {
           const { slug, wordpress_id: wordpressId, acf } = node;
+          let normalizedSlug = slug;
           const languageSlug =
             !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
-          const pagePath = `${languageSlug}/protagonists/${slug}/`;
+
+          if (normalizedSlug.endsWith('-2')) {
+            normalizedSlug = normalizedSlug.replace(/-2$/g, '');
+          }
+
+          const pagePath = `${languageSlug}/protagonists/${normalizedSlug}/`;
 
           // eslint-disable-next-line no-console
           console.log('create page', pagePath);

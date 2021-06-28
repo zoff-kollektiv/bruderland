@@ -18,26 +18,32 @@ const BackgroundOverviewPage = ({
   return (
     <>
       <Helmet>
-        <title>
-          {language === 'de' ? 'Hintergründe' : 'Background Articles'}
-        </title>
+        <title>{language === 'de' ? 'Hintergründe' : 'Background'}</title>
       </Helmet>
 
       <Navigation items={allEpisodes} language={language} />
 
       <Title
-        title={language === 'de' ? 'Hintergründe' : 'Background Articles'}
+        title={language === 'de' ? 'Hintergründe' : 'Background'}
         context={false}
       />
 
       <BackgroundOverview>
         <BackgroundList
-          items={backgrounds.map(({ slug, ...rest }) => ({
-            ...rest,
-            link: `${
-              language === 'de' ? '' : `/${language}`
-            }/background/${slug}/`,
-          }))}
+          items={backgrounds.map(({ slug, ...rest }) => {
+            let normalizedSlug = slug;
+
+            if (normalizedSlug.endsWith('-2')) {
+              normalizedSlug = normalizedSlug.replace(/-2$/g, '');
+            }
+
+            return {
+              ...rest,
+              link: `${
+                language === 'de' ? '' : `/${language}`
+              }/background/${slug}/`,
+            };
+          })}
         />
       </BackgroundOverview>
     </>

@@ -5,12 +5,17 @@ import Title from '../title';
 
 export default ({ data: { title, acf } }) => {
   // eslint-disable-next-line camelcase
-  const { content_protagonists: contentBlocks } = acf;
+  const { content_protagonists: contentBlocks, language } = acf;
 
   return (
     <>
       <main>
-        <Title title={title} context="Protagonist*in" />
+        <Title
+          title={title}
+          context={
+            !language || language === 'de' ? 'Protagonist*in' : 'Protagonist'
+          }
+        />
         <Blockrenderer blocks={contentBlocks} />
       </main>
     </>

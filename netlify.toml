@@ -1,2 +1,12 @@
-[build]
-  functions = "public-functions"
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 301
+  force = true
+  conditions = {Language = ["en", "fr"]}
+
+[[redirects]]
+  from = "/en/background/datenschutz/"
+  to = "/background/datenschutz/"
+  status = 301
+  force = true

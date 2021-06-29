@@ -6,47 +6,31 @@ import styles, { linkStyles } from './styles';
 
 export default ({ items }) => (
   <>
-    {items.map(
-      ({
-        node: {
-          slug,
-          title,
-          acf: { number, text, published },
-        },
-      }) => (
-        <li key={`episode-${slug}`}>
-          <style jsx>{styles}</style>
-          {linkStyles.styles}
+    {items.map(({ node: { slug, title, acf: { number, text, language } } }) => (
+      <li key={`episode-${slug}`}>
+        <style jsx>{styles}</style>
+        {linkStyles.styles}
 
-          {published === true || published === null ? (
-            <Link
-              to={parseInt(number, 10) === 0 ? '/' : `/episodes/${slug}/`}
-              className={linkStyles.className}
-            >
-              <div className="episode-title-container">
-                <em
-                  className="title"
-                  dangerouslySetInnerHTML={{ __html: title }}
-                />
-                <p className="intro">{text}</p>
-              </div>
-            </Link>
-          ) : (
-            <span className={linkStyles.className}>
-              <div className="episode-title-container">
-                <em
-                  className="title"
-                  dangerouslySetInnerHTML={{
-                    __html: `Demnächst: ${title}`,
-                  }}
-                />
-                <p className="intro">{text}</p>
-              </div>
-            </span>
-          )}
-        </li>
-      )
-    )}
+        <Link
+          to={
+            // eslint-disable-next-line no-nested-ternary
+            parseInt(number, 10) === 0
+              ? !language || language === 'de'
+                ? ''
+                : `/${language}`
+              : `${
+                  !language || language === 'de' ? '' : `/${language}`
+                }/episodes/${slug}/`
+          }
+          className={linkStyles.className}
+        >
+          <div className="episode-title-container">
+            <em className="title" dangerouslySetInnerHTML={{ __html: title }} />
+            <p className="intro">{text}</p>
+          </div>
+        </Link>
+      </li>
+    ))}
   </>
 );
 
@@ -57,6 +41,7 @@ export const fragment = graphql`
     acf {
       number
       text
+      language
     }
   }
 `;

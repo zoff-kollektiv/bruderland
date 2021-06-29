@@ -206,18 +206,18 @@ export default css`
 `;
 
 export const logoIcon = css.resolve`
-  svg {
-    width: 12rem;
+  div {
+    width: 16rem;
   }
 
   @media ${mq.tablet} {
-    svg {
+    div {
       width: 18rem;
     }
   }
 
   @media ${mq.desktop} {
-    svg {
+    div {
       width: 28rem;
     }
   }
@@ -252,6 +252,48 @@ export const logoLabel = css.resolve`
       font-size: 2.75rem;
       letter-spacing: 0.3rem;
       padding-left: 1.25rem;
+    }
+  }
+`;
+
+export const logoLabelEn = css.resolve`
+  span {
+    padding-left: 0.75rem;
+    text-align: left;
+  }
+
+  @media ${mq.tablet} {
+    span {
+      padding-left: 1.25rem;
+    }
+  }
+`;
+
+export const logoTagline = css.resolve`
+  span {
+    display: block;
+    font-family: ${fonts.superla.family};
+    font-size: 0.9rem;
+    font-weight: ${fonts.superla.weight.extraBold};
+    line-height: 1;
+    padding-right: 1rem;
+    text-align: right;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @media ${mq.tablet} {
+    span {
+      font-size: 1.1rem;
+      letter-spacing: 0.025rem;
+    }
+  }
+
+  @media ${mq.desktop} {
+    span {
+      font-size: 1.25rem;
+      letter-spacing: 0.1rem;
+      padding-right: 1.3rem;
     }
   }
 `;

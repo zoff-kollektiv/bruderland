@@ -142,6 +142,7 @@ export default class Video extends Component {
       caption,
       fullsize,
       loop = false,
+      language,
     } = this.props;
     const { isPlaying, progressPercentage, currentTime } = this.state;
     const vimeoVideo =
@@ -189,16 +190,20 @@ export default class Video extends Component {
 
           {tracks &&
             tracks.length > 0 &&
-            tracks.map(({ name, publicPath, language }, index) => (
-              <track
-                key={publicPath}
-                label={name}
-                kind="subtitles"
-                srcLang={language}
-                src={publicPath}
-                default={index === 0}
-              />
-            ))}
+            tracks.map(
+              ({ name, publicPath, language: trackLanguage }, index) => (
+                <track
+                  key={publicPath}
+                  label={name}
+                  kind="subtitles"
+                  srcLang={trackLanguage}
+                  src={publicPath}
+                  default={
+                    (!language && index === 0) || trackLanguage === language
+                  }
+                />
+              )
+            )}
         </video>
 
         <footer>

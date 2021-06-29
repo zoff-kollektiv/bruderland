@@ -4,11 +4,9 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
-    "build": "gatsby build && npm run build-functions",
+    "build": "gatsby build",
     "serve": "gatsby serve",
-    "lint": "eslint --fix --ext .js,.jsx .",
-    "build-functions": "netlify-lambda build functions",
-    "serve-functions": "netlify-lambda serve functions"
+    "lint": "eslint --fix --ext .js,.jsx ."
   },
   "dependencies": {
     "classnames": "^2.2.6",

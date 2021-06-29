@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 
-import { colors, mq } from '../../../../tokens';
+import { colors, mq, fonts } from '../../../../tokens';
 
 export default css`
   figure {
@@ -99,5 +99,25 @@ export const imageExpanendStyle = css.resolve`
     padding: 1.5rem;
     max-height: 100vh;
     width: 100%;
+  }
+`;
+
+export const transcription = css.resolve`
+  div {
+    display: flex;
+    color: ${colors.grey};
+    font-family: ${fonts.superla.family};
+    font-size: 0.9rem;
+    font-weight: ${fonts.superla.weight.regular};
+    justify-content: center;
+    line-height: 1.33;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    div {
+      font-size: 1rem;
+    }
   }
 `;

@@ -65,6 +65,7 @@ export default css`
   }
 
   .navigation-container {
+    align-items: center;
     display: flex;
     padding: 1rem 1.5rem;
     position: fixed;
@@ -74,30 +75,104 @@ export default css`
   }
 
   .logo {
-    align-self: flex-end;
     color: ${colors.lightGrey};
+    display: flex;
+    justify-self: flex-end;
     margin-left: auto;
-    opacity: 0;
-    transition: opacity 200ms ease;
+    width: 100%;
+  }
+
+  @media ${mq.tablet} {
+    .logo {
+      margin-left: 0;
+    }
   }
 
   .logo-label {
-    display: inline-block;
+    display: none;
     font-family: ${fonts.superla.family};
     font-size: 0.9rem;
-    margin-right: 0.5rem;
     vertical-align: middle;
   }
 
-  .navigation-container--intro-not-visible .logo {
-    opacity: 1;
+  @media ${mq.tablet} {
+    .logo-label {
+      margin-left: auto;
+      margin-right: 0.5rem;
+    }
+  }
+
+  .logo-label-text {
+    display: none;
+  }
+
+  @media ${mq.tablet} {
+    .logo-label-text {
+      display: inline;
+    }
+  }
+
+  .language-switch {
+    align-items: center;
+    display: flex;
+    font-family: ${fonts.superla.family};
+    justify-self: flex-end;
+    line-height: 1;
+    margin-left: auto;
+    margin-top: 0.05rem;
+  }
+
+  @media ${mq.tablet} {
+    .language-switch {
+      align-items: center;
+      justify-self: flex-start;
+      margin-left: 1.5rem;
+    }
+  }
+
+  .language-switch > a {
+    color: currentColor;
+    line-height: 1;
+  }
+
+  .navigation-container--intro-not-visible .logo-label {
+    display: inline-block;
   }
 `;
 
 export const iconStyles = css.resolve`
   svg {
-    height: 2rem;
+    height: 1.75rem;
+    margin-left: 0.5rem;
     vertical-align: middle;
-    width: 2rem;
+    width: auto;
+  }
+`;
+
+export const languageStyles = css.resolve`
+  a {
+    color: currentColor;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a + a {
+    border-left: 1px solid currentColor;
+    margin-left: 0.35rem;
+    padding-left: 0.35rem;
+  }
+`;
+
+export const languageActiveStyles = css.resolve`
+  a {
+    font-size: 0.88rem;
+    font-weight: 700;
+    position: relative;
+    top: 0.025rem;
   }
 `;

@@ -20,23 +20,25 @@ export default ({ logos = [] }) => (
     <Constraint size="wide">
       <ul>
         {logos &&
-          logos.map(
-            ({
-              link,
-              logo: {
-                altText,
-                localFile: {
-                  childImageSharp: { fluid },
+          logos
+            .filter(({ logo }) => !!logo)
+            .map(
+              ({
+                link,
+                logo: {
+                  altText,
+                  localFile: {
+                    childImageSharp: { fluid },
+                  },
                 },
-              },
-            }) => (
-              <li key={`logo-${link}`}>
-                <Linked link={link} className={logoLink.className}>
-                  <img {...fluid} alt={altText} />
-                </Linked>
-              </li>
-            )
-          )}
+              }) => (
+                <li key={`logo-${link}`}>
+                  <Linked link={link} className={logoLink.className}>
+                    <img {...fluid} alt={altText} />
+                  </Linked>
+                </li>
+              )
+            )}
       </ul>
     </Constraint>
   </section>

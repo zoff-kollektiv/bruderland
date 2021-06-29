@@ -18,7 +18,7 @@ export default ({ currentTitle, next }) => {
       {arrowLink.styles}
       {arrowDownIcon.styles}
 
-      <Share title={currentTitle} />
+      <Share title={currentTitle} language={acf?.language} />
 
       {title && (
         <>
@@ -31,10 +31,14 @@ export default ({ currentTitle, next }) => {
           />
 
           <Link
-            to={`/episodes/${slug}/`}
+            to={`${acf?.language ? `/${acf.language}` : ''}/episodes/${slug}/`}
             className={arrowLink.className}
             rel="nofollow"
-            aria-label={`Nächste Episode ${title}`}
+            aria-label={`${
+              acf?.language && acf.language === 'en'
+                ? 'Next episode'
+                : 'Nächste Episode'
+            } ${title}`}
           >
             <ArrowDownIcon className={arrowDownIcon.className} />
           </Link>

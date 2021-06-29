@@ -12,6 +12,7 @@ export default css`
     margin-top: 0;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    padding-top: 0.5rem;
     text-align: left;
     width: 100%;
   }

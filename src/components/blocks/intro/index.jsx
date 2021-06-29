@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import Link from 'gatsby-link';
 import React, { useRef } from 'react';
 
@@ -8,8 +9,10 @@ import styles, {
   nextLink,
   logoIcon,
   logoLabel,
+  logoTagline,
   arrowIcon,
   logoLink,
+  logoLabelEn,
 } from './styles';
 
 const skipIntro = (el) => {
@@ -18,25 +21,56 @@ const skipIntro = (el) => {
   window.scrollBy({ top: offsetHeight, left: 0, behavior: 'smooth' });
 };
 
-const Logo = ({ number }) => {
+const Wrapper = ({ number, language, children }) => {
   if (parseInt(number, 10) === 0) {
-    return (
-      <div className={logoIcon.className}>
-        {logoIcon.styles}
-        {logoLink.styles}
-        {logoLabel.styles}
-        <span className={logoLabel.className}>Eigensinn im</span>
-        <HandshakeIcon className={logoIcon.className} />
-      </div>
-    );
+    return <>{children}</>;
   }
 
   return (
-    <Link to="/" className={logoLink.className}>
+    <>
       {logoLink.styles}
-      {logoIcon.styles}
-      <HandshakeIcon className={logoIcon.className} />
-    </Link>
+      <Link
+        to={!language || language === 'de' ? '/' : '/en/'}
+        className={logoLink.className}
+      >
+        {children}
+      </Link>
+    </>
+  );
+};
+
+const Logo = ({ number, language }) => {
+  return (
+    <Wrapper number={number} language={language}>
+      <div className={logoIcon.className}>
+        {logoIcon.styles}
+        {logoLink.styles}
+        {logoTagline.styles}
+
+        {(!language || language === 'de') && (
+          <>
+            {logoLabel.styles}
+            <span className={logoLabel.className}>Eigensinn im</span>
+          </>
+        )}
+
+        {language === 'en' && (
+          <>
+            {logoTagline.styles}
+            {logoLabelEn.styles}
+            <span className={cn(logoTagline.className, logoLabelEn.className)}>
+              Minds of their own
+            </span>
+          </>
+        )}
+
+        <HandshakeIcon className={logoIcon.className} />
+
+        {language === 'en' && (
+          <span className={logoTagline.className}>Migrants in the GDR</span>
+        )}
+      </div>
+    </Wrapper>
   );
 };
 
@@ -50,6 +84,7 @@ export default ({
   linkTitleSlug = '',
   number,
   title,
+  language,
 }) => {
   const introRef = useRef(null);
 
@@ -87,7 +122,7 @@ export default ({
             )}
 
             <div className="logo">
-              <Logo number={number} />
+              <Logo number={number} language={language} />
             </div>
 
             <div className="quote">
@@ -116,7 +151,9 @@ export default ({
           {linkTitle ? (
             <Link
               className={nextLink.className}
-              to={`/episodes/${linkTitleSlug}/`}
+              to={`${
+                language ? `/${language}` : ''
+              }/episodes/${linkTitleSlug}/`}
               dangerouslySetInnerHTML={{ __html: title }}
             />
           ) : (

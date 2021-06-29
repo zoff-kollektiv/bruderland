@@ -55,7 +55,7 @@ exports.createPages = ({
   cache,
   createNodeId,
 }) => {
-  const { createPage, createNode, createRedirect } = actions;
+  const { createPage, createNode } = actions;
 
   return (
     graphql(`
@@ -65,12 +65,14 @@ exports.createPages = ({
         ) {
           edges {
             node {
+              wordpress_id
               slug
               title
               acf {
                 quote
                 number
                 text
+                language
                 content_episodes {
                   ... on WordPressAcf_vimeoVideo {
                     __typename
@@ -89,6 +91,9 @@ exports.createPages = ({
             node {
               slug
               wordpress_id
+              acf {
+                language
+              }
             }
           }
         }
@@ -100,6 +105,9 @@ exports.createPages = ({
             node {
               slug
               wordpress_id
+              acf {
+                language
+              }
             }
           }
         }
@@ -298,34 +306,48 @@ exports.createPages = ({
       // create pages
       .then(({ episodes, protagonists, background }) => {
         protagonists.forEach(({ node }) => {
-          const { slug, wordpress_id: wordpressId } = node;
-          const pagePath = `/protagonists/${slug}/`;
+          const { slug, wordpress_id: wordpressId, acf } = node;
+          let normalizedSlug = slug;
+          const languageSlug =
+            !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+
+          if (normalizedSlug.endsWith('-2')) {
+            normalizedSlug = normalizedSlug.replace(/-2$/g, '');
+          }
+
+          const pagePath = `${languageSlug}/protagonists/${normalizedSlug}/`;
 
           // eslint-disable-next-line no-console
           console.log('create page', pagePath);
 
+          const context = {
+            wordpressId,
+            language: acf?.language ?? 'de',
+          };
+
           createPage({
             path: pagePath,
             component: path.resolve('src/templates/protagonist.jsx'),
-            context: {
-              wordpressId,
-            },
+            context,
           });
         });
 
         episodes.forEach(({ node }) => {
-          const { slug, acf } = node;
+          const { slug, acf, wordpress_id: wordpressId } = node;
           const number = parseInt(acf.number, 10);
-          let pagePath = `/episodes/${slug}/`;
+          const languageSlug =
+            !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+          let pagePath = `${languageSlug}/episodes/${slug}/`;
 
-          if (number < 0) {
-            pagePath = `/__internal${pagePath}`;
-          } else if (number === 0) {
+          if (number === 0 && (acf.language === 'de' || !acf.language)) {
             pagePath = '/';
+          } else if (number === 0 && acf.language !== 'de') {
+            pagePath = `/${acf.language}/`;
           }
 
           const context = {
-            number: `${number}`,
+            wordpressId,
+            language: acf?.language ?? 'de',
           };
 
           // eslint-disable-next-line no-console
@@ -338,37 +360,61 @@ exports.createPages = ({
           });
         });
 
-        background.forEach(({ node: { slug, wordpress_id: wordpressId } }) => {
-          const pagePath = `/background/${slug}/`;
+        background.forEach(
+          ({ node: { slug, wordpress_id: wordpressId, acf } }) => {
+            const languageSlug =
+              !acf?.language || acf.language === 'de' ? '' : `/${acf.language}`;
+            const pagePath = `${languageSlug}/background/${slug}/`;
 
-          // eslint-disable-next-line no-console
-          console.log('create background', pagePath);
+            // eslint-disable-next-line no-console
+            console.log('create background', pagePath);
+
+            const context = {
+              wordpressId,
+              language: acf?.language ?? 'de',
+            };
+
+            createPage({
+              path: pagePath,
+              component: path.resolve('src/templates/background.jsx'),
+              context,
+            });
+          }
+        );
+
+        ['de', 'en'].forEach((language) => {
+          const localeEpisodes = episodes.filter((episode) => {
+            if (language === 'de' && !episode?.node?.acf?.language) {
+              return true;
+            }
+
+            return episode?.node?.acf?.language === language;
+          });
 
           createPage({
-            path: pagePath,
-            component: path.resolve('src/templates/background.jsx'),
+            path: `${language === 'de' ? '' : `/${language}`}/navigation/`,
+            component: path.resolve('src/templates/navigation.jsx'),
             context: {
-              wordpressId,
+              episodes: localeEpisodes,
+              language,
             },
           });
-        });
 
-        // eslint-disable-next-line no-console
-        console.log('create page', '/navigation/');
+          createPage({
+            path: `${language === 'de' ? '' : `/${language}`}/background/`,
+            component: path.resolve('src/templates/backgroundOverview.jsx'),
+            context: {
+              language: language ?? 'de',
+            },
+          });
 
-        createPage({
-          path: '/navigation/',
-          component: path.resolve('src/templates/navigation.jsx'),
-          context: {
-            episodes,
-          },
-        });
-
-        createRedirect({
-          fromPath: '/episodes/377/',
-          toPath: '/episodes/werktaetige/',
-          isPermanent: true,
-          redirectInBrowser: true,
+          createPage({
+            path: `${language === 'de' ? '' : `/${language}`}/protagonists/`,
+            component: path.resolve('src/templates/protagonistsOverview.jsx'),
+            context: {
+              language: language ?? 'de',
+            },
+          });
         });
       })
   );

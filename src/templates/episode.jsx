@@ -12,15 +12,26 @@ const getNextEpisode = (episodes, current) => {
   const next = episodes.find(
     ({
       node: {
-        acf: { number: episodeNumber, published },
+        acf: { number: episodeNumber, published, language },
       },
-    }) => parseInt(episodeNumber, 10) === number + 1 && published === true
+    }) => {
+      const languageIsEqual = language
+        ? language === current.acf.language
+        : language === 'de';
+
+      return (
+        parseInt(episodeNumber, 10) === number + 1 &&
+        published === true &&
+        languageIsEqual
+      );
+    }
   );
 
   return next;
 };
 
 const Page = ({
+  pageContext: { language },
   data: {
     episode,
     allEpisodes: { edges: allEpisodes },
@@ -51,13 +62,14 @@ const Page = ({
         twitterImage={twitterImage}
       />
 
-      <Navigation items={allEpisodes} title={title} />
+      <Navigation items={allEpisodes} title={title} language={language} />
 
       <Episode
         title={title}
         data={episode}
         next={getNextEpisode(allEpisodes, episode)}
         vimeo={videos}
+        language={language}
       />
     </>
   );
@@ -66,14 +78,15 @@ const Page = ({
 export default withLayout(Page);
 
 export const query = graphql`
-  query($number: String) {
-    episode: wordpressWpEpisodes(acf: { number: { eq: $number } }) {
+  query($wordpressId: Int, $language: String) {
+    episode: wordpressWpEpisodes(wordpress_id: { eq: $wordpressId }) {
       title
       acf {
         quote
         number
         text
         intro
+        language
         og_image {
           localFile {
             childImageSharp {
@@ -119,7 +132,7 @@ export const query = graphql`
     }
 
     allEpisodes: allWordpressWpEpisodes(
-      filter: { acf: { number: { ne: "-1" } } }
+      filter: { acf: { number: { ne: "-1" }, language: { eq: $language } } }
       sort: { fields: [acf___number], order: ASC }
     ) {
       ...navigationEpisodes

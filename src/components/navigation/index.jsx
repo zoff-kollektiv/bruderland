@@ -1,4 +1,6 @@
 import { graphql } from 'gatsby';
+import classnames from 'classnames';
+import Link from 'gatsby-link';
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 
@@ -7,7 +9,11 @@ import Episodes from './episodes';
 import Follow from './follow';
 import Pages from './pages';
 
-import styles, { iconStyles } from './styles';
+import styles, {
+  iconStyles,
+  languageStyles,
+  languageActiveStyles,
+} from './styles';
 
 import HandshakeIcon from '../../static/handshake.svg';
 
@@ -65,7 +71,7 @@ export default class Navigation extends Component {
   }
 
   render() {
-    const { items, title } = this.props;
+    const { items, title, language } = this.props;
     const { isOpen } = this.state;
 
     return (
@@ -74,6 +80,7 @@ export default class Navigation extends Component {
 
         <Burger
           isOpen={isOpen}
+          language={language}
           onClick={(event) => {
             event.preventDefault();
             if (isOpen) {
@@ -86,8 +93,38 @@ export default class Navigation extends Component {
 
         <div className="logo">
           {iconStyles.styles}
-          <span className="logo-label">{title}</span>
-          <HandshakeIcon className={iconStyles.className} />
+          {languageStyles.styles}
+          {languageActiveStyles.styles}
+
+          <nav
+            className="language-switch"
+            aria-label={language && language === 'en' ? 'Language' : 'Sprache'}
+          >
+            <Link
+              to="/en/"
+              className={classnames(
+                languageStyles.className,
+                language === 'en' && languageActiveStyles.className
+              )}
+            >
+              EN
+            </Link>
+            <Link
+              to="/"
+              className={classnames(
+                languageStyles.className,
+                (language === 'de' || !language) &&
+                  languageActiveStyles.className
+              )}
+            >
+              DE
+            </Link>
+          </nav>
+
+          <span className="logo-label">
+            <span className="logo-label-text">{title}</span>
+            <HandshakeIcon className={iconStyles.className} />
+          </span>
         </div>
 
         <ReactModal
@@ -102,15 +139,25 @@ export default class Navigation extends Component {
                 items={[
                   {
                     node: {
-                      title: 'Hintergründe',
-                      link: '/background/',
+                      title:
+                        language && language === 'en'
+                          ? 'Background'
+                          : 'Hintergründe',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/`,
                     },
                   },
 
                   {
                     node: {
-                      title: 'Protagonist*innen',
-                      link: '/protagonists/',
+                      title:
+                        language && language === 'en'
+                          ? 'Protagonists'
+                          : 'Protagonist*innen',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/protagonists/`,
                     },
                   },
                 ]}
@@ -121,15 +168,27 @@ export default class Navigation extends Component {
                 items={[
                   {
                     node: {
-                      title: 'Kontakt & Impressum',
-                      link: '/background/impressum/',
+                      title:
+                        language && language === 'en'
+                          ? 'Contact & Imprint'
+                          : 'Kontakt & Impressum',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/${
+                        !language || language === 'de' ? 'impressum' : 'imprint'
+                      }/`,
                     },
                   },
 
                   {
                     node: {
-                      title: 'Datenschutz',
-                      link: '/background/datenschutz/',
+                      title:
+                        language && language === 'en'
+                          ? 'Privacy agreement'
+                          : 'Datenschutz',
+                      link: `${
+                        language && language === 'en' ? '/en' : ''
+                      }/background/datenschutz/`,
                     },
                   },
                 ]}
@@ -172,6 +231,7 @@ export const fragment = graphql`
           quote
           number
           text
+          language
         }
       }
     }

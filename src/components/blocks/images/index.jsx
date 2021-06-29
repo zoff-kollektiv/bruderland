@@ -6,16 +6,16 @@ import Slider from './slider';
 
 import styles from './styles';
 
-export default ({ imagesRepeat }) => (
+export default ({ imagesRepeat, language }) => (
   <section>
     <style jsx>{styles}</style>
 
     {imagesRepeat && (
       <>
         {imagesRepeat.length === 1 ? (
-          <Image {...imagesRepeat[0]} />
+          <Image {...imagesRepeat[0]} language={language} />
         ) : (
-          <Slider images={imagesRepeat} />
+          <Slider images={imagesRepeat} language={language} />
         )}
       </>
     )}
@@ -27,6 +27,7 @@ export const fragment = graphql`
     imagesRepeat {
       fullscreen
       allow_expansion
+      transcription
       imagesImage {
         id
         alt_text
@@ -35,6 +36,9 @@ export const fragment = graphql`
         mediaDetails: media_details {
           imageHeight: height
           imageWidth: width
+        }
+        acf {
+          caption_en
         }
         localFile {
           childImageSharp {

@@ -153,11 +153,14 @@ export default class Video extends Component {
       return null;
     }
 
-    const { sources, tracks, pictures } = vimeoVideo.node;
+    const { sources, tracks, pictures, id: videoId } = vimeoVideo.node;
     const poster = pictures?.find((picture) => picture.width >= 1280);
 
     return (
-      <figure className={classnames({ 'is-fullsize': fullsize })}>
+      <figure
+        id={`video-${videoId}`}
+        className={classnames({ 'is-fullsize': fullsize })}
+      >
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
         {progressIcon.styles}

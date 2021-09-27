@@ -154,8 +154,7 @@ export default class Video extends Component {
     }
 
     const { sources, tracks, pictures } = vimeoVideo.node;
-    const poster =
-      pictures && pictures.find((picture) => picture.width >= 1280);
+    const poster = pictures?.find((picture) => picture.width >= 1280);
 
     return (
       <figure className={classnames({ 'is-fullsize': fullsize })}>
@@ -173,7 +172,7 @@ export default class Video extends Component {
           onClick={() => this.togglePlayAndPause()}
           loop={loop}
           preload="metadata"
-          poster={poster && poster.link}
+          poster={poster?.link}
           playsInline
           crossOrigin="anonymous"
         >

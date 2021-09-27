@@ -87,6 +87,7 @@ export default ({
   language,
 }) => {
   const introRef = useRef(null);
+  const langPrefix = language === 'de' ? '' : `${language}/`;
 
   return (
     <header className="js-intro">
@@ -151,9 +152,7 @@ export default ({
           {linkTitle ? (
             <Link
               className={nextLink.className}
-              to={`${
-                language ? `/${language}` : ''
-              }/episodes/${linkTitleSlug}/`}
+              to={`/${langPrefix}episodes/${linkTitleSlug}/`}
               dangerouslySetInnerHTML={{ __html: title }}
             />
           ) : (

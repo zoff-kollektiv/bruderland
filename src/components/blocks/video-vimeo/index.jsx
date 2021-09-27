@@ -153,12 +153,14 @@ export default class Video extends Component {
       return null;
     }
 
-    const { sources, tracks, pictures } = vimeoVideo.node;
-    const poster =
-      pictures && pictures.find((picture) => picture.width >= 1280);
+    const { sources, tracks, pictures, id: videoId } = vimeoVideo.node;
+    const poster = pictures?.find((picture) => picture.width >= 1280);
 
     return (
-      <figure className={classnames({ 'is-fullsize': fullsize })}>
+      <figure
+        id={`video-${videoId}`}
+        className={classnames({ 'is-fullsize': fullsize })}
+      >
         <style jsx>{styles}</style>
         {playPauseIconStyles.styles}
         {progressIcon.styles}
@@ -173,7 +175,7 @@ export default class Video extends Component {
           onClick={() => this.togglePlayAndPause()}
           loop={loop}
           preload="metadata"
-          poster={poster && poster.link}
+          poster={poster?.link}
           playsInline
           crossOrigin="anonymous"
         >

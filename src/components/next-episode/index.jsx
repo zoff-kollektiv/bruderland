@@ -13,6 +13,8 @@ export default ({ currentTitle, next }) => {
     node: { acf, title, slug },
   } = next || { node: { acf: { title: false } } };
 
+  const langPrefix = acf?.language === 'de' ? '' : `${acf.language}/`;
+
   return (
     <footer>
       {arrowLink.styles}
@@ -31,7 +33,7 @@ export default ({ currentTitle, next }) => {
           />
 
           <Link
-            to={`${acf?.language ? `/${acf.language}` : ''}/episodes/${slug}/`}
+            to={`/${langPrefix}episodes/${slug}/`}
             className={arrowLink.className}
             rel="nofollow"
             aria-label={`${

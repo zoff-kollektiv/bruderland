@@ -61,3 +61,5 @@ typings/
 public
 yarn-error.log
 public-functions/
+
+.env.development
